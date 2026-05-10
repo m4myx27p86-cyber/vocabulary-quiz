@@ -23,6 +23,7 @@ document.getElementById("startButton").addEventListener("click", startQuiz);
 document.getElementById("checkButton").addEventListener("click", checkAnswer);
 document.getElementById("nextButton").addEventListener("click", nextQuestion);
 document.getElementById("restartButton").addEventListener("click", () => location.reload());
+document.getElementById("quitButton").addEventListener("click", quitQuiz);
 
 function checkPassword() {
   const input = document.getElementById("passwordInput").value;
@@ -70,6 +71,16 @@ function showQuestion() {
 
   document.getElementById("wordsDisplay").textContent =
     q.words.join(" / ");
+
+function quitQuiz() {
+  const confirmQuit = confirm("途中で終了しますか？現在までの結果を表示します。");
+
+  if (!confirmQuit) {
+    return;
+  }
+
+  showResult(true);
+}  
 
   document.getElementById("answerInput").value = "";
   document.getElementById("feedback").textContent = "";
@@ -123,7 +134,32 @@ function nextQuestion() {
   if (currentIndex < questions.length) {
     showQuestion();
   } else {
-    showResult();
+  function showResult(isQuit = false) {
+  const endTime = new Date().toLocaleString("ja-JP");
+
+  document.getElementById("quizScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+
+  const answeredCount = answersLog.length;
+
+  document.getElementById("scoreDisplay").textContent =
+    isQuit
+      ? `途中終了：${answeredCount}問中 ${score}問正解`
+      : `${questions.length}問中 ${score}問正解`;
+
+  document.getElementById("dateDisplay").textContent =
+    `回答日時：${endTime}`;
+
+  console.log({
+    studentId: studentId,
+    status: isQuit ? "途中終了" : "完了",
+    score: score,
+    total: isQuit ? answeredCount : questions.length,
+    startTime: startTime,
+    endTime: endTime,
+    answers: answersLog
+  });
+};
   }
 }
 
