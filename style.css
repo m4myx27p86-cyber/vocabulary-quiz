@@ -70,3 +70,18 @@ button:disabled {
   color: red;
   font-weight: bold;
 }
+
+.password-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.password-toggle input {
+  width: auto;
+  margin: 0;
+}
