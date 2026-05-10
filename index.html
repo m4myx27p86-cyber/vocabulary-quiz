@@ -4,252 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>英語テスト</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      max-width: 760px;
-      margin: auto;
-      background: white;
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h1 { color: #1f2937; }
-    input, button {
-      font-size: 16px;
-      padding: 10px;
-      margin: 8px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      cursor: pointer;
-      background: #2563eb;
-      color: white;
-      border: none;
-    }
-    button:hover { background: #1d4ed8; }
-    .words {
-      font-size: 22px;
-      margin: 20px 0;
-      line-height: 1.8;
-      font-weight: bold;
-    }
-    .hidden { display: none; }
-    .result {
-      margin-top: 16px;
-      font-weight: bold;
-    }
-    .correct { color: green; }
-    .wrong { color: red; }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>英語テスト</h1>
 
-    <div id="loginScreen">
+    <section id="loginScreen">
       <p>パスワードを入力してください。</p>
-      <input type="password" id="passwordInput" placeholder="Password" />
-      <button onclick="checkPassword()">ログイン</button>
-      <p id="loginMessage" class="wrong"></p>
-    </div>
+      <input type="password" id="passwordInput" placeholder="パスワード" />
+      <button id="loginButton">ログイン</button>
+      <p id="loginMessage" class="error"></p>
+    </section>
 
-    <div id="menuScreen" class="hidden">
+    <section id="menuScreen" class="hidden">
       <h2>教材を選択してください</h2>
-      <button onclick="startSentenceTest()">語順並べ替えテスト</button>
+      <button id="sentenceTestButton">語順並べ替えテスト</button>
       <button disabled>Coming Soon</button>
-    </div>
+    </section>
 
-    <div id="nameScreen" class="hidden">
-      <h2>名前を入力してください</h2>
-      <input type="text" id="studentName" placeholder="名前" />
-      <button onclick="startQuiz()">開始</button>
-    </div>
+    <section id="idScreen" class="hidden">
+      <h2>回答者番号を入力してください</h2>
+      <input type="text" id="studentIdInput" placeholder="例：A001" />
+      <button id="startButton">開始</button>
+    </section>
 
-    <div id="quizScreen" class="hidden">
+    <section id="quizScreen" class="hidden">
       <h2 id="questionNumber"></h2>
-      <div class="words" id="wordsDisplay"></div>
+      <div id="wordsDisplay" class="words"></div>
 
-      <input type="text" id="answerInput" placeholder="英文を入力してください" size="50" />
+      <input type="text" id="answerInput" placeholder="英文を入力してください" />
       <br />
-      <button onclick="checkAnswer()">回答する</button>
+      <button id="checkButton">回答する</button>
 
-      <p id="feedback" class="result"></p>
-      <button id="nextButton" class="hidden" onclick="nextQuestion()">次の問題へ</button>
-    </div>
+      <p id="feedback"></p>
+      <button id="nextButton" class="hidden">次の問題へ</button>
+    </section>
 
-    <div id="resultScreen" class="hidden">
+    <section id="resultScreen" class="hidden">
       <h2>結果</h2>
       <p id="scoreDisplay"></p>
       <p id="dateDisplay"></p>
-      <button onclick="restart()">もう一度解く</button>
-    </div>
+      <button id="restartButton">もう一度解く</button>
+    </section>
   </div>
 
-  <script>
-    const PASSWORD = "testing";
-
-    // Google Apps ScriptのURLを入れる
-    // まだ使わない場合は空欄のままでOK
-    const GOOGLE_SCRIPT_URL = "";
-
-    let questions = [];
-    let currentIndex = 0;
-    let score = 0;
-    let studentName = "";
-    let answersLog = [];
-    let startTime = "";
-
-    function checkPassword() {
-      const input = document.getElementById("passwordInput").value;
-
-      if (input === PASSWORD) {
-        document.getElementById("loginScreen").classList.add("hidden");
-        document.getElementById("menuScreen").classList.remove("hidden");
-      } else {
-        document.getElementById("loginMessage").textContent = "パスワードが違います。";
-      }
-    }
-
-    function startSentenceTest() {
-      document.getElementById("menuScreen").classList.add("hidden");
-      document.getElementById("nameScreen").classList.remove("hidden");
-    }
-
-    async function startQuiz() {
-      studentName = document.getElementById("studentName").value.trim();
-
-      if (!studentName) {
-        alert("名前を入力してください。");
-        return;
-      }
-
-      const response = await fetch("data/sentence_order.json");
-      questions = await response.json();
-
-      currentIndex = 0;
-      score = 0;
-      answersLog = [];
-      startTime = new Date().toLocaleString("ja-JP");
-
-      document.getElementById("nameScreen").classList.add("hidden");
-      document.getElementById("quizScreen").classList.remove("hidden");
-
-      showQuestion();
-    }
-
-    function showQuestion() {
-      const q = questions[currentIndex];
-
-      document.getElementById("questionNumber").textContent =
-        `問題 ${currentIndex + 1} / ${questions.length}`;
-
-      document.getElementById("wordsDisplay").textContent =
-        q.words.join(" / ");
-
-      document.getElementById("answerInput").value = "";
-      document.getElementById("feedback").textContent = "";
-      document.getElementById("feedback").className = "result";
-      document.getElementById("nextButton").classList.add("hidden");
-    }
-
-    function normalize(text) {
-      return text
-        .trim()
-        .replace(/\s+/g, " ")
-        .replace(/[’‘]/g, "'")
-        .replace(/[“”]/g, '"');
-    }
-
-    function checkAnswer() {
-      const q = questions[currentIndex];
-      const userAnswer = document.getElementById("answerInput").value;
-      const correctAnswer = q.answer;
-
-      const isCorrect = normalize(userAnswer) === normalize(correctAnswer);
-
-      if (isCorrect) {
-        score++;
-        document.getElementById("feedback").textContent = "正解です！";
-        document.getElementById("feedback").classList.add("correct");
-      } else {
-        document.getElementById("feedback").innerHTML =
-          `不正解です。<br>正解：${correctAnswer}`;
-        document.getElementById("feedback").classList.add("wrong");
-      }
-
-      answersLog.push({
-        id: q.id,
-        question: q.words.join(" / "),
-        userAnswer: userAnswer,
-        correctAnswer: correctAnswer,
-        correct: isCorrect
-      });
-
-      document.getElementById("nextButton").classList.remove("hidden");
-    }
-
-    function nextQuestion() {
-      currentIndex++;
-
-      if (currentIndex < questions.length) {
-        showQuestion();
-      } else {
-        showResult();
-      }
-    }
-
-    function showResult() {
-      const endTime = new Date().toLocaleString("ja-JP");
-
-      document.getElementById("quizScreen").classList.add("hidden");
-      document.getElementById("resultScreen").classList.remove("hidden");
-
-      document.getElementById("scoreDisplay").textContent =
-        `${questions.length}問中 ${score}問正解`;
-
-      document.getElementById("dateDisplay").textContent =
-        `回答日時：${endTime}`;
-
-      saveResult(endTime);
-    }
-
-    function saveResult(endTime) {
-      const resultData = {
-        name: studentName,
-        score: score,
-        total: questions.length,
-        startTime: startTime,
-        endTime: endTime,
-        answers: answersLog
-      };
-
-      console.log("保存データ:", resultData);
-
-      if (!GOOGLE_SCRIPT_URL) {
-        return;
-      }
-
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(resultData)
-      });
-    }
-
-    function restart() {
-      location.reload();
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
