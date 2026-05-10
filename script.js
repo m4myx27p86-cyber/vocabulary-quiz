@@ -1,30 +1,42 @@
 const PASSWORD = "testing";
 
 let testType = "";
+let reviewMode = false;
+
 let allVocabQuestions = [];
+let allSentenceQuestions = [];
 let questions = [];
+
 let currentIndex = 0;
 let score = 0;
 let studentId = "";
 let selectedChoice = "";
 let answersLog = [];
 let mistakes = [];
-let startTime = "";
+let startTime = null;
 
-document.getElementById("loginButton").addEventListener("click", checkPassword);
-document.getElementById("showPassword").addEventListener("change", togglePassword);
-document.getElementById("vocabTestButton").addEventListener("click", () => openSettings("vocab"));
-document.getElementById("sentenceTestButton").addEventListener("click", () => openSettings("sentence"));
-document.getElementById("startButton").addEventListener("click", startQuiz);
-document.getElementById("backToMenuButton").addEventListener("click", backToMenu);
-document.getElementById("checkButton").addEventListener("click", checkAnswer);
-document.getElementById("nextButton").addEventListener("click", nextQuestion);
-document.getElementById("quitButton").addEventListener("click", quitQuiz);
-document.getElementById("restartButton").addEventListener("click", () => location.reload());
-document.getElementById("clearMistakesButton").addEventListener("click", clearMistakes);
+safeAddEvent("loginButton", "click", checkPassword);
+safeAddEvent("showPassword", "change", togglePassword);
+safeAddEvent("vocabTestButton", "click", () => openSettings("vocab"));
+safeAddEvent("sentenceTestButton", "click", () => openSettings("sentence"));
+safeAddEvent("startButton", "click", startNormalQuiz);
+safeAddEvent("reviewButton", "click", startReviewQuiz);
+safeAddEvent("clearStoredMistakesButton", "click", clearStoredMistakes);
+safeAddEvent("backToMenuButton", "click", () => showOnly("menuScreen"));
+safeAddEvent("checkButton", "click", checkAnswer);
+safeAddEvent("nextButton", "click", nextQuestion);
+safeAddEvent("quitButton", "click", quitQuiz);
+safeAddEvent("restartButton", "click", () => location.reload());
+safeAddEvent("studentIdInput", "input", updateMistakeCountInSettings);
+
+function safeAddEvent(id, event, handler) {
+  const element = document.getElementById(id);
+  if (element) element.addEventListener(event, handler);
+}
 
 function checkPassword() {
   const input = document.getElementById("passwordInput").value;
+
   if (input === PASSWORD) {
     showOnly("menuScreen");
   } else {
@@ -33,32 +45,84 @@ function checkPassword() {
 }
 
 function togglePassword() {
-  document.getElementById("passwordInput").type = this.checked ? "text" : "password";
+  const field = document.getElementById("passwordInput");
+  field.type = this.checked ? "text" : "password";
 }
 
 async function openSettings(type) {
   testType = type;
+  reviewMode = false;
+
   showOnly("settingScreen");
 
   document.getElementById("settingTitle").textContent =
     type === "vocab" ? "Stock 3000 単語テスト" : "語順並べ替えテスト";
 
+  document.getElementById("vocabReviewArea").classList.toggle("hidden", type !== "vocab");
+
   if (type === "vocab") {
-    document.getElementById("vocabSettings").classList.remove("hidden");
-    if (allVocabQuestions.length === 0) {
-      await loadVocabQuestions();
-    }
-    setupSectionSelect();
-  } else {
-    document.getElementById("vocabSettings").classList.add("hidden");
+    if (allVocabQuestions.length === 0) await loadVocabQuestions();
+    setupSectionSelect(allVocabQuestions);
+    updateMistakeCountInSettings();
+  }
+
+  if (type === "sentence") {
+    if (allSentenceQuestions.length === 0) await loadSentenceQuestions();
+    setupSectionSelect(allSentenceQuestions);
   }
 }
 
-function backToMenu() {
-  showOnly("menuScreen");
+async function loadVocabQuestions() {
+  const response = await fetch("data/vocab/stock_3000_master.csv");
+  const text = await response.text();
+  const rows = parseCSV(text);
+
+  rows.shift();
+
+  allVocabQuestions = rows.map(row => ({
+    id: row[0],
+    section: row[1],
+    word: row[2],
+    correctAnswer: row[3],
+    choices: [row[3], row[4], row[5], row[6]].filter(Boolean),
+    points: Number(row[7]) || 1
+  })).filter(q => q.id && q.section && q.word && q.correctAnswer);
 }
 
-async function startQuiz() {
+async function loadSentenceQuestions() {
+  const response = await fetch("data/sentence_order/sentence_order_1_100.csv");
+  const text = await response.text();
+  const rows = parseCSV(text);
+
+  rows.shift();
+
+  allSentenceQuestions = rows.map(row => ({
+    id: row[0],
+    section: row[1],
+    answer: row[2],
+    words: shuffle(splitSentence(row[2] || "")),
+    points: 1
+  })).filter(q => q.id && q.section && q.answer);
+}
+
+function setupSectionSelect(sourceQuestions) {
+  const select = document.getElementById("sectionSelect");
+
+  const sections = [...new Set(sourceQuestions.map(q => q.section))]
+    .filter(Boolean)
+    .sort((a, b) => Number(a) - Number(b));
+
+  select.innerHTML = `<option value="all">すべてのセクション</option>`;
+
+  sections.forEach(section => {
+    const option = document.createElement("option");
+    option.value = section;
+    option.textContent = `Section ${section}`;
+    select.appendChild(option);
+  });
+}
+
+async function startNormalQuiz() {
   studentId = document.getElementById("studentIdInput").value.trim();
 
   if (!studentId) {
@@ -66,57 +130,56 @@ async function startQuiz() {
     return;
   }
 
+  reviewMode = false;
+
   if (testType === "vocab") {
-    prepareVocabQuiz();
-  } else {
-    await loadSentenceQuestions();
+    prepareQuiz(allVocabQuestions);
+  } else if (testType === "sentence") {
+    prepareQuiz(allSentenceQuestions);
   }
 
-  currentIndex = 0;
-  score = 0;
-  selectedChoice = "";
-  answersLog = [];
-  mistakes = [];
-  startTime = new Date().toLocaleString("ja-JP");
+  if (questions.length === 0) {
+    alert("問題がありません。");
+    return;
+  }
 
-  showOnly("quizScreen");
-  showQuestion();
+  startQuizCommon();
 }
 
-async function loadVocabQuestions() {
-  const response = await fetch("data/stock_3000_master.csv");
-  const text = await response.text();
-  const rows = parseCSV(text);
+function startReviewQuiz() {
+  studentId = document.getElementById("studentIdInput").value.trim();
 
-  const header = rows.shift();
+  if (!studentId) {
+    alert("回答者番号を入力してください。");
+    return;
+  }
 
-  allVocabQuestions = rows.map(row => ({
-    id: row[0],
-    section: row[1],
-    word: row[2],
-    correctAnswer: row[3],
-    wrongs: [row[4], row[5], row[6]].filter(Boolean),
-    points: row[7] || "1"
-  })).filter(q => q.id && q.word && q.correctAnswer);
+  if (testType !== "vocab") {
+    alert("復習機能は単語テスト用です。");
+    return;
+  }
+
+  reviewMode = true;
+
+  const wrongIds = getWrongIds();
+  questions = allVocabQuestions.filter(q => wrongIds.includes(String(q.id)));
+
+  if (questions.length === 0) {
+    alert("保存された間違いがありません。");
+    return;
+  }
+
+  questions = shuffle(questions);
+  startQuizCommon();
 }
 
-function setupSectionSelect() {
-  const select = document.getElementById("sectionSelect");
-  const sections = [...new Set(allVocabQuestions.map(q => q.section))].filter(Boolean);
-
-  select.innerHTML = `<option value="all">全セクション</option>`;
-  sections.forEach(sec => {
-    select.innerHTML += `<option value="${sec}">Section ${sec}</option>`;
-  });
-}
-
-function prepareVocabQuiz() {
+function prepareQuiz(sourceQuestions) {
   const selectedSection = document.getElementById("sectionSelect").value;
   const countValue = document.getElementById("questionCountSelect").value;
 
   let pool = selectedSection === "all"
-    ? [...allVocabQuestions]
-    : allVocabQuestions.filter(q => q.section === selectedSection);
+    ? [...sourceQuestions]
+    : sourceQuestions.filter(q => q.section === selectedSection);
 
   pool = shuffle(pool);
 
@@ -127,9 +190,16 @@ function prepareVocabQuiz() {
   questions = pool;
 }
 
-async function loadSentenceQuestions() {
-  const response = await fetch("data/sentence_order.json");
-  questions = await response.json();
+function startQuizCommon() {
+  currentIndex = 0;
+  score = 0;
+  selectedChoice = "";
+  answersLog = [];
+  mistakes = [];
+  startTime = new Date();
+
+  showOnly("quizScreen");
+  showQuestion();
 }
 
 function showQuestion() {
@@ -145,15 +215,46 @@ function showQuestion() {
 
   if (testType === "vocab") {
     showVocabQuestion();
-  } else {
+  } else if (testType === "sentence") {
     showSentenceQuestion();
   }
+}
+
+function showVocabQuestion() {
+  const q = questions[currentIndex];
+
+  document.getElementById("testTitle").textContent =
+    reviewMode ? "Stock 3000 間違い復習" : "Stock 3000 単語テスト";
+
+  const choices = shuffle(q.choices);
+  const area = document.getElementById("questionArea");
+  area.innerHTML = "";
+
+  const wordDiv = document.createElement("div");
+  wordDiv.className = "words";
+  wordDiv.innerHTML =
+    `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>"${escapeHtml(q.word)}" の意味は？`;
+  area.appendChild(wordDiv);
+
+  choices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.className = "choice-button";
+    btn.textContent = choice;
+    btn.addEventListener("click", () => {
+      selectedChoice = choice;
+      document.querySelectorAll(".choice-button").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+    });
+    area.appendChild(btn);
+  });
 }
 
 function showSentenceQuestion() {
   const q = questions[currentIndex];
 
   document.getElementById("testTitle").textContent = "語順並べ替えテスト";
+
+  q.words = shuffle(splitSentence(q.answer));
 
   document.getElementById("questionArea").innerHTML = `
     <div class="words" id="sentenceWords">
@@ -166,13 +267,15 @@ function showSentenceQuestion() {
 }
 
 function updateUsedWords() {
-  const input = normalize(document.getElementById("answerInput").value).toLowerCase();
+  const inputWords = splitSentence(document.getElementById("answerInput").value)
+    .map(w => normalizeForCompare(w));
+
   const chips = document.querySelectorAll(".word-chip");
 
   chips.forEach(chip => {
-    const word = normalize(chip.textContent).toLowerCase();
+    const word = normalizeForCompare(chip.textContent);
 
-    if (input.split(" ").includes(word)) {
+    if (inputWords.includes(word)) {
       chip.classList.add("used");
     } else {
       chip.classList.remove("used");
@@ -180,36 +283,10 @@ function updateUsedWords() {
   });
 }
 
-function showVocabQuestion() {
-  const q = questions[currentIndex];
-
-  document.getElementById("testTitle").textContent = "Stock 3000 単語テスト";
-
-  const choices = shuffle([q.correctAnswer, ...q.wrongs]);
-
-  document.getElementById("questionArea").innerHTML = `
-    <div class="words">
-      No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>
-      "${escapeHtml(q.word)}" の意味は？
-    </div>
-    ${choices.map(choice =>
-      `<button class="choice-button" data-choice="${escapeHtml(choice)}">${escapeHtml(choice)}</button>`
-    ).join("")}
-  `;
-
-  document.querySelectorAll(".choice-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      selectedChoice = btn.dataset.choice;
-      document.querySelectorAll(".choice-button").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-    });
-  });
-}
-
 function checkAnswer() {
   if (testType === "vocab") {
     checkVocabAnswer();
-  } else {
+  } else if (testType === "sentence") {
     checkSentenceAnswer();
   }
 }
@@ -223,47 +300,53 @@ function checkVocabAnswer() {
   }
 
   const isCorrect = selectedChoice === q.correctAnswer;
+
+  if (isCorrect && reviewMode) removeWrongWord(q.id);
+  if (!isCorrect) saveWrongWord(q.id);
+
   processAnswer({
     id: q.id,
     section: q.section,
     question: q.word,
     userAnswer: selectedChoice,
     correctAnswer: q.correctAnswer,
-    isCorrect
+    isCorrect,
+    points: q.points
   });
 }
 
 function checkSentenceAnswer() {
   const q = questions[currentIndex];
   const userAnswer = document.getElementById("answerInput").value;
-  const isCorrect = normalize(userAnswer) === normalize(q.answer);
+  const isCorrect = normalizeSentence(userAnswer) === normalizeSentence(q.answer);
 
   processAnswer({
     id: q.id,
-    section: "",
+    section: q.section,
     question: q.words.join(" / "),
     userAnswer,
     correctAnswer: q.answer,
-    isCorrect
+    isCorrect,
+    points: 1
   });
 }
 
 function processAnswer(data) {
   if (data.isCorrect) {
-    score++;
-    document.getElementById("feedback").textContent = "正解です！";
+    score += data.points;
+    document.getElementById("feedback").textContent = "✅ 正解！";
     document.getElementById("feedback").className = "correct";
   } else {
     document.getElementById("feedback").innerHTML =
-      `不正解です。<br>正解：${escapeHtml(data.correctAnswer)}`;
+      `❌ 不正解。<br>正解：${escapeHtml(data.correctAnswer)}`;
     document.getElementById("feedback").className = "wrong";
-
     mistakes.push(data);
   }
 
   answersLog.push({
     studentId,
-    testType: testType === "vocab" ? "Stock 3000 単語テスト" : "語順並べ替えテスト",
+    testType: getTestName(),
+    mode: reviewMode ? "復習" : "通常",
     id: data.id,
     section: data.section,
     question: data.question,
@@ -279,6 +362,7 @@ function processAnswer(data) {
 
 function nextQuestion() {
   currentIndex++;
+
   if (currentIndex < questions.length) {
     showQuestion();
   } else {
@@ -288,42 +372,43 @@ function nextQuestion() {
 
 function quitQuiz() {
   if (confirm("途中で終了して、教材選択画面に戻りますか？")) {
-    currentIndex = 0;
-    score = 0;
-    selectedChoice = "";
-    answersLog = [];
-    mistakes = [];
-
-    document.getElementById("feedback").textContent = "";
-    document.getElementById("questionArea").innerHTML = "";
-
+    resetQuizState();
     showOnly("menuScreen");
   }
 }
 
 function showResult(isQuit) {
-  const endTime = new Date().toLocaleString("ja-JP");
+  const endTime = new Date();
   const answeredCount = answersLog.length;
+  const totalSeconds = Math.floor((endTime - startTime) / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
 
   showOnly("resultScreen");
 
   document.getElementById("scoreDisplay").textContent =
     isQuit
-      ? `途中終了：${answeredCount}問中 ${score}問正解`
-      : `${questions.length}問中 ${score}問正解`;
+      ? `途中終了：${answeredCount}問中 ${score}点`
+      : `テスト終了：${answeredCount}問中 ${score}点`;
 
-  document.getElementById("dateDisplay").textContent = `回答日時：${endTime}`;
+  document.getElementById("dateDisplay").textContent =
+    `回答日時：${endTime.toLocaleString("ja-JP")}`;
+
+  document.getElementById("timeDisplay").textContent =
+    `解答時間：${minutes}分 ${seconds}秒`;
 
   showMistakes();
 
   console.log({
     studentId,
-    testType,
+    testType: getTestName(),
+    mode: reviewMode ? "復習" : "通常",
     status: isQuit ? "途中終了" : "完了",
     score,
-    total: isQuit ? answeredCount : questions.length,
-    startTime,
-    endTime,
+    answeredCount,
+    totalQuestions: questions.length,
+    startTime: startTime.toLocaleString("ja-JP"),
+    endTime: endTime.toLocaleString("ja-JP"),
     mistakes,
     answers: answersLog
   });
@@ -339,7 +424,7 @@ function showMistakes() {
 
   area.innerHTML = `
     <div class="mistake-list">
-      <h3>ミスした問題</h3>
+      <h3>今回ミスした問題</h3>
       ${mistakes.map(m => `
         <div class="mistake-item">
           <strong>問題：</strong>${escapeHtml(m.question)}<br>
@@ -351,28 +436,126 @@ function showMistakes() {
   `;
 }
 
-function clearMistakes() {
+function saveWrongWord(id) {
+  const key = getWrongKey();
+  const wrongIds = getWrongIds();
+
+  if (!wrongIds.includes(String(id))) {
+    wrongIds.push(String(id));
+  }
+
+  localStorage.setItem(key, JSON.stringify(wrongIds));
+  updateMistakeCountInSettings();
+}
+
+function removeWrongWord(id) {
+  const key = getWrongKey();
+  let wrongIds = getWrongIds();
+
+  wrongIds = wrongIds.filter(wrongId => wrongId !== String(id));
+  localStorage.setItem(key, JSON.stringify(wrongIds));
+  updateMistakeCountInSettings();
+}
+
+function getWrongIds() {
+  const key = getWrongKey();
+  return JSON.parse(localStorage.getItem(key)) || [];
+}
+
+function getWrongKey() {
+  const id = studentId || document.getElementById("studentIdInput").value.trim() || "default";
+  return `wrongWords_${id}`;
+}
+
+function clearStoredMistakes() {
+  studentId = document.getElementById("studentIdInput").value.trim() || "default";
+
+  if (!confirm("この回答者番号の間違い履歴を削除しますか？")) return;
+
+  localStorage.removeItem(getWrongKey());
+  updateMistakeCountInSettings();
+  alert("間違い履歴を削除しました。");
+}
+
+function updateMistakeCountInSettings() {
+  const countText = document.getElementById("settingMistakeCount");
+  if (!countText) return;
+
+  const id = document.getElementById("studentIdInput").value.trim();
+
+  if (!id) {
+    countText.textContent = "回答者番号を入力すると、その番号の間違い履歴を確認できます。";
+    return;
+  }
+
+  studentId = id;
+  countText.textContent = `保存された間違い：${getWrongIds().length}問`;
+}
+
+function resetQuizState() {
+  currentIndex = 0;
+  score = 0;
+  selectedChoice = "";
+  answersLog = [];
   mistakes = [];
-  document.getElementById("mistakeArea").innerHTML = "<p>ミスを削除しました。</p>";
+  questions = [];
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("questionArea").innerHTML = "";
 }
 
 function showOnly(id) {
   ["loginScreen", "menuScreen", "settingScreen", "quizScreen", "resultScreen"].forEach(screen => {
-    document.getElementById(screen).classList.add("hidden");
+    const element = document.getElementById(screen);
+    if (element) element.classList.add("hidden");
   });
+
   document.getElementById(id).classList.remove("hidden");
 }
 
-function normalize(text) {
-  return text
-    .trim()
-    .replace(/\s+/g, " ")
+function getTestName() {
+  if (testType === "vocab") return "Stock 3000 単語テスト";
+  if (testType === "sentence") return "語順並べ替えテスト";
+  return "";
+}
+
+function splitSentence(text) {
+  return String(text)
+    .replace(/[.,!?;:]/g, "")
+    .replace(/[“”]/g, '"')
     .replace(/[’‘]/g, "'")
-    .replace(/[“”]/g, '"');
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function normalizeSentence(text) {
+  return String(text)
+    .replace(/[.,!?;:]/g, "")
+    .replace(/[“”]/g, '"')
+    .replace(/[’‘]/g, "'")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function normalizeForCompare(text) {
+  return String(text)
+    .replace(/[.,!?;:]/g, "")
+    .replace(/[“”]/g, '"')
+    .replace(/[’‘]/g, "'")
+    .trim()
+    .toLowerCase();
 }
 
 function shuffle(array) {
-  return [...array].sort(() => Math.random() - 0.5);
+  const copied = [...array];
+
+  for (let i = copied.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copied[i], copied[j]] = [copied[j], copied[i]];
+  }
+
+  return copied;
 }
 
 function escapeHtml(text) {
@@ -409,6 +592,7 @@ function parseCSV(text) {
         row = [];
         cell = "";
       }
+
       if (char === "\r" && next === "\n") i++;
     } else {
       cell += char;
