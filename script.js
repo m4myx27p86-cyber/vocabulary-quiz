@@ -150,18 +150,35 @@ function showQuestion() {
   }
 }
 
-function showVocabQuestion() {
+function showSentenceQuestion() {
   const q = questions[currentIndex];
-  document.getElementById("testTitle").textContent = "Stock 3000 単語テスト";
 
-  const choices = shuffle([q.correctAnswer, ...q.wrongs]);
+  document.getElementById("testTitle").textContent = "語順並べ替えテスト";
 
   document.getElementById("questionArea").innerHTML = `
-    <div class="words">${escapeHtml(q.word)}</div>
-    ${choices.map(choice =>
-      `<button class="choice-button" data-choice="${escapeHtml(choice)}">${escapeHtml(choice)}</button>`
-    ).join("")}
+    <div class="words" id="sentenceWords">
+      ${q.words.map(word => `<span class="word-chip">${escapeHtml(word)}</span>`).join("")}
+    </div>
+    <input type="text" id="answerInput" placeholder="英文を入力してください" />
   `;
+
+  document.getElementById("answerInput").addEventListener("input", updateUsedWords);
+}
+
+function updateUsedWords() {
+  const input = normalize(document.getElementById("answerInput").value).toLowerCase();
+  const chips = document.querySelectorAll(".word-chip");
+
+  chips.forEach(chip => {
+    const word = normalize(chip.textContent).toLowerCase();
+
+    if (input.split(" ").includes(word)) {
+      chip.classList.add("used");
+    } else {
+      chip.classList.remove("used");
+    }
+  });
+}
 
   document.querySelectorAll(".choice-button").forEach(btn => {
     btn.addEventListener("click", () => {
