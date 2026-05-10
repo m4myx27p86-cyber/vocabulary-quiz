@@ -11,7 +11,6 @@ body {
     text-align: center;
     background: #f5f5f5;
 }
-
 .container {
     background: white;
     width: 80%;
@@ -20,7 +19,6 @@ body {
     padding: 20px;
     border-radius: 10px;
 }
-
 button {
     display: block;
     width: 80%;
@@ -30,33 +28,27 @@ button {
     cursor: pointer;
     border: none;
 }
-
 .choice-btn {
     background: #4CAF50;
     color: white;
 }
-
 .next-btn {
     background: #2196F3;
     color: white;
 }
-
 .review-btn {
     background: orange;
     color: white;
 }
-
 select, input {
     padding: 10px;
     margin: 10px;
     font-size: 16px;
 }
-
 #result {
     font-weight: bold;
     font-size: 20px;
 }
-
 #score {
     font-weight: bold;
     color: darkblue;
@@ -68,61 +60,61 @@ select, input {
 
 <div class="container">
 
-    <h1>英語テスト</h1>
+<h1>英語テスト</h1>
 
-    <!-- Login Area -->
-    <div id="loginArea">
-        <h2>教材を選択してください</h2>
+<div id="loginArea">
+    <h2>パスワードを入力してください</h2>
+    <input type="password" id="passwordInput" placeholder="パスワード">
+    <button onclick="checkPassword()">ログイン</button>
+    <p id="loginMessage"></p>
+</div>
 
-        <select id="materialSelect">
-            <option value="stock3000">Stock 3000</option>
-            <option value="comingSoon">Coming soon</option>
-        </select>
+<div id="materialArea" style="display:none;">
+    <h2>教材を選択してください</h2>
 
-        <h2>パスワードを入力してください</h2>
-        <input type="password" id="passwordInput" placeholder="パスワード">
+    <select id="materialSelect">
+        <option value="stock3000">Stock 3000</option>
+        <option value="comingSoon">Coming soon</option>
+    </select>
 
-        <button onclick="checkPassword()">ログイン</button>
-        <p id="loginMessage"></p>
-    </div>
+    <button onclick="selectMaterial()">教材を開く</button>
+    <p id="materialMessage"></p>
+</div>
 
-    <!-- Quiz Area -->
-    <div id="quizArea" style="display:none;">
+<div id="quizArea" style="display:none;">
 
-        <h2>Stock 3000</h2>
+    <h2>Stock 3000</h2>
 
-        <select id="sectionSelect">
-            <option value="all">すべてのセクション</option>
-        </select>
+    <select id="sectionSelect">
+        <option value="all">すべてのセクション</option>
+    </select>
 
-        <select id="questionCount">
-            <option value="10">10問</option>
-            <option value="20">20問</option>
-            <option value="50">50問</option>
-            <option value="100">100問</option>
-            <option value="all">すべての問題</option>
-        </select>
+    <select id="questionCount">
+        <option value="10">10問</option>
+        <option value="20">20問</option>
+        <option value="50">50問</option>
+        <option value="100">100問</option>
+        <option value="all">すべての問題</option>
+    </select>
 
-        <button onclick="startNormalQuiz()">テスト開始</button>
-        <button class="review-btn" onclick="startReviewQuiz()">間違えた問題を復習</button>
-        <button onclick="clearMistakes()">間違い履歴を削除</button>
+    <button onclick="startNormalQuiz()">テスト開始</button>
+    <button class="review-btn" onclick="startReviewQuiz()">間違えた問題を復習</button>
+    <button onclick="clearMistakes()">間違い履歴を削除</button>
 
-        <h2 id="question"></h2>
-        <div id="choices"></div>
+    <h2 id="question"></h2>
+    <div id="choices"></div>
 
-        <p id="result"></p>
-        <p id="score"></p>
-        <p id="mistakeCount"></p>
-        <p id="timer"></p>
+    <p id="result"></p>
+    <p id="score"></p>
+    <p id="mistakeCount"></p>
+    <p id="timer"></p>
 
-        <button class="next-btn" onclick="nextQuestion()">次の問題</button>
-
-    </div>
+    <button class="next-btn" onclick="nextQuestion()">次の問題</button>
+</div>
 
 </div>
 
 <script>
-
 const PASSWORD = "testing";
 
 let allQuestions = [];
@@ -131,16 +123,11 @@ let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 let reviewMode = false;
-
 let startTime;
 let endTime;
 
 function checkPassword() {
-    const input =
-        document.getElementById("passwordInput").value;
-
-    const selectedMaterial =
-        document.getElementById("materialSelect").value;
+    const input = document.getElementById("passwordInput").value;
 
     if (input !== PASSWORD) {
         document.getElementById("loginMessage").innerText =
@@ -148,22 +135,27 @@ function checkPassword() {
         return;
     }
 
+    document.getElementById("loginArea").style.display = "none";
+    document.getElementById("materialArea").style.display = "block";
+}
+
+function selectMaterial() {
+    const selectedMaterial =
+        document.getElementById("materialSelect").value;
+
     if (selectedMaterial === "comingSoon") {
-        document.getElementById("loginMessage").innerText =
+        document.getElementById("materialMessage").innerText =
             "この教材は現在準備中です。";
         return;
     }
 
-    document.getElementById("loginArea").style.display = "none";
+    document.getElementById("materialArea").style.display = "none";
     document.getElementById("quizArea").style.display = "block";
 }
 
 fetch("stock_3000_master.csv")
-.then(response => response.arrayBuffer())
-.then(buffer => {
-    const decoder = new TextDecoder("shift_jis");
-    const data = decoder.decode(buffer);
-
+.then(response => response.text())
+.then(data => {
     const rows = data.trim().split(/\r?\n/).slice(1);
 
     allQuestions = rows.map(row => {
@@ -189,17 +181,13 @@ function parseCSVRow(row) {
 }
 
 function loadSections() {
-    const sectionSelect =
-        document.getElementById("sectionSelect");
+    const sectionSelect = document.getElementById("sectionSelect");
 
     const uniqueSections =
         [...new Set(
             allQuestions
                 .map(q => q.section)
-                .filter(section =>
-                    section &&
-                    section.trim() !== ""
-                )
+                .filter(section => section && section.trim() !== "")
         )];
 
     uniqueSections.sort((a,b)=> Number(a)-Number(b));
@@ -227,23 +215,16 @@ function startNormalQuiz() {
         quizQuestions = [...allQuestions];
     } else {
         quizQuestions =
-            allQuestions.filter(
-                q => q.section === selectedSection
-            );
+            allQuestions.filter(q => q.section === selectedSection);
     }
 
     shuffleArray(quizQuestions);
 
     if (questionCount !== "all") {
-        quizQuestions =
-            quizQuestions.slice(
-                0,
-                parseInt(questionCount)
-            );
+        quizQuestions = quizQuestions.slice(0, parseInt(questionCount));
     }
 
     startTime = new Date();
-
     showQuestion();
 }
 
@@ -253,14 +234,10 @@ function startReviewQuiz() {
     currentQuestionIndex = 0;
 
     const wrongWords =
-        JSON.parse(
-            localStorage.getItem("wrongWords")
-        ) || [];
+        JSON.parse(localStorage.getItem("wrongWords")) || [];
 
     quizQuestions =
-        allQuestions.filter(
-            q => wrongWords.includes(q.id)
-        );
+        allQuestions.filter(q => wrongWords.includes(q.id));
 
     if (quizQuestions.length === 0) {
         document.getElementById("question").innerText =
@@ -270,9 +247,7 @@ function startReviewQuiz() {
     }
 
     shuffleArray(quizQuestions);
-
     startTime = new Date();
-
     showQuestion();
 }
 
@@ -283,53 +258,35 @@ function showQuestion() {
         endTime = new Date();
 
         const totalSeconds =
-            Math.floor(
-                (endTime - startTime) / 1000
-            );
+            Math.floor((endTime - startTime) / 1000);
 
-        const minutes =
-            Math.floor(totalSeconds / 60);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
 
-        const seconds =
-            totalSeconds % 60;
-
-        document.getElementById("question").innerText =
-            "テスト終了！";
-
+        document.getElementById("question").innerText = "テスト終了！";
         document.getElementById("choices").innerHTML = "";
-
         document.getElementById("timer").innerText =
             `解答時間: ${minutes}分 ${seconds}秒`;
 
         return;
     }
 
-    const q =
-        quizQuestions[currentQuestionIndex];
+    const q = quizQuestions[currentQuestionIndex];
 
     document.getElementById("question").innerText =
-        `No.${q.id} | Section ${q.section}
-"${q.word}" の意味は？`;
+        `No.${q.id} | Section ${q.section}\n"${q.word}" の意味は？`;
 
     let choices = [...q.choices];
     shuffleArray(choices);
 
-    const choicesDiv =
-        document.getElementById("choices");
-
+    const choicesDiv = document.getElementById("choices");
     choicesDiv.innerHTML = "";
 
     choices.forEach(choice => {
-        const btn =
-            document.createElement("button");
-
+        const btn = document.createElement("button");
         btn.innerText = choice;
         btn.className = "choice-btn";
-
-        btn.onclick = () => {
-            checkAnswer(choice, q);
-        };
-
+        btn.onclick = () => checkAnswer(choice, q);
         choicesDiv.appendChild(btn);
     });
 
@@ -339,18 +296,15 @@ function showQuestion() {
 
 function checkAnswer(choice, q) {
     if (answered) return;
-
     answered = true;
 
     if (choice === q.correct) {
-        document.getElementById("result").innerText =
-            "✅ 正解！";
+        document.getElementById("result").innerText = "✅ 正解！";
         score += q.points;
 
         if (reviewMode) {
             removeWrongWord(q.id);
         }
-
     } else {
         document.getElementById("result").innerText =
             `❌ 不正解。正解: ${q.correct}`;
@@ -370,35 +324,22 @@ function nextQuestion() {
 
 function saveWrongWord(id) {
     let wrongWords =
-        JSON.parse(
-            localStorage.getItem("wrongWords")
-        ) || [];
+        JSON.parse(localStorage.getItem("wrongWords")) || [];
 
     if (!wrongWords.includes(id)) {
         wrongWords.push(id);
     }
 
-    localStorage.setItem(
-        "wrongWords",
-        JSON.stringify(wrongWords)
-    );
+    localStorage.setItem("wrongWords", JSON.stringify(wrongWords));
 }
 
 function removeWrongWord(id) {
     let wrongWords =
-        JSON.parse(
-            localStorage.getItem("wrongWords")
-        ) || [];
+        JSON.parse(localStorage.getItem("wrongWords")) || [];
 
-    wrongWords =
-        wrongWords.filter(
-            wordId => wordId !== id
-        );
+    wrongWords = wrongWords.filter(wordId => wordId !== id);
 
-    localStorage.setItem(
-        "wrongWords",
-        JSON.stringify(wrongWords)
-    );
+    localStorage.setItem("wrongWords", JSON.stringify(wrongWords));
 }
 
 function clearMistakes() {
@@ -413,18 +354,14 @@ function updateScore() {
 
 function updateMistakeCount() {
     const wrongWords =
-        JSON.parse(
-            localStorage.getItem("wrongWords")
-        ) || [];
+        JSON.parse(localStorage.getItem("wrongWords")) || [];
 
     document.getElementById("mistakeCount").innerText =
         "保存された間違い: " + wrongWords.length;
 }
 
 function disableButtons() {
-    const buttons =
-        document.querySelectorAll(".choice-btn");
-
+    const buttons = document.querySelectorAll(".choice-btn");
     buttons.forEach(btn => {
         btn.disabled = true;
     });
@@ -433,15 +370,11 @@ function disableButtons() {
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j =
-            Math.floor(
-                Math.random() * (i + 1)
-            );
+            Math.floor(Math.random() * (i + 1));
 
-        [array[i], array[j]] =
-            [array[j], array[i]];
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
-
 </script>
 
 </body>
