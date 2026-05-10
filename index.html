@@ -1,74 +1,180 @@
-let quizData = [];
-let currentQuestion = 0;
-let score = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary Quiz</title>
 
-fetch("stock_3000_section1.csv")
-  .then(response => response.text())
-  .then(data => {
-    const rows = data.trim().split("\n").slice(1);
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
 
-    quizData = rows.map(row => {
-      const cols = row.split(",");
+    #quiz-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
 
-      return {
-        id: cols[0],          // A列
-        word: cols[1],        // B列
-        correct: cols[2],     // C列
-        choices: [
-          cols[2],            // Correct
-          cols[3],            // Wrong1
-          cols[4],            // Wrong2
-          cols[5]             // Wrong3
-        ],
-        points: cols[6]       // G列（今は表示だけでもOK）
-      };
-    });
+    button {
+      display: block;
+      width: 80%;
+      margin: 10px auto;
+      padding: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 6px;
+    }
 
-    shuffleArray(quizData);
-    showQuestion();
-  });
+    button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
 
-function showQuestion() {
-  if (currentQuestion >= quizData.length) {
-    document.getElementById("quiz-container").innerHTML = `
-      <h2>Quiz Finished!</h2>
-      <p>Your Score: ${score} / ${quizData.length}</p>
-    `;
-    return;
-  }
+    #next-btn {
+      background-color: #2196F3;
+      margin-top: 25px;
+    }
 
-  const q = quizData[currentQuestion];
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 20px;
+    }
 
-  document.getElementById("question").innerText =
-    `No. ${q.id} / Question ${currentQuestion + 1}: What is the meaning of "${q.word}"?`;
+    #score {
+      font-size: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+  </style>
+</head>
 
-  document.getElementById("result").innerText = "";
+<body>
+  <h1>Vocabulary Quiz</h1>
 
-  const choicesDiv = document.getElementById("choices");
-  choicesDiv.innerHTML = "";
+  <div id="quiz-container">
+    <h2 id="question">Loading...</h2>
+    <div id="choices"></div>
+    <p id="result"></p>
+    <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+    <p id="score"></p>
+  </div>
 
-  let shuffledChoices = [...q.choices];
-  shuffleArray(shuffledChoices);
+  <script>
+    let quizData = [];
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
 
-  shuffledChoices.forEach(choice => {
-    const btn = document.createElement("button");
-    btn.innerText = choice;
+    fetch("stock_3000_section1.csv")
+      .then(response => response.text())
+      .then(data => {
+        const rows = data.trim().split(/\r?\n/).slice(1);
 
-    btn.onclick = function () {
-      if (choice === q.correct) {
-        document.getElementById("result").innerText = "✅ Correct!";
-        score += Number(q.points);
-      } else {
-        document.getElementById("result").innerText =
-          `❌ Wrong! Correct answer: ${q.correct}`;
+        quizData = rows.map(row => {
+          const cols = row.split(",");
+
+          return {
+            id: cols[0],
+            word: cols[1],
+            correct: cols[2],
+            choices: [
+              cols[2],
+              cols[3],
+              cols[4],
+              cols[5]
+            ],
+            points: Number(cols[6]) || 1
+          };
+        });
+
+        shuffleArray(quizData);
+        showQuestion();
+      })
+      .catch(error => {
+        document.getElementById("question").innerText =
+          "CSV file could not be loaded.";
+        console.error(error);
+      });
+
+    function showQuestion() {
+      answered = false;
+
+      if (currentQuestion >= quizData.length) {
+        document.getElementById("quiz-container").innerHTML = `
+          <h2>Quiz Finished!</h2>
+          <p>Your Score: ${score} / ${quizData.length}</p>
+        `;
+        return;
       }
 
-      disableChoices();
-    };
+      const q = quizData[currentQuestion];
 
-    choicesDiv.appendChild(btn);
-  });
+      document.getElementById("question").innerText =
+        `No. ${q.id} / Question ${currentQuestion + 1}: What is the meaning of "${q.word}"?`;
 
-  document.getElementById("score").innerText =
-    `Score: ${score}`;
-}
+      document.getElementById("result").innerText = "";
+
+      const choicesDiv = document.getElementById("choices");
+      choicesDiv.innerHTML = "";
+
+      let shuffledChoices = [...q.choices];
+      shuffleArray(shuffledChoices);
+
+      shuffledChoices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.innerText = choice;
+
+        btn.onclick = function () {
+          if (answered) return;
+          answered = true;
+
+          if (choice === q.correct) {
+            document.getElementById("result").innerText = "✅ Correct!";
+            score += q.points;
+          } else {
+            document.getElementById("result").innerText =
+              `❌ Wrong! Correct answer: ${q.correct}`;
+          }
+
+          disableChoices();
+          document.getElementById("score").innerText = `Score: ${score}`;
+        };
+
+        choicesDiv.appendChild(btn);
+      });
+
+      document.getElementById("score").innerText = `Score: ${score}`;
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      showQuestion();
+    }
+
+    function disableChoices() {
+      const buttons = document.querySelectorAll("#choices button");
+      buttons.forEach(button => {
+        button.disabled = true;
+      });
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+  </script>
+</body>
+</html>
