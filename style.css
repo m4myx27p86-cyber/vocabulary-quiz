@@ -120,6 +120,18 @@ button:disabled {
   background: #4b5563;
 }
 
+.word-chip {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.word-chip.used {
+  opacity: 0.35;
+}
+
 .mistake-list {
   text-align: left;
   max-width: 700px;
@@ -132,15 +144,4 @@ button:disabled {
 .mistake-item {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
-}
-.word-chip {
-  display: inline-block;
-  margin: 4px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: #e5e7eb;
-}
-
-.word-chip.used {
-  opacity: 0.35;
 }
