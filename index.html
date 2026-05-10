@@ -1,11 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Vocabulary Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Quiz</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #quiz-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #next-btn {
+            background-color: #2196F3;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #score {
+            font-size: 20px;
+            font-weight: bold;
+            color: darkblue;
+        }
+    </style>
 </head>
+
 <body>
-  <h1>Vocabulary Quiz</h1>
-  <p>quiz.csv を読み込む簡易版です。</p>
+    <h1>Vocabulary Quiz</h1>
+
+    <div id="quiz-container">
+        <h2 id="question">Loading...</h2>
+        <div id="choices"></div>
+        <p id="result"></p>
+        <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        let quizData = [];
+        let currentQuestion = 0;
+        let score = 0;
+
+        // CSV読み込み
+        fetch("stock_3000_section1.csv")
+            .then(response => response.text())
+            .then(data => {
+                const rows = data.trim().split("\n").slice(1);
+
+                quizData = rows.map(row => {
+                    const cols = row.split(",");
+
+                    return {
+                        word: cols[0],
+                        correct: cols[1],
+                        choices: [cols[1], cols[2], cols[3], cols[4]]
+                    };
+                });
+
+                shuffleArray(quizData);
+                showQuestion();
+            });
+
+        function showQuestion() {
+            if (currentQuestion >= quizData.length) {
+                document.getElementById("quiz-container").innerHTML = `
+                    <h2>Quiz Finished!</h2>
+                    <p>Your Score: ${score} / ${quizData.length}</p>
+                `;
+                return;
+            }
+
+            const q = quizData[currentQuestion];
+
+            document.getElementById("question").innerText =
+                `What is the meaning of "${q.word}"?`;
+
+            document.getElementById("result").innerText = "";
+
+            const choicesDiv = document.getElementById("choices");
+            choicesDiv.innerHTML = "";
+
+            let shuffledChoices = [...q.choices];
+            shuffleArray(shuffledChoices);
+
+            shuffledChoices.forEach(choice => {
+                const btn = document.createElement("button");
+                btn.innerText = choice;
+
+                btn.onclick = function () {
+                    if (choice === q.correct) {
+                        document.getElementById("result").innerText = "✅ Correct!";
+                        score++;
+                    } else {
+                        document.getElementById("result").innerText =
+                            `❌ Wrong! Correct answer: ${q.correct}`;
+                    }
+
+                    disableChoices();
+                };
+
+                choicesDiv.appendChild(btn);
+            });
+
+            document.getElementById("score").innerText =
+                `Score: ${score}`;
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            showQuestion();
+        }
+
+        function disableChoices() {
+            const buttons = document.querySelectorAll("#choices button");
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+    </script>
 </body>
 </html>
