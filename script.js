@@ -180,6 +180,23 @@ function updateUsedWords() {
   });
 }
 
+function showVocabQuestion() {
+  const q = questions[currentIndex];
+
+  document.getElementById("testTitle").textContent = "Stock 3000 単語テスト";
+
+  const choices = shuffle([q.correctAnswer, ...q.wrongs]);
+
+  document.getElementById("questionArea").innerHTML = `
+    <div class="words">
+      No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>
+      "${escapeHtml(q.word)}" の意味は？
+    </div>
+    ${choices.map(choice =>
+      `<button class="choice-button" data-choice="${escapeHtml(choice)}">${escapeHtml(choice)}</button>`
+    ).join("")}
+  `;
+
   document.querySelectorAll(".choice-button").forEach(btn => {
     btn.addEventListener("click", () => {
       selectedChoice = btn.dataset.choice;
@@ -187,16 +204,6 @@ function updateUsedWords() {
       btn.classList.add("selected");
     });
   });
-}
-
-function showSentenceQuestion() {
-  const q = questions[currentIndex];
-  document.getElementById("testTitle").textContent = "語順並べ替えテスト";
-
-  document.getElementById("questionArea").innerHTML = `
-    <div class="words">${q.words.join(" / ")}</div>
-    <input type="text" id="answerInput" placeholder="英文を入力してください" />
-  `;
 }
 
 function checkAnswer() {
