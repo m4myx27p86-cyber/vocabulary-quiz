@@ -30,27 +30,38 @@
 
     <section id="settingScreen" class="hidden">
       <h2 id="settingTitle"></h2>
+
       <input type="text" id="studentIdInput" placeholder="回答者番号 例：A001" />
 
-      <div id="vocabSettings" class="hidden">
+      <div id="commonSettings">
         <select id="sectionSelect"></select>
+
         <select id="questionCountSelect">
           <option value="10">10問</option>
           <option value="20" selected>20問</option>
           <option value="30">30問</option>
           <option value="50">50問</option>
+          <option value="100">100問</option>
           <option value="all">すべて</option>
         </select>
       </div>
 
-      <button id="startButton">開始</button>
+      <div id="vocabReviewArea" class="hidden">
+        <p id="settingMistakeCount"></p>
+        <button id="reviewButton" class="secondary-button">間違えた問題を復習</button>
+        <button id="clearStoredMistakesButton" class="secondary-button">間違い履歴を削除</button>
+      </div>
+
+      <button id="startButton">テスト開始</button>
       <button id="backToMenuButton" class="secondary-button">戻る</button>
     </section>
 
     <section id="quizScreen" class="hidden">
       <h2 id="testTitle"></h2>
       <h3 id="questionNumber"></h3>
+
       <div id="questionArea"></div>
+
       <p id="feedback"></p>
 
       <button id="checkButton">回答する</button>
@@ -62,8 +73,8 @@
       <h2>結果</h2>
       <p id="scoreDisplay"></p>
       <p id="dateDisplay"></p>
+      <p id="timeDisplay"></p>
       <div id="mistakeArea"></div>
-      <button id="clearMistakesButton" class="secondary-button">ミスを削除</button>
       <button id="restartButton">最初に戻る</button>
     </section>
   </div>
