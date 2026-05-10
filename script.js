@@ -263,8 +263,17 @@ function nextQuestion() {
 }
 
 function quitQuiz() {
-  if (confirm("途中で終了しますか？現在までの結果を表示します。")) {
-    showResult(true);
+  if (confirm("途中で終了して、教材選択画面に戻りますか？")) {
+    currentIndex = 0;
+    score = 0;
+    selectedChoice = "";
+    answersLog = [];
+    mistakes = [];
+
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("questionArea").innerHTML = "";
+
+    showOnly("menuScreen");
   }
 }
 
