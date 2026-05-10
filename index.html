@@ -13,16 +13,19 @@
     <section id="loginScreen">
       <p>パスワードを入力してください。</p>
       <input type="password" id="passwordInput" placeholder="パスワードを入力" />
-<label class="password-toggle">
-  <input type="checkbox" id="showPassword">
-  パスワードを表示
-</label>
+
+      <label class="password-toggle">
+        <input type="checkbox" id="showPassword">
+        パスワードを表示
+      </label>
+
       <button id="loginButton">ログイン</button>
       <p id="loginMessage" class="error"></p>
     </section>
 
     <section id="menuScreen" class="hidden">
       <h2>教材を選択してください</h2>
+      <button id="vocabTestButton">単語テスト</button>
       <button id="sentenceTestButton">語順並べ替えテスト</button>
       <button disabled>Coming Soon</button>
     </section>
@@ -34,23 +37,23 @@
     </section>
 
     <section id="quizScreen" class="hidden">
-      <h2 id="questionNumber"></h2>
-      <div id="wordsDisplay" class="words"></div>
+      <h2 id="testTitle"></h2>
+      <h3 id="questionNumber"></h3>
 
-      <input type="text" id="answerInput" placeholder="英文を入力してください" />
-      <br />
-     <button id="checkButton">回答する</button>
-      <button id="quitButton" class="quit-button">途中で終了する</button>
+      <div id="questionArea"></div>
 
       <p id="feedback"></p>
+
+      <button id="checkButton">回答する</button>
       <button id="nextButton" class="hidden">次の問題へ</button>
+      <button id="quitButton" class="quit-button">途中で終了する</button>
     </section>
 
     <section id="resultScreen" class="hidden">
       <h2>結果</h2>
       <p id="scoreDisplay"></p>
       <p id="dateDisplay"></p>
-      <button id="restartButton">もう一度解く</button>
+      <button id="restartButton">最初に戻る</button>
     </section>
   </div>
 
