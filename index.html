@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vocabulary Quiz</title>
+<title>Stock 3000</title>
 
 <style>
 body {
@@ -48,7 +48,7 @@ button {
     border: none;
 }
 
-select {
+select, input {
     padding: 10px;
     margin: 10px;
 }
@@ -58,33 +58,75 @@ select {
 <body>
 
 <div class="container">
-    <h1>Vocabulary Quiz</h1>
 
-    <select id="sectionSelect">
-        <option value="all">All Sections</option>
-    </select>
+    <h1>Stock 3000</h1>
 
-    <button onclick="startNormalQuiz()">Start Normal Quiz</button>
-    <button class="review-btn" onclick="startReviewQuiz()">Review Mistakes</button>
-    <button onclick="clearMistakes()">Clear Mistakes</button>
+    <!-- Password -->
+    <div id="loginArea">
+        <h2>Enter Password</h2>
+        <input type="password" id="passwordInput" placeholder="Password">
+        <button onclick="checkPassword()">Login</button>
+        <p id="loginMessage"></p>
+    </div>
 
-    <h2 id="question"></h2>
-    <div id="choices"></div>
+    <!-- Quiz Area -->
+    <div id="quizArea" style="display:none;">
 
-    <p id="result"></p>
-    <p id="score"></p>
-    <p id="mistakeCount"></p>
+        <select id="sectionSelect">
+            <option value="all">All Sections</option>
+        </select>
 
-    <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+        <select id="questionCount">
+            <option value="10">10 Questions</option>
+            <option value="20">20 Questions</option>
+            <option value="50">50 Questions</option>
+            <option value="100">100 Questions</option>
+            <option value="all">All Questions</option>
+        </select>
+
+        <button onclick="startNormalQuiz()">Start Quiz</button>
+        <button class="review-btn" onclick="startReviewQuiz()">Review Mistakes</button>
+        <button onclick="clearMistakes()">Clear Mistakes</button>
+
+        <h2 id="question"></h2>
+        <div id="choices"></div>
+
+        <p id="result"></p>
+        <p id="score"></p>
+        <p id="mistakeCount"></p>
+        <p id="timer"></p>
+
+        <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+
 </div>
 
 <script>
+
+const PASSWORD = "stock3000";
+
 let allQuestions = [];
 let quizQuestions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 let reviewMode = false;
+
+let startTime;
+let endTime;
+
+function checkPassword(){
+    const input =
+        document.getElementById("passwordInput").value;
+
+    if(input === PASSWORD){
+        document.getElementById("loginArea").style.display = "none";
+        document.getElementById("quizArea").style.display = "block";
+    }else{
+        document.getElementById("loginMessage").innerText =
+            "Incorrect password.";
+    }
+}
 
 fetch("stock_3000_master.csv")
 .then(response => response.text())
@@ -105,15 +147,16 @@ fetch("stock_3000_master.csv")
     });
 
     loadSections();
-})
-.catch(error => console.error(error));
+});
 
-function loadSections() {
-    const sectionSelect = document.getElementById("sectionSelect");
+function loadSections(){
+    const sectionSelect =
+        document.getElementById("sectionSelect");
 
-    const uniqueSections = [...new Set(allQuestions.map(q => q.section))];
+    const uniqueSections =
+        [...new Set(allQuestions.map(q => q.section))];
 
-    uniqueSections.forEach(section => {
+    uniqueSections.forEach(section=>{
         const option = document.createElement("option");
         option.value = section;
         option.textContent = "Section " + section;
@@ -121,7 +164,7 @@ function loadSections() {
     });
 }
 
-function startNormalQuiz() {
+function startNormalQuiz(){
     reviewMode = false;
     score = 0;
     currentQuestionIndex = 0;
@@ -129,54 +172,88 @@ function startNormalQuiz() {
     const selectedSection =
         document.getElementById("sectionSelect").value;
 
-    if (selectedSection === "all") {
+    const questionCount =
+        document.getElementById("questionCount").value;
+
+    if(selectedSection === "all"){
         quizQuestions = [...allQuestions];
-    } else {
-        quizQuestions = allQuestions.filter(
-            q => q.section === selectedSection
-        );
+    }else{
+        quizQuestions =
+            allQuestions.filter(
+                q => q.section === selectedSection
+            );
     }
 
     shuffleArray(quizQuestions);
+
+    if(questionCount !== "all"){
+        quizQuestions =
+            quizQuestions.slice(0, parseInt(questionCount));
+    }
+
+    startTime = new Date();
+
     showQuestion();
 }
 
-function startReviewQuiz() {
+function startReviewQuiz(){
     reviewMode = true;
     score = 0;
     currentQuestionIndex = 0;
 
-    const wrongIds =
+    const wrongWords =
         JSON.parse(localStorage.getItem("wrongWords")) || [];
 
-    quizQuestions = allQuestions.filter(
-        q => wrongIds.includes(q.id)
-    );
+    quizQuestions =
+        allQuestions.filter(
+            q => wrongWords.includes(q.id)
+        );
 
-    if (quizQuestions.length === 0) {
+    if(quizQuestions.length === 0){
         document.getElementById("question").innerText =
             "No mistakes saved!";
         return;
     }
 
     shuffleArray(quizQuestions);
+
+    startTime = new Date();
+
     showQuestion();
 }
 
-function showQuestion() {
+function showQuestion(){
     answered = false;
 
-    if (currentQuestionIndex >= quizQuestions.length) {
+    if(currentQuestionIndex >= quizQuestions.length){
+        endTime = new Date();
+
+        const totalSeconds =
+            Math.floor((endTime - startTime)/1000);
+
+        const minutes =
+            Math.floor(totalSeconds / 60);
+
+        const seconds =
+            totalSeconds % 60;
+
         document.getElementById("question").innerText =
             "Quiz Finished!";
+
         document.getElementById("choices").innerHTML = "";
+
+        document.getElementById("timer").innerText =
+            `Time: ${minutes} min ${seconds} sec`;
+
         return;
     }
 
-    const q = quizQuestions[currentQuestionIndex];
+    const q =
+        quizQuestions[currentQuestionIndex];
 
     document.getElementById("question").innerText =
-        `No.${q.id} | Section ${q.section}\nWhat is the meaning of "${q.word}"?`;
+        `No.${q.id} | Section ${q.section}
+        What is the meaning of "${q.word}"?`;
 
     let choices = [...q.choices];
     shuffleArray(choices);
@@ -186,12 +263,16 @@ function showQuestion() {
 
     choicesDiv.innerHTML = "";
 
-    choices.forEach(choice => {
-        const btn = document.createElement("button");
+    choices.forEach(choice=>{
+        const btn =
+            document.createElement("button");
+
         btn.innerText = choice;
         btn.className = "choice-btn";
 
-        btn.onclick = () => checkAnswer(choice, q);
+        btn.onclick = ()=>{
+            checkAnswer(choice,q);
+        };
 
         choicesDiv.appendChild(btn);
     });
@@ -200,20 +281,20 @@ function showQuestion() {
     updateMistakeCount();
 }
 
-function checkAnswer(choice, q) {
-    if (answered) return;
+function checkAnswer(choice,q){
+    if(answered) return;
     answered = true;
 
-    if (choice === q.correct) {
+    if(choice === q.correct){
         document.getElementById("result").innerText =
             "✅ Correct!";
         score += q.points;
 
-        if (reviewMode) {
+        if(reviewMode){
             removeWrongWord(q.id);
         }
 
-    } else {
+    }else{
         document.getElementById("result").innerText =
             `❌ Wrong! Correct Answer: ${q.correct}`;
         saveWrongWord(q.id);
@@ -224,17 +305,17 @@ function checkAnswer(choice, q) {
     updateMistakeCount();
 }
 
-function nextQuestion() {
+function nextQuestion(){
     currentQuestionIndex++;
     document.getElementById("result").innerText = "";
     showQuestion();
 }
 
-function saveWrongWord(id) {
+function saveWrongWord(id){
     let wrongWords =
         JSON.parse(localStorage.getItem("wrongWords")) || [];
 
-    if (!wrongWords.includes(id)) {
+    if(!wrongWords.includes(id)){
         wrongWords.push(id);
     }
 
@@ -244,12 +325,14 @@ function saveWrongWord(id) {
     );
 }
 
-function removeWrongWord(id) {
+function removeWrongWord(id){
     let wrongWords =
         JSON.parse(localStorage.getItem("wrongWords")) || [];
 
     wrongWords =
-        wrongWords.filter(wordId => wordId !== id);
+        wrongWords.filter(
+            wordId => wordId !== id
+        );
 
     localStorage.setItem(
         "wrongWords",
@@ -257,17 +340,17 @@ function removeWrongWord(id) {
     );
 }
 
-function clearMistakes() {
+function clearMistakes(){
     localStorage.removeItem("wrongWords");
     updateMistakeCount();
 }
 
-function updateScore() {
+function updateScore(){
     document.getElementById("score").innerText =
         "Score: " + score;
 }
 
-function updateMistakeCount() {
+function updateMistakeCount(){
     const wrongWords =
         JSON.parse(localStorage.getItem("wrongWords")) || [];
 
@@ -275,22 +358,25 @@ function updateMistakeCount() {
         "Saved Mistakes: " + wrongWords.length;
 }
 
-function disableButtons() {
+function disableButtons(){
     const buttons =
         document.querySelectorAll(".choice-btn");
 
-    buttons.forEach(btn => btn.disabled = true);
+    buttons.forEach(btn=>{
+        btn.disabled = true;
+    });
 }
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
         const j =
-            Math.floor(Math.random() * (i + 1));
+            Math.floor(Math.random()*(i+1));
 
-        [array[i], array[j]] =
-        [array[j], array[i]];
+        [array[i],array[j]] =
+        [array[j],array[i]];
     }
 }
+
 </script>
 
 </body>
