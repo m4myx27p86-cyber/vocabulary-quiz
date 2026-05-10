@@ -1,625 +1,199 @@
-const PASSWORD = "testing";
-
-let testType = "";
-let reviewMode = false;
-
-let allVocabQuestions = [];
-let allSentenceQuestions = [];
-let questions = [];
-
-let currentIndex = 0;
-let score = 0;
-let studentId = "";
-let selectedChoice = "";
-let answersLog = [];
-let mistakes = [];
-let startTime = null;
-
-safeAddEvent("loginButton", "click", checkPassword);
-safeAddEvent("showPassword", "change", togglePassword);
-safeAddEvent("vocabTestButton", "click", () => openSettings("vocab"));
-safeAddEvent("sentenceTestButton", "click", () => openSettings("sentence"));
-safeAddEvent("startButton", "click", startNormalQuiz);
-safeAddEvent("reviewButton", "click", startReviewQuiz);
-safeAddEvent("clearStoredMistakesButton", "click", clearStoredMistakes);
-safeAddEvent("backToMenuButton", "click", () => showOnly("menuScreen"));
-safeAddEvent("checkButton", "click", checkAnswer);
-safeAddEvent("nextButton", "click", nextQuestion);
-safeAddEvent("quitButton", "click", quitQuiz);
-safeAddEvent("restartButton", "click", () => location.reload());
-safeAddEvent("studentIdInput", "input", updateMistakeCountInSettings);
-
-function safeAddEvent(id, event, handler) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.addEventListener(event, handler);
-  }
+/* 全体 */
+body {
+  font-family: Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
+  background: #f5f7fb;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
 }
 
-function checkPassword() {
-  const input = document.getElementById("passwordInput").value;
-
-  if (input === PASSWORD) {
-    showOnly("menuScreen");
-  } else {
-    document.getElementById("loginMessage").textContent = "パスワードが違います。";
-  }
+/* メインカード */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-function togglePassword() {
-  const field = document.getElementById("passwordInput");
-  field.type = this.checked ? "text" : "password";
+/* タイトル */
+h1 {
+  color: #1f2937;
+  font-size: 48px;
+  margin-bottom: 30px;
 }
 
-async function openSettings(type) {
-  testType = type;
-  reviewMode = false;
-
-  showOnly("settingScreen");
-
-  document.getElementById("settingTitle").textContent =
-    type === "vocab" ? "Stock 3000 単語テスト" : "語順並べ替えテスト";
-
-  document.getElementById("vocabReviewArea").classList.toggle("hidden", type !== "vocab");
-
-  if (type === "vocab") {
-    if (allVocabQuestions.length === 0) {
-      await loadVocabQuestions();
-    }
-    setupSectionSelect(allVocabQuestions);
-    updateMistakeCountInSettings();
-  }
-
-  if (type === "sentence") {
-    if (allSentenceQuestions.length === 0) {
-      await loadSentenceQuestions();
-    }
-    setupSectionSelect(allSentenceQuestions);
-  }
+h2 {
+  color: #1f2937;
+  margin-bottom: 20px;
 }
 
-async function loadVocabQuestions() {
-  const response = await fetch("data/stock_3000_master.csv");
-  const text = await response.text();
-  const rows = parseCSV(text);
-
-  rows.shift();
-
-  allVocabQuestions = rows.map(row => ({
-    id: row[0],
-    section: row[1],
-    word: row[2],
-    correctAnswer: row[3],
-    choices: [row[3], row[4], row[5], row[6]].filter(Boolean),
-    points: Number(row[7]) || 1
-  })).filter(q => q.id && q.section && q.word && q.correctAnswer);
+h3 {
+  color: #374151;
 }
 
-async function loadSentenceQuestions() {
-  const response = await fetch("data/sentence_order.csv");
-  const text = await response.text();
-  const rows = parseCSV(text);
-
-  rows.shift();
-
-  allSentenceQuestions = rows.map(row => ({
-    id: row[0],
-    section: row[1],
-    answer: row[2],
-    words: shuffle(splitSentence(row[2] || "")),
-    points: 1
-  })).filter(q => q.id && q.section && q.answer);
+/* 非表示 */
+.hidden {
+  display: none !important;
 }
 
-function setupSectionSelect(sourceQuestions) {
-  const select = document.getElementById("sectionSelect");
-
-  const sections = [...new Set(sourceQuestions.map(q => q.section))]
-    .filter(Boolean)
-    .sort((a, b) => Number(a) - Number(b));
-
-  select.innerHTML = `<option value="all">すべてのセクション</option>`;
-
-  sections.forEach(section => {
-    const option = document.createElement("option");
-    option.value = section;
-    option.textContent = `Section ${section}`;
-    select.appendChild(option);
-  });
+/* 入力欄 */
+input,
+select {
+  width: 80%;
+  max-width: 560px;
+  font-size: 16px;
+  padding: 12px;
+  margin: 10px auto;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: block;
 }
 
-async function startNormalQuiz() {
-  studentId = document.getElementById("studentIdInput").value.trim();
-
-  if (!studentId) {
-    alert("回答者番号を入力してください。");
-    return;
-  }
-
-  reviewMode = false;
-
-  if (testType === "vocab") {
-    prepareQuiz(allVocabQuestions);
-  } else if (testType === "sentence") {
-    prepareQuiz(allSentenceQuestions);
-  }
-
-  if (questions.length === 0) {
-    alert("問題がありません。");
-    return;
-  }
-
-  startQuizCommon();
+/* ボタン */
+button {
+  font-size: 16px;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  min-width: 140px;
 }
 
-function startReviewQuiz() {
-  studentId = document.getElementById("studentIdInput").value.trim();
-
-  if (!studentId) {
-    alert("回答者番号を入力してください。");
-    return;
-  }
-
-  if (testType !== "vocab") {
-    alert("復習機能は単語テスト用です。");
-    return;
-  }
-
-  reviewMode = true;
-
-  const wrongIds = getWrongIds();
-  questions = allVocabQuestions.filter(q => wrongIds.includes(String(q.id)));
-
-  if (questions.length === 0) {
-    alert("保存された間違いがありません。");
-    return;
-  }
-
-  questions = shuffle(questions);
-  startQuizCommon();
+button:hover {
+  background: #1d4ed8;
 }
 
-function prepareQuiz(sourceQuestions) {
-  const selectedSection = document.getElementById("sectionSelect").value;
-  const countValue = document.getElementById("questionCountSelect").value;
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
 
-  let pool = selectedSection === "all"
-    ? [...sourceQuestions]
-    : sourceQuestions.filter(q => q.section === selectedSection);
+/* 補助ボタン */
+.secondary-button {
+  background: #6b7280;
+}
 
-  pool = shuffle(pool);
+.secondary-button:hover {
+  background: #4b5563;
+}
 
-  if (countValue !== "all") {
-    pool = pool.slice(0, Number(countValue));
+/* 終了ボタン */
+.quit-button {
+  background: #dc2626;
+}
+
+.quit-button:hover {
+  background: #b91c1c;
+}
+
+/* パスワード表示 */
+.password-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.password-toggle input {
+  width: auto;
+  margin: 0;
+}
+
+/* 問題文 */
+.words {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.8;
+  margin: 25px 0;
+}
+
+/* 単語選択肢 */
+.choice-button {
+  display: block;
+  width: 80%;
+  max-width: 560px;
+  margin: 10px auto;
+  background: #e5e7eb;
+  color: #111827;
+  border: 1px solid #d1d5db;
+}
+
+.choice-button:hover {
+  background: #d1d5db;
+}
+
+/* 選択中 */
+.choice-button.selected {
+  background: #2563eb;
+  color: white;
+}
+
+/* 正誤表示 */
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.wrong,
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+/* 語順問題 */
+.word-chip {
+  display: inline-block;
+  margin: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #e5e7eb;
+  font-weight: bold;
+}
+
+/* 入力済み語 */
+.word-chip.used {
+  opacity: 0.35;
+}
+
+/* ミス一覧 */
+.mistake-list {
+  text-align: left;
+  max-width: 700px;
+  margin: 20px auto;
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.mistake-item {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
   }
 
-  questions = pool;
-}
-
-function startQuizCommon() {
-  currentIndex = 0;
-  score = 0;
-  selectedChoice = "";
-  answersLog = [];
-  mistakes = [];
-  startTime = new Date();
-
-  showOnly("quizScreen");
-  showQuestion();
-}
-
-function showQuestion() {
-  selectedChoice = "";
-
-  document.getElementById("questionNumber").textContent =
-    `問題 ${currentIndex + 1} / ${questions.length}`;
-
-  document.getElementById("feedback").textContent = "";
-  document.getElementById("feedback").className = "";
-  document.getElementById("nextButton").classList.add("hidden");
-  document.getElementById("checkButton").disabled = false;
-
-  if (testType === "vocab") {
-    showVocabQuestion();
-  } else if (testType === "sentence") {
-    showSentenceQuestion();
-  }
-}
-
-function showVocabQuestion() {
-  const q = questions[currentIndex];
-
-  document.getElementById("testTitle").textContent =
-    reviewMode ? "Stock 3000 間違い復習" : "Stock 3000 単語テスト";
-
-  const choices = shuffle(q.choices);
-
-  const area = document.getElementById("questionArea");
-  area.innerHTML = "";
-
-  const wordDiv = document.createElement("div");
-  wordDiv.className = "words";
-  wordDiv.innerHTML =
-    `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>"${escapeHtml(q.word)}" の意味は？`;
-  area.appendChild(wordDiv);
-
-  choices.forEach(choice => {
-    const btn = document.createElement("button");
-    btn.className = "choice-button";
-    btn.textContent = choice;
-    btn.addEventListener("click", () => {
-      selectedChoice = choice;
-      document.querySelectorAll(".choice-button").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-    });
-    area.appendChild(btn);
-  });
-}
-
-function showSentenceQuestion() {
-  const q = questions[currentIndex];
-
-  document.getElementById("testTitle").textContent = "語順並べ替えテスト";
-
-  q.words = shuffle(splitSentence(q.answer));
-
-  document.getElementById("questionArea").innerHTML = `
-    <div class="words" id="sentenceWords">
-      ${q.words.map(word => `<span class="word-chip">${escapeHtml(word)}</span>`).join("")}
-    </div>
-    <input type="text" id="answerInput" placeholder="英文を入力してください" />
-  `;
-
-  const answerInput = document.getElementById("answerInput");
-  answerInput.addEventListener("input", updateUsedWords);
-}
-
-function updateUsedWords() {
-  const inputWords = splitSentence(document.getElementById("answerInput").value)
-    .map(w => normalizeForCompare(w));
-
-  const chips = document.querySelectorAll(".word-chip");
-
-  chips.forEach(chip => {
-    const word = normalizeForCompare(chip.textContent);
-
-    if (inputWords.includes(word)) {
-      chip.classList.add("used");
-    } else {
-      chip.classList.remove("used");
-    }
-  });
-}
-
-function checkAnswer() {
-  if (testType === "vocab") {
-    checkVocabAnswer();
-  } else if (testType === "sentence") {
-    checkSentenceAnswer();
-  }
-}
-
-function checkVocabAnswer() {
-  const q = questions[currentIndex];
-
-  if (!selectedChoice) {
-    alert("選択肢を選んでください。");
-    return;
+  h1 {
+    font-size: 36px;
   }
 
-  const isCorrect = selectedChoice === q.correctAnswer;
-
-  if (isCorrect && reviewMode) {
-    removeWrongWord(q.id);
+  input,
+  select,
+  button {
+    width: 90%;
+    max-width: none;
   }
 
-  if (!isCorrect) {
-    saveWrongWord(q.id);
+  .words {
+    font-size: 20px;
   }
-
-  processAnswer({
-    id: q.id,
-    section: q.section,
-    question: q.word,
-    userAnswer: selectedChoice,
-    correctAnswer: q.correctAnswer,
-    isCorrect,
-    points: q.points
-  });
-}
-
-function checkSentenceAnswer() {
-  const q = questions[currentIndex];
-  const userAnswer = document.getElementById("answerInput").value;
-  const isCorrect = normalizeSentence(userAnswer) === normalizeSentence(q.answer);
-
-  processAnswer({
-    id: q.id,
-    section: q.section,
-    question: q.words.join(" / "),
-    userAnswer,
-    correctAnswer: q.answer,
-    isCorrect,
-    points: 1
-  });
-}
-
-function processAnswer(data) {
-  if (data.isCorrect) {
-    score += data.points;
-    document.getElementById("feedback").textContent = "✅ 正解！";
-    document.getElementById("feedback").className = "correct";
-  } else {
-    document.getElementById("feedback").innerHTML =
-      `❌ 不正解。<br>正解：${escapeHtml(data.correctAnswer)}`;
-    document.getElementById("feedback").className = "wrong";
-    mistakes.push(data);
-  }
-
-  answersLog.push({
-    studentId,
-    testType: getTestName(),
-    mode: reviewMode ? "復習" : "通常",
-    id: data.id,
-    section: data.section,
-    question: data.question,
-    userAnswer: data.userAnswer,
-    correctAnswer: data.correctAnswer,
-    correct: data.isCorrect,
-    answeredAt: new Date().toLocaleString("ja-JP")
-  });
-
-  document.getElementById("checkButton").disabled = true;
-  document.getElementById("nextButton").classList.remove("hidden");
-}
-
-function nextQuestion() {
-  currentIndex++;
-
-  if (currentIndex < questions.length) {
-    showQuestion();
-  } else {
-    showResult(false);
-  }
-}
-
-function quitQuiz() {
-  if (confirm("途中で終了して、教材選択画面に戻りますか？")) {
-    resetQuizState();
-    showOnly("menuScreen");
-  }
-}
-
-function showResult(isQuit) {
-  const endTime = new Date();
-  const answeredCount = answersLog.length;
-  const totalSeconds = Math.floor((endTime - startTime) / 1000);
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-
-  showOnly("resultScreen");
-
-  document.getElementById("scoreDisplay").textContent =
-    isQuit
-      ? `途中終了：${answeredCount}問中 ${score}点`
-      : `テスト終了：${answeredCount}問中 ${score}点`;
-
-  document.getElementById("dateDisplay").textContent =
-    `回答日時：${endTime.toLocaleString("ja-JP")}`;
-
-  document.getElementById("timeDisplay").textContent =
-    `解答時間：${minutes}分 ${seconds}秒`;
-
-  showMistakes();
-
-  console.log({
-    studentId,
-    testType: getTestName(),
-    mode: reviewMode ? "復習" : "通常",
-    status: isQuit ? "途中終了" : "完了",
-    score,
-    answeredCount,
-    totalQuestions: questions.length,
-    startTime: startTime.toLocaleString("ja-JP"),
-    endTime: endTime.toLocaleString("ja-JP"),
-    mistakes,
-    answers: answersLog
-  });
-}
-
-function showMistakes() {
-  const area = document.getElementById("mistakeArea");
-
-  if (mistakes.length === 0) {
-    area.innerHTML = "<p class='correct'>ミスはありません。</p>";
-    return;
-  }
-
-  area.innerHTML = `
-    <div class="mistake-list">
-      <h3>今回ミスした問題</h3>
-      ${mistakes.map(m => `
-        <div class="mistake-item">
-          <strong>問題：</strong>${escapeHtml(m.question)}<br>
-          <strong>あなたの答え：</strong>${escapeHtml(m.userAnswer)}<br>
-          <strong>正解：</strong>${escapeHtml(m.correctAnswer)}
-        </div>
-      `).join("")}
-    </div>
-  `;
-}
-
-function saveWrongWord(id) {
-  const key = getWrongKey();
-  const wrongIds = getWrongIds();
-
-  if (!wrongIds.includes(String(id))) {
-    wrongIds.push(String(id));
-  }
-
-  localStorage.setItem(key, JSON.stringify(wrongIds));
-  updateMistakeCountInSettings();
-}
-
-function removeWrongWord(id) {
-  const key = getWrongKey();
-  let wrongIds = getWrongIds();
-
-  wrongIds = wrongIds.filter(wrongId => wrongId !== String(id));
-  localStorage.setItem(key, JSON.stringify(wrongIds));
-  updateMistakeCountInSettings();
-}
-
-function getWrongIds() {
-  const key = getWrongKey();
-  return JSON.parse(localStorage.getItem(key)) || [];
-}
-
-function getWrongKey() {
-  const id = studentId || document.getElementById("studentIdInput").value.trim() || "default";
-  return `wrongWords_${id}`;
-}
-
-function clearStoredMistakes() {
-  studentId = document.getElementById("studentIdInput").value.trim() || "default";
-
-  if (!confirm("この回答者番号の間違い履歴を削除しますか？")) {
-    return;
-  }
-
-  localStorage.removeItem(getWrongKey());
-  updateMistakeCountInSettings();
-  alert("間違い履歴を削除しました。");
-}
-
-function updateMistakeCountInSettings() {
-  const countText = document.getElementById("settingMistakeCount");
-  if (!countText) return;
-
-  const id = document.getElementById("studentIdInput").value.trim();
-
-  if (!id) {
-    countText.textContent = "回答者番号を入力すると、その番号の間違い履歴を確認できます。";
-    return;
-  }
-
-  studentId = id;
-  countText.textContent = `保存された間違い：${getWrongIds().length}問`;
-}
-
-function resetQuizState() {
-  currentIndex = 0;
-  score = 0;
-  selectedChoice = "";
-  answersLog = [];
-  mistakes = [];
-  questions = [];
-  document.getElementById("feedback").textContent = "";
-  document.getElementById("questionArea").innerHTML = "";
-}
-
-function showOnly(id) {
-  ["loginScreen", "menuScreen", "settingScreen", "quizScreen", "resultScreen"].forEach(screen => {
-    const element = document.getElementById(screen);
-    if (element) element.classList.add("hidden");
-  });
-
-  document.getElementById(id).classList.remove("hidden");
-}
-
-function getTestName() {
-  if (testType === "vocab") return "Stock 3000 単語テスト";
-  if (testType === "sentence") return "語順並べ替えテスト";
-  return "";
-}
-
-function splitSentence(text) {
-  return String(text)
-    .replace(/[.,!?;:]/g, "")
-    .replace(/[“”]/g, '"')
-    .replace(/[’‘]/g, "'")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-}
-
-function normalizeSentence(text) {
-  return String(text)
-    .replace(/[.,!?;:]/g, "")
-    .replace(/[“”]/g, '"')
-    .replace(/[’‘]/g, "'")
-    .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
-}
-
-function normalizeForCompare(text) {
-  return String(text)
-    .replace(/[.,!?;:]/g, "")
-    .replace(/[“”]/g, '"')
-    .replace(/[’‘]/g, "'")
-    .trim()
-    .toLowerCase();
-}
-
-function shuffle(array) {
-  const copied = [...array];
-
-  for (let i = copied.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copied[i], copied[j]] = [copied[j], copied[i]];
-  }
-
-  return copied;
-}
-
-function escapeHtml(text) {
-  return String(text ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function parseCSV(text) {
-  const rows = [];
-  let row = [];
-  let cell = "";
-  let inQuotes = false;
-
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const next = text[i + 1];
-
-    if (char === '"' && inQuotes && next === '"') {
-      cell += '"';
-      i++;
-    } else if (char === '"') {
-      inQuotes = !inQuotes;
-    } else if (char === "," && !inQuotes) {
-      row.push(cell.trim());
-      cell = "";
-    } else if ((char === "\n" || char === "\r") && !inQuotes) {
-      if (cell || row.length) {
-        row.push(cell.trim());
-        rows.push(row);
-        row = [];
-        cell = "";
-      }
-
-      if (char === "\r" && next === "\n") {
-        i++;
-      }
-    } else {
-      cell += char;
-    }
-  }
-
-  if (cell || row.length) {
-    row.push(cell.trim());
-    rows.push(row);
-  }
-
-  return rows;
 }
