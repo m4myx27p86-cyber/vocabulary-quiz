@@ -1,5 +1,15 @@
 const PASSWORD = "testing";
 
+document.getElementById("showPassword").addEventListener("change", function () {
+  const passwordField = document.getElementById("passwordInput");
+
+  if (this.checked) {
+    passwordField.type = "text";
+  } else {
+    passwordField.type = "password";
+  }
+});
+
 let questions = [];
 let currentIndex = 0;
 let score = 0;
