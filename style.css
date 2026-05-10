@@ -85,3 +85,10 @@ button:disabled {
   width: auto;
   margin: 0;
 }
+.quit-button {
+  background: #dc2626;
+}
+
+.quit-button:hover {
+  background: #b91c1c;
+}
