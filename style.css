@@ -1,94 +1,62 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f7fb;
-  margin: 0;
-  padding: 20px;
-  text-align: center;
-}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>英語テスト</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>英語テスト</h1>
 
-.container {
-  max-width: 760px;
-  margin: auto;
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
+    <section id="loginScreen">
+      <p>パスワードを入力してください。</p>
+      <input type="password" id="passwordInput" placeholder="パスワードを入力" />
 
-h1 {
-  color: #1f2937;
-}
+      <label class="password-toggle">
+        <input type="checkbox" id="showPassword">
+        パスワードを表示
+      </label>
 
-input {
-  width: 80%;
-  max-width: 520px;
-  font-size: 16px;
-  padding: 12px;
-  margin: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
+      <button id="loginButton">ログイン</button>
+      <p id="loginMessage" class="error"></p>
+    </section>
 
-button {
-  font-size: 16px;
-  padding: 10px 18px;
-  margin: 8px;
-  border-radius: 8px;
-  border: none;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-}
+    <section id="menuScreen" class="hidden">
+      <h2>教材を選択してください</h2>
+      <button id="vocabTestButton">単語テスト</button>
+      <button id="sentenceTestButton">語順並べ替えテスト</button>
+      <button disabled>Coming Soon</button>
+    </section>
 
-button:hover {
-  background: #1d4ed8;
-}
+    <section id="idScreen" class="hidden">
+      <h2>回答者番号を入力してください</h2>
+      <input type="text" id="studentIdInput" placeholder="例：A001" />
+      <button id="startButton">開始</button>
+    </section>
 
-button:disabled {
-  background: #aaa;
-  cursor: not-allowed;
-}
+    <section id="quizScreen" class="hidden">
+      <h2 id="testTitle"></h2>
+      <h3 id="questionNumber"></h3>
 
-.hidden {
-  display: none;
-}
+      <div id="questionArea"></div>
 
-.words {
-  font-size: 22px;
-  font-weight: bold;
-  line-height: 1.8;
-  margin: 24px 0;
-}
+      <p id="feedback"></p>
 
-.correct {
-  color: green;
-  font-weight: bold;
-}
+      <button id="checkButton">回答する</button>
+      <button id="nextButton" class="hidden">次の問題へ</button>
+      <button id="quitButton" class="quit-button">途中で終了する</button>
+    </section>
 
-.wrong,
-.error {
-  color: red;
-  font-weight: bold;
-}
+    <section id="resultScreen" class="hidden">
+      <h2>結果</h2>
+      <p id="scoreDisplay"></p>
+      <p id="dateDisplay"></p>
+      <button id="restartButton">最初に戻る</button>
+    </section>
+  </div>
 
-.password-toggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.password-toggle input {
-  width: auto;
-  margin: 0;
-}
-.quit-button {
-  background: #dc2626;
-}
-
-.quit-button:hover {
-  background: #b91c1c;
-}
+  <script src="script.js"></script>
+</body>
+</html>
