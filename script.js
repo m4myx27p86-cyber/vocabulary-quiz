@@ -315,25 +315,7 @@ function updateUsedWords() {
       chip.classList.remove("used");
     }
   });
-
-function updateUsedWords() {
-  const inputWords = splitSentence(document.getElementById("answerInput").value)
-    .map(w => normalizeForCompare(w));
-
-  const chips = document.querySelectorAll(".word-chip");
-
-  chips.forEach(chip => {
-    const word = normalizeForCompare(chip.textContent);
-
-    if (inputWords.includes(word)) {
-      chip.classList.add("used");
-    } else {
-      chip.classList.remove("used");
-    }
-  });
 }
-
-function checkAnswer() {
 
 function checkAnswer() {
   if (testType === "vocab") {
