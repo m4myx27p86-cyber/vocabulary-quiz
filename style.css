@@ -161,6 +161,18 @@ button:disabled {
   opacity: 0.35;
 }
 
+/* 語順問題のヒント */
+.sentence-hint {
+  margin: 15px 0;
+  padding: 12px;
+  background: #fef3c7;
+  border-radius: 8px;
+  font-size: 20px;
+  letter-spacing: 8px;
+  font-weight: bold;
+  color: #92400e;
+}
+
 /* ミス一覧 */
 .mistake-list {
   text-align: left;
