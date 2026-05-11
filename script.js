@@ -288,6 +288,20 @@ function showSentenceQuestion() {
   document.getElementById("answerInput").addEventListener("input", updateUsedWords);
 }
 
+function createInitialHint(sentence) {
+  return String(sentence)
+    .trim()
+    .split(/\s+/)
+    .map(word => {
+      const firstLetter = word.replace(/^[“"']+/, "").charAt(0);
+      const punctuation = word.match(/[.,!?;:]$/);
+      return punctuation ? `${firstLetter} ${punctuation[0]}` : firstLetter;
+    })
+    .join(" ");
+}
+
+function updateUsedWords() {
+
 function updateUsedWords() {
   const inputWords = splitSentence(document.getElementById("answerInput").value)
     .map(w => normalizeForCompare(w));
