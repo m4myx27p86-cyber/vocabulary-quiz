@@ -1,5 +1,10 @@
 const PASSWORD = "testing";
 
+const SENTENCE_FILES = [
+  "data/sentence_order/sentence_order_1_100.csv",
+  "data/sentence_order/sentence_order_101_200.csv"
+];
+
 let testType = "";
 let reviewMode = false;
 
@@ -90,19 +95,31 @@ async function loadVocabQuestions() {
 }
 
 async function loadSentenceQuestions() {
-  const response = await fetch("data/sentence_order/sentence_order_1_100.csv");
-  const text = await response.text();
-  const rows = parseCSV(text);
+  allSentenceQuestions = [];
 
-  rows.shift();
+  for (const file of SENTENCE_FILES) {
+    const response = await fetch(file);
 
-  allSentenceQuestions = rows.map(row => ({
-    id: row[0],
-    section: row[1],
-    answer: row[2],
-    words: shuffle(splitSentence(row[2] || "")),
-    points: 1
-  })).filter(q => q.id && q.section && q.answer);
+    if (!response.ok) {
+      console.warn(`読み込み失敗: ${file}`);
+      continue;
+    }
+
+    const text = await response.text();
+    const rows = parseCSV(text);
+
+    rows.shift();
+
+    const loadedQuestions = rows.map(row => ({
+      id: row[0],
+      section: row[1],
+      answer: row[2],
+      words: shuffle(splitSentence(row[2] || "")),
+      points: 1
+    })).filter(q => q.id && q.section && q.answer);
+
+    allSentenceQuestions.push(...loadedQuestions);
+  }
 }
 
 function setupSectionSelect(sourceQuestions) {
