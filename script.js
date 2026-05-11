@@ -274,9 +274,14 @@ function showSentenceQuestion() {
   q.words = shuffle(splitSentence(q.answer));
 
   document.getElementById("questionArea").innerHTML = `
+    <div class="sentence-hint">
+      ${createInitialHint(q.answer)}
+    </div>
+
     <div class="words" id="sentenceWords">
       ${q.words.map(word => `<span class="word-chip">${escapeHtml(word)}</span>`).join("")}
     </div>
+
     <input type="text" id="answerInput" placeholder="英文を入力してください" />
   `;
 
