@@ -315,7 +315,9 @@ function updateUsedWords() {
       chip.classList.remove("used");
     }
   });
-}
+
+function updateUsedWords() {
+  const inputWords = splitSentence(document.getElementById("answerInput").value)
     .map(w => normalizeForCompare(w));
 
   const chips = document.querySelectorAll(".word-chip");
@@ -330,6 +332,8 @@ function updateUsedWords() {
     }
   });
 }
+
+function checkAnswer() {
 
 function checkAnswer() {
   if (testType === "vocab") {
