@@ -209,3 +209,45 @@ button:disabled {
     font-size: 20px;
   }
 }
+
+/* TOEIC S&W 学習カレンダー */
+#calendarArea {
+  text-align: left;
+  max-width: 760px;
+  margin: 20px auto;
+}
+
+.calendar-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 16px 0;
+}
+
+.calendar-card h3 {
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.calendar-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.calendar-task input {
+  width: auto;
+  margin: 0;
+}
+
+.calendar-comment {
+  margin-top: 14px;
+  padding: 10px;
+  background: #eef2ff;
+  border-radius: 8px;
+  color: #3730a3;
+  font-weight: bold;
+}
