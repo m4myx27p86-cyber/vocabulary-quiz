@@ -10,6 +10,7 @@ let reviewMode = false;
 
 let allVocabQuestions = [];
 let allSentenceQuestions = [];
+let allSpeakingReviewQuestions = [];
 let questions = [];
 
 let currentIndex = 0;
