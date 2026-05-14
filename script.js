@@ -39,6 +39,7 @@ safeAddEvent("showPassword", "change", togglePassword);
 safeAddEvent("vocabTestButton", "click", () => openSettings("vocab"));
 safeAddEvent("sentenceTestButton", "click", () => openSettings("sentence"));
 safeAddEvent("calendarButton", "click", openCalendar);
+safeAddEvent("speakingReviewButton", "click", () => openSettings("speakingReview"));
 safeAddEvent("calendarBackButton", "click", () => showOnly("menuScreen"));
 safeAddEvent("resetCalendarButton", "click", resetCalendarChecks);
 safeAddEvent("startButton", "click", startNormalQuiz);
