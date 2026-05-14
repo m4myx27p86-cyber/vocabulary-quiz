@@ -210,7 +210,6 @@ button:disabled {
   }
 }
 
-/* TOEIC S&W 学習カレンダー */
 #calendarArea {
   text-align: left;
   max-width: 760px;
@@ -225,17 +224,11 @@ button:disabled {
   margin: 16px 0;
 }
 
-.calendar-card h3 {
-  margin-top: 0;
-  color: #1f2937;
-}
-
 .calendar-task {
   display: flex;
   align-items: center;
   gap: 10px;
   margin: 10px 0;
-  font-size: 16px;
 }
 
 .calendar-task input {
