@@ -78,12 +78,12 @@ async function openSettings(type) {
 
   showOnly("settingScreen");
 
- document.getElementById("settingTitle").textContent =
-  type === "vocab"
-    ? "Stock 3000 単語テスト"
-    : type === "sentence"
-      ? "語順並べ替えテスト"
-      : "TOEIC Speaking 復習";
+  document.getElementById("settingTitle").textContent =
+    type === "vocab"
+      ? "Stock 3000 単語テスト"
+      : type === "sentence"
+        ? "語順並べ替えテスト"
+        : "TOEIC Speaking 復習";
 
   document.getElementById("vocabReviewArea").classList.toggle("hidden", type !== "vocab");
 
@@ -97,12 +97,13 @@ async function openSettings(type) {
     if (allSentenceQuestions.length === 0) await loadSentenceQuestions();
     setupSectionSelect(allSentenceQuestions);
   }
+
   if (type === "speakingReview") {
-  if (allSpeakingReviewQuestions.length === 0) {
-    await loadSpeakingReviewQuestions();
+    if (allSpeakingReviewQuestions.length === 0) {
+      await loadSpeakingReviewQuestions();
+    }
+    setupSectionSelect(allSpeakingReviewQuestions);
   }
-  setupSectionSelect(allSpeakingReviewQuestions);
-}
 }
 
 async function loadVocabQuestions() {
@@ -204,6 +205,8 @@ async function startNormalQuiz() {
     prepareQuiz(allVocabQuestions);
   } else if (testType === "sentence") {
     prepareQuiz(allSentenceQuestions);
+  } else if (testType === "speakingReview") {
+    prepareQuiz(allSpeakingReviewQuestions);
   }
 
   if (questions.length === 0) {
@@ -281,7 +284,7 @@ function showQuestion() {
   document.getElementById("nextButton").classList.add("hidden");
   document.getElementById("checkButton").disabled = false;
 
-  if (testType === "vocab") {
+  if (testType === "vocab" || testType === "speakingReview") {
     showVocabQuestion();
   } else if (testType === "sentence") {
     showSentenceQuestion();
@@ -292,7 +295,11 @@ function showVocabQuestion() {
   const q = questions[currentIndex];
 
   document.getElementById("testTitle").textContent =
-    reviewMode ? "Stock 3000 間違い復習" : "Stock 3000 単語テスト";
+    testType === "speakingReview"
+      ? "TOEIC Speaking 復習"
+      : reviewMode
+        ? "Stock 3000 間違い復習"
+        : "Stock 3000 単語テスト";
 
   const choices = shuffle(q.choices);
   const area = document.getElementById("questionArea");
@@ -300,8 +307,15 @@ function showVocabQuestion() {
 
   const wordDiv = document.createElement("div");
   wordDiv.className = "words";
-  wordDiv.innerHTML =
-    `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>"${escapeHtml(q.word)}" の意味は？`;
+
+  if (testType === "speakingReview") {
+    wordDiv.innerHTML =
+      `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>より自然な表現は？<br>"${escapeHtml(q.word)}"`;
+  } else {
+    wordDiv.innerHTML =
+      `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>"${escapeHtml(q.word)}" の意味は？`;
+  }
+
   area.appendChild(wordDiv);
 
   choices.forEach(choice => {
@@ -369,7 +383,7 @@ function updateUsedWords() {
 }
 
 function checkAnswer() {
-  if (testType === "vocab") {
+  if (testType === "vocab" || testType === "speakingReview") {
     checkVocabAnswer();
   } else if (testType === "sentence") {
     checkSentenceAnswer();
@@ -386,8 +400,10 @@ function checkVocabAnswer() {
 
   const isCorrect = selectedChoice === q.correctAnswer;
 
-  if (isCorrect && reviewMode) removeWrongWord(q.id);
-  if (!isCorrect) saveWrongWord(q.id);
+  if (testType === "vocab") {
+    if (isCorrect && reviewMode) removeWrongWord(q.id);
+    if (!isCorrect) saveWrongWord(q.id);
+  }
 
   processAnswer({
     id: q.id,
@@ -600,6 +616,7 @@ function showOnly(id) {
 function getTestName() {
   if (testType === "vocab") return "Stock 3000 単語テスト";
   if (testType === "sentence") return "語順並べ替えテスト";
+  if (testType === "speakingReview") return "TOEIC Speaking 復習";
   return "";
 }
 
