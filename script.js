@@ -97,6 +97,12 @@ async function openSettings(type) {
     if (allSentenceQuestions.length === 0) await loadSentenceQuestions();
     setupSectionSelect(allSentenceQuestions);
   }
+  if (type === "speakingReview") {
+  if (allSpeakingReviewQuestions.length === 0) {
+    await loadSpeakingReviewQuestions();
+  }
+  setupSectionSelect(allSpeakingReviewQuestions);
+}
 }
 
 async function loadVocabQuestions() {
