@@ -78,8 +78,12 @@ async function openSettings(type) {
 
   showOnly("settingScreen");
 
-  document.getElementById("settingTitle").textContent =
-    type === "vocab" ? "Stock 3000 単語テスト" : "語順並べ替えテスト";
+ document.getElementById("settingTitle").textContent =
+  type === "vocab"
+    ? "Stock 3000 単語テスト"
+    : type === "sentence"
+      ? "語順並べ替えテスト"
+      : "TOEIC Speaking 復習";
 
   document.getElementById("vocabReviewArea").classList.toggle("hidden", type !== "vocab");
 
@@ -138,6 +142,29 @@ async function loadSentenceQuestions() {
 
     allSentenceQuestions.push(...loadedQuestions);
   }
+}
+
+async function loadSpeakingReviewQuestions() {
+  const response = await fetch("data/speaking_review/toeic_speaking_review.csv");
+
+  if (!response.ok) {
+    alert("TOEIC Speaking復習問題を読み込めませんでした。");
+    return;
+  }
+
+  const text = await response.text();
+  const rows = parseCSV(text);
+
+  rows.shift();
+
+  allSpeakingReviewQuestions = rows.map(row => ({
+    id: row[0],
+    section: row[1],
+    word: row[2],
+    correctAnswer: row[3],
+    choices: [row[3], row[4], row[5], row[6]].filter(Boolean),
+    points: 1
+  })).filter(q => q.id && q.section && q.word && q.correctAnswer);
 }
 
 function setupSectionSelect(sourceQuestions) {
