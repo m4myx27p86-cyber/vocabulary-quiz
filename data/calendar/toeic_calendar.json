@@ -1,20 +1,322 @@
 [
   {
-    "date": "5/14 Thu",
+    "date": "5/14",
     "tasks": [
       "Read Aloud 3問",
-      "Photo 2問",
+      "Photo Description 2問",
       "Opinion 1問",
-      "録音確認"
+      "Speaking Review 20問"
     ],
-    "comment": "Focus on speaking clearly, not perfectly."
+    "comment": "Start simple. Focus on fluency over perfection."
   },
   {
-    "date": "5/15 Fri",
+    "date": "5/15",
     "tasks": [
-      "Mock Speaking 1セット",
-      "Part 5 Solution 2問"
+      "Respond to Questions 5問",
+      "Photo Description 3問",
+      "Speaking Review 10問"
     ],
-    "comment": "Mistakes are useful data."
+    "comment": "Answer quickly and avoid long sentences."
+  },
+  {
+    "date": "5/16",
+    "tasks": [
+      "Full Speaking Mock",
+      "Weakness analysis",
+      "Speaking Review 20問"
+    ],
+    "comment": "Friday = diagnostic day."
+  },
+  {
+    "date": "5/17",
+    "tasks": [
+      "Photo 5問",
+      "Opinion 3問",
+      "Sentence Writing 5問"
+    ],
+    "comment": "Weekend = larger output."
+  },
+  {
+    "date": "5/18",
+    "tasks": [
+      "Weekly review",
+      "Update speaking_review.csv",
+      "Speaking Review test"
+    ],
+    "comment": "Build your personal error corpus."
+  },
+  {
+    "date": "5/19",
+    "tasks": [
+      "Read Aloud 3問",
+      "Respond 5問",
+      "Opinion 2問"
+    ],
+    "comment": "Short and complete answers."
+  },
+  {
+    "date": "5/20",
+    "tasks": [
+      "Photo 4問",
+      "Speaking Review 15問"
+    ],
+    "comment": "Improve observation speed."
+  },
+  {
+    "date": "5/21",
+    "tasks": [
+      "Solution Question 3問",
+      "Writing Email 1問"
+    ],
+    "comment": "Business English day."
+  },
+  {
+    "date": "5/22",
+    "tasks": [
+      "Read Aloud 3問",
+      "Respond 5問"
+    ],
+    "comment": "Stay consistent."
+  },
+  {
+    "date": "5/23",
+    "tasks": [
+      "Full Mock",
+      "Speaking Review 20問"
+    ],
+    "comment": "Friday performance check."
+  },
+  {
+    "date": "5/24",
+    "tasks": [
+      "Photo 5問",
+      "Opinion 3問",
+      "Writing task"
+    ],
+    "comment": "Heavy output day."
+  },
+  {
+    "date": "5/25",
+    "tasks": [
+      "Weekly review",
+      "Update CSV",
+      "Speaking Review"
+    ],
+    "comment": "Review before adding more."
+  },
+  {
+    "date": "5/26",
+    "tasks": [
+      "Respond 5問",
+      "Photo 3問"
+    ],
+    "comment": "Faster response speed."
+  },
+  {
+    "date": "5/27",
+    "tasks": [
+      "Opinion 3問",
+      "Read Aloud 3問"
+    ],
+    "comment": "Control sentence length."
+  },
+  {
+    "date": "5/28",
+    "tasks": [
+      "Photo 5問",
+      "Speaking Review"
+    ],
+    "comment": "Describe what you see first."
+  },
+  {
+    "date": "5/29",
+    "tasks": [
+      "Full Mock",
+      "Weakness review"
+    ],
+    "comment": "Mock under pressure."
+  },
+  {
+    "date": "5/30",
+    "tasks": [
+      "Writing tasks",
+      "Opinion 3問"
+    ],
+    "comment": "Support speaking with writing."
+  },
+  {
+    "date": "5/31",
+    "tasks": [
+      "Weekly review",
+      "CSV update"
+    ],
+    "comment": "Track repeated mistakes."
+  },
+  {
+    "date": "6/1",
+    "tasks": [
+      "Read Aloud",
+      "Respond"
+    ],
+    "comment": "Consistency wins."
+  },
+  {
+    "date": "6/2",
+    "tasks": [
+      "Photo",
+      "Opinion"
+    ],
+    "comment": "Keep answers simple."
+  },
+  {
+    "date": "6/3",
+    "tasks": [
+      "Solution questions",
+      "Writing"
+    ],
+    "comment": "Workplace topics."
+  },
+  {
+    "date": "6/4",
+    "tasks": [
+      "Respond",
+      "Speaking Review"
+    ],
+    "comment": "Fix repeated errors."
+  },
+  {
+    "date": "6/5",
+    "tasks": [
+      "Full Mock"
+    ],
+    "comment": "Friday mock."
+  },
+  {
+    "date": "6/6",
+    "tasks": [
+      "Photo heavy practice",
+      "Opinion practice"
+    ],
+    "comment": "Weekend output."
+  },
+  {
+    "date": "6/7",
+    "tasks": [
+      "Weekly review",
+      "CSV update"
+    ],
+    "comment": "Review matters."
+  },
+  {
+    "date": "6/8",
+    "tasks": [
+      "Respond",
+      "Read Aloud"
+    ],
+    "comment": "Stay sharp."
+  },
+  {
+    "date": "6/9",
+    "tasks": [
+      "Photo",
+      "Opinion"
+    ],
+    "comment": "Keep explanations short."
+  },
+  {
+    "date": "6/10",
+    "tasks": [
+      "Solution",
+      "Writing"
+    ],
+    "comment": "Professional tone."
+  },
+  {
+    "date": "6/11",
+    "tasks": [
+      "Speaking Review",
+      "Respond"
+    ],
+    "comment": "Fix final grammar issues."
+  },
+  {
+    "date": "6/12",
+    "tasks": [
+      "Full Mock"
+    ],
+    "comment": "Simulate test conditions."
+  },
+  {
+    "date": "6/13",
+    "tasks": [
+      "Photo",
+      "Opinion",
+      "Writing"
+    ],
+    "comment": "Final heavy day."
+  },
+  {
+    "date": "6/14",
+    "tasks": [
+      "Weekly review",
+      "Final CSV update"
+    ],
+    "comment": "Your final error check."
+  },
+  {
+    "date": "6/15",
+    "tasks": [
+      "Read Aloud",
+      "Respond"
+    ],
+    "comment": "Light but focused."
+  },
+  {
+    "date": "6/16",
+    "tasks": [
+      "Photo",
+      "Opinion"
+    ],
+    "comment": "Maintain rhythm."
+  },
+  {
+    "date": "6/17",
+    "tasks": [
+      "Solution",
+      "Writing"
+    ],
+    "comment": "Keep confidence."
+  },
+  {
+    "date": "6/18",
+    "tasks": [
+      "Speaking Review",
+      "Light practice"
+    ],
+    "comment": "No heavy workload."
+  },
+  {
+    "date": "6/19",
+    "tasks": [
+      "Final Mock"
+    ],
+    "comment": "Last confidence check."
+  },
+  {
+    "date": "6/20",
+    "tasks": [
+      "30分だけ軽く復習",
+      "早寝"
+    ],
+    "comment": "Rest matters."
+  },
+  {
+    "date": "6/21",
+    "tasks": [
+      "テンプレ確認",
+      "深呼吸",
+      "本番"
+    ],
+    "comment": "You are ready."
   }
 ]
