@@ -541,7 +541,7 @@ function resetQuizState() {
 }
 
 function showOnly(id) {
-  ["loginScreen", "menuScreen", "settingScreen", "quizScreen", "resultScreen"].forEach(screen => {
+  ["loginScreen", "menuScreen", "calendarScreen", "settingScreen", "quizScreen", "resultScreen"].forEach(screen => {
     const element = document.getElementById(screen);
     if (element) element.classList.add("hidden");
   });
