@@ -21,16 +21,27 @@
       <p id="loginMessage" class="error"></p>
     </section>
 
-    <section id="menuScreen" class="hidden">
-      <h2>教材を選択してください</h2>
-     <button id="vocabTestButton">Stock 3000 単語テスト</button>
-      <button id="sentenceTestButton">語順並べ替えテスト</button>
-      <button id="calendarButton">TOEIC S&W 学習カレンダー</button>
-      <button id="speakingReviewButton">TOEIC Speaking 復習</button>
-      <button disabled>Coming Soon</button>
-    </section>
+<section id="menuScreen" class="hidden">
+  <h2>教材を選択してください</h2>
+  <button id="vocabTestButton">Stock 3000 単語テスト</button>
+  <button id="sentenceTestButton">語順並べ替えテスト</button>
+  <button id="calendarButton">TOEIC S&W 学習カレンダー</button>
+  <button id="speakingReviewButton">TOEIC Speaking 復習</button>
+  <button disabled>Coming Soon</button>
+</section>
+
+<section id="calendarScreen" class="hidden">
+  <h2>TOEIC S&W 学習カレンダー</h2>
+  <p>6月21日のTOEIC S&Wに向けて、毎日の学習をチェックしましょう。</p>
+
+  <div id="calendarArea"></div>
+
+  <button id="resetCalendarButton" class="secondary-button">チェックをリセット</button>
+  <button id="calendarBackButton" class="secondary-button">戻る</button>
+</section>
+
+<section id="settingScreen" class="hidden">
     
-    <section id="settingScreen" class="hidden">
       <h2 id="settingTitle"></h2>
 
       <input type="text" id="studentIdInput" placeholder="回答者番号 例：A001" />
