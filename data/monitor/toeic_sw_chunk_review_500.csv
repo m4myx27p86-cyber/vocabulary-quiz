@@ -1,0 +1,501 @@
+﻿id,section,word,correctAnswer,choice2,choice3,choice4
+chunk_001,TOEIC_email,"If you leave a message, we will return your call ( ? ).",as soon as possible,as soon as,soon as possible,in the other words
+chunk_002,GENERAL_linkers,"If you leave a message, we will return your call ( ? ) possible.",as soon as,as soon,soon as,in the other words
+chunk_003,GENERAL_linkers,"Be sure to include your name, daytime telephone number, and ( ? ) your call. .",the reason for,the reason to,the reason,reason for
+chunk_004,GENERAL_verb_patterns,"He'll teach you everything you ( ? ) know about using this unique, time-saving software program.",need to,need for,in the other words,on the result
+chunk_005,TOEIC_picture,( ? ) a man and a woman in the supermarket.,This is a picture of,This is a picture for,This is a picture,is a picture of
+chunk_006,TOEIC_picture_action,The man ( ? ) a baseball cap and a black jacket.,is wearing,in the other words,on the result,for these reason
+chunk_007,TOEIC_picture_action,He ( ? ) a bag of vegetables with his right hand.,is picking up,is picking,picking up,in the other words
+chunk_008,TOEIC_picture,"Behind the man, ( ? ) a woman wearing a green, long-sleeved shirt and black pants.",there is,There are,There be,in the other words
+chunk_009,TOEIC_picture,"( ? ) a lot of different fresh vegetables on the shelves, such as celery, lettuce, and tomatoes. .",There are,There is,There be,in the other words
+chunk_010,GENERAL_linkers,"There are ( ? ) different fresh vegetables on the shelves, such as celery, lettuce, and tomatoes. .",a lot of,a lot for,a lot,lot of
+chunk_011,TOEIC_picture_action,"I don't know the exact name of the vegetable the woman ( ? ), but she is looking at some kind of vegetable. .",is holding,in the other words,on the result,for these reason
+chunk_012,TOEIC_picture_action,"I don't know the exact name of the vegetable the woman is holding, but she ( ? ) some kind of vegetable. .",is looking at,is looking,looking at,in the other words
+chunk_013,TOEIC_repair_prediction,"( ? ) the vegetable the woman is holding, but she is looking at some kind of vegetable. .",I don't know the exact name of,I don't know the exact name for,I don't know the exact name,don't know the exact name of
+chunk_014,TOEIC_repair_prediction,"I don't know the exact name of the vegetable the woman is holding, but she is looking at ( ? ) vegetable. .",some kind of,some kind for,some kind,kind of
+chunk_015,TOEIC_picture,( ? ) two men riding on a bicycle. .,This is a picture of,This is a picture for,This is a picture,is a picture of
+chunk_016,TOEIC_picture,( ? ) a beach in a resort area. .,This photograph shows,This photograph,photograph shows,in the other words
+chunk_017,TOEIC_picture,( ? ) an airport. .,This photograph was taken at,This photograph was taken,photograph was taken at,in the other words
+chunk_018,TOEIC_picture,"( ? ), I can see some people visiting a museum. .",In this picture,on this picture,at this picture,In this
+chunk_019,TOEIC_picture,"In this picture, ( ? ) some people visiting a museum. .",I can see,I can,can see,in the other words
+chunk_020,TOEIC_picture,"( ? ), there are two whiteboards set next to each other on the wall. .",In the background of the picture,on the background of the picture,at the background of the picture,In the background for the picture
+chunk_021,TOEIC_picture,"In the background of the picture, ( ? ) two whiteboards set next to each other on the wall. .",there are,There is,There be,in the other words
+chunk_022,TOEIC_picture_action,"In the background of the picture, there are two whiteboards set ( ? ) each other on the wall. .",next to,next for,in the other words,on the result
+chunk_023,TOEIC_picture,"( ? ), one of the female students is standing behind the projector and giving a presentation on the class. .",On the right side of the picture,in the right side of the picture,at the right side of the picture,On the right side for the picture
+chunk_024,TOEIC_picture,"( ? ), I can see a male student listening to the presentation in front of the screen. .",In the middle of the picture,on the middle of the picture,at the middle of the picture,In the middle for the picture
+chunk_025,TOEIC_picture,"In the middle of the picture, ( ? ) a male student listening to the presentation in front of the screen. .",I can see,I can,can see,in the other words
+chunk_026,TOEIC_picture_action,"In the middle of the picture, I can see a male student listening to the presentation ( ? ) the screen. .",in front of,on front of,at front of,in front for
+chunk_027,TOEIC_picture,"( ? ), a female student is taking notes during the presentation. .",In the foreground of the picture,on the foreground of the picture,at the foreground of the picture,In the foreground for the picture
+chunk_028,TOEIC_picture_action,"In the foreground of the picture, a female student ( ? ) during the presentation. .",is taking notes,is taking,taking notes,in the other words
+chunk_029,TOEIC_repair_prediction,( ? ) a picture of a musical performance. .,It looks like,It looks,looks like,in the other words
+chunk_030,TOEIC_picture_action,I think three customers ( ? ) to buy a newly released product. .,are lined up,are lined,lined up,in the other words
+chunk_031,TOEIC_picture_action,The two people are probably ( ? ) the train. .,trying to catch,trying for catch,trying to,to catch
+chunk_032,TOEIC_repair_prediction,The two people are ( ? ) catch the train. .,probably trying to,probably trying for,probably trying,trying to
+chunk_033,GENERAL_verb_patterns,The two people are probably ( ? ) catch the train. .,trying to,trying for,in the other words,on the result
+chunk_034,GENERAL_linkers,A family is eating ( ? ) sitting at a table outside. .,while,in the other words,on the result,for these reason
+chunk_035,TOEIC_picture_action,A woman wearing glasses ( ? ) one of her daughters with very long hair. .,is sitting across from,is sitting across of,is sitting across,sitting across from
+chunk_036,TOEIC_picture_action,"A boy with glasses ( ? ) his father and his sister, facing toward his mother. .",is sitting between,is sitting,sitting between,in the other words
+chunk_037,TOEIC_picture_action,Another daughter ( ? ) her mother. .,sits next to,sits next for,sits next,next to
+chunk_038,TOEIC_picture,( ? ) a couple of plastic bottles on the table. .,I can see,I can,can see,in the other words
+chunk_039,GENERAL_linkers,I can see ( ? ) plastic bottles on the table. .,a couple of,a couple for,a couple,couple of
+chunk_040,TOEIC_picture,( ? ) a wooden bench beside the table. .,There is,There are,There be,in the other words
+chunk_041,TOEIC_picture_action,Many vehicles ( ? ) along the sidewalk. .,have been parked,have been,been parked,in the other words
+chunk_042,TOEIC_picture_action,A man and a woman ( ? ) an aisle in the grocery store. .,are standing in,are standing,standing in,in the other words
+chunk_043,TOEIC_repair_prediction,( ? ) they are enjoying selecting vegetables. .,They look like,They look,look like,in the other words
+chunk_044,TOEIC_picture_action,Both of them ( ? ) vegetables .,are looking at,are looking,looking at,in the other words
+chunk_045,TOEIC_picture_action,The man ( ? ) glasses and he has a mustache. .,is wearing,in the other words,on the result,for these reason
+chunk_046,TOEIC_repair_prediction,The man ( ? ) a bag of vegetables because it's fresh. .,may be choosing,may be,be choosing,in the other words
+chunk_047,TOEIC_repair_prediction,The man ( ? ) looking at how fresh the vegetables are. .,seems to be,seems for be,seems to,to be
+chunk_048,TOEIC_picture,I see a number of people gathered outsiders ( ? ).,in this picture,on this picture,at this picture,in this
+chunk_049,GENERAL_linkers,I see ( ? ) people gathered outsiders in this picture.,a number of,a number for,a number,number of
+chunk_050,TOEIC_repair_prediction,"( ? ) a weekend day, and they are enjoying the day off of work.",Perhaps it is,Perhaps it,it is,in the other words
+chunk_051,TOEIC_picture_action,One man on the left ( ? ) a bicycle.,is holding,in the other words,on the result,for these reason
+chunk_052,TOEIC_picture,"( ? ), some men wearing sunglasses are talking about something.",To the right,for the right,To the,the right
+chunk_053,TOEIC_picture,"( ? ), two people sit together. .",Off to the side,Off for the side,Off to the,to the side
+chunk_054,TOEIC_picture,"( ? ), uh, there are two people - a man and a woman.",In this picture,on this picture,at this picture,In this
+chunk_055,TOEIC_picture,"In this picture, uh, ( ? ) two people - a man and a woman.",there are,There is,There be,in the other words
+chunk_056,TOEIC_picture_action,They are ( ? ) a fire.,next to,next for,in the other words,on the result
+chunk_057,TOEIC_repair_prediction,"( ? ) cold in that room, because the man and woman are wearing their jackets. .",It must be,It must,must be,in the other words
+chunk_058,GENERAL_linkers,"( ? ), this office species has been taken over to do some type of packaging.",However,in the other words,on the result,for these reason
+chunk_059,GENERAL_linkers,"One man has a card carrying a single box, ( ? ) two women are passing a small package between them.",while,in the other words,on the result,for these reason
+chunk_060,TOEIC_repair_prediction,"( ? ) they're shipping out materials produced by a large product, and this is staging area.",I imagine,in the other words,on the result,for these reason
+chunk_061,TOEIC_picture,( ? ) several large rolling carts. .,There are,There is,There be,in the other words
+chunk_062,TOEIC_picture_action,Some people ( ? ) to order food.,are waiting in line,are waiting in,waiting in line,in the other words
+chunk_063,TOEIC_picture,"( ? ), there are some employees serving food.",Behind the counter,Behind the,the counter,in the other words
+chunk_064,TOEIC_picture,"Behind the counter, ( ? ) some employees serving food.",there are,There is,There be,in the other words
+chunk_065,TOEIC_personal_response,"( ? ), I went to a shopping center and bought a new computer. .",Last weekend,in the other words,on the result,for these reason
+chunk_066,TOEIC_personal_response,"Last weekend, ( ? ) a shopping center and bought a new computer. .",I went to,I went for,I went,went to
+chunk_067,TOEIC_personal_response,( ? ) snowboarding in Nigata with my friends. .,I enjoyed,in the other words,on the result,for these reason
+chunk_068,TOEIC_personal_response,( ? ) cooked dinner for my family last Saturday. .,I stayed at home and,I stayed at home,stayed at home and,in the other words
+chunk_069,TOEIC_personal_response,( ? ) visit an old school friend who lives in the countryside.,I'm going to,I'm going for,I'm going,going to
+chunk_070,TOEIC_personal_response,( ? ) do some hiking and maybe visit some tourist destinations. .,I think we are going to,I think we are going for,I think we are going,think we are going to
+chunk_071,TOEIC_personal_response,( ? ) look for a new apartment because I want to move before summer. .,I'm planning to,I'm planning for,I'm planning,planning to
+chunk_072,GENERAL_verb_patterns,I'm planning to look for a new apartment because I ( ? ) move before summer. .,want to,want for,in the other words,on the result
+chunk_073,TOEIC_personal_response,( ? ) the weather.,It depends on,It depends,depends on,in the other words
+chunk_074,TOEIC_personal_response,"( ? ), I'll climb Mt.",If it's sunny,If it's,it's sunny,in the other words
+chunk_075,TOEIC_personal_response,"( ? ), I'll read a book I borrowed from my friend. .",Otherwise,in the other words,on the result,for these reason
+chunk_076,TOEIC_picture,"There's a great baseball stadium nearby, so you could check to see if ( ? ) any tickets available for the baseball game on Saturday night. .",there are,There is,There be,in the other words
+chunk_077,TOEIC_personal_response,( ? ) a movie.,I recommend seeing,I recommend,recommend seeing,in the other words
+chunk_078,TOEIC_personal_response,( ? ) the new theater in Shibuya. .,You could try,You could,could try,in the other words
+chunk_079,TOEIC_personal_response,"( ? ) talk to my friends, family and work clients. .",That's how I,That's how,how I,in the other words
+chunk_080,TOEIC_personal_response,"Everyone can reach me, or I can reach them, ( ? ).",wherever needed,in the other words,on the result,for these reason
+chunk_081,TOEIC_personal_response,"I think ( ? ) use a mobile phone in public places where you might bother someone else, such as on the public bus, in the market, and so on.",it's inappropriate to,it's inappropriate for,it's inappropriate,inappropriate to
+chunk_082,TOEIC_personal_response,Sometimes ( ? ) put your phone away. .,it's more appropriate to,it's more appropriate for,it's more appropriate,more appropriate to
+chunk_083,GENERAL_linkers,"Unfortunately, ( ? ) flights were cancelled because of the weather, so I spent about 10 hours in the airport. .",a lot of,a lot for,a lot,lot of
+chunk_084,GENERAL_linkers,"Unfortunately, a lot of flights were cancelled ( ? ) the weather, so I spent about 10 hours in the airport. .",because of,because for,in the other words,on the result
+chunk_085,TOEIC_personal_response,( ? ) whether I am hungry.,It depends on,It depends,depends on,in the other words
+chunk_086,TOEIC_personal_response,"( ? ), I might just get a coffee and a message. .",Otherwise,in the other words,on the result,for these reason
+chunk_087,GENERAL_linkers,I would like airports to have carts for rent for people traveling with ( ? ) heavy luggage.,a lot of,a lot for,a lot,lot of
+chunk_088,GENERAL_linkers,( ? ) the luggage has wheels.,Even if,in the other words,on the result,for these reason
+chunk_089,TOEIC_schedule_info,The meeting ( ? ) 11 AM and ends at 12 PM. .,starts at,in the other words,on the result,for these reason
+chunk_090,TOEIC_schedule_info,The meeting starts at 11 AM and ( ? ) 12 PM. .,ends at,in the other words,on the result,for these reason
+chunk_091,TOEIC_schedule_info,The workshop ( ? ) 3 PM to 5 PM. .,will be from,will be of,will be,be from
+chunk_092,TOEIC_schedule_info,"The seminars ( ? ) Thursday, June 20. .",will be held on,will be held,be held on,in the other words
+chunk_093,TOEIC_picture,( ? ) a tour of the work areas at 9:30. .,There is,There are,There be,in the other words
+chunk_094,TOEIC_schedule_info,The session ( ? ) next Tuesday. .,has been postponed to,has been postponed for,has been postponed,been postponed to
+chunk_095,TOEIC_schedule_info,"( ? ) 10:45, and then you will have two workshops. .",You will have a break at,You will have a break,will have a break at,in the other words
+chunk_096,TOEIC_schedule_info,The seminar ( ? ) the Main Hall of the Grace Hotel. .,will be held in,will be held,be held in,in the other words
+chunk_097,TOEIC_schedule_info,"The session ( ? ) Room 104, and the contest is taking place in the Science Hall. .",is located in,is located,located in,in the other words
+chunk_098,TOEIC_schedule_info,"The session is located in Room 104, and the contest ( ? ) the Science Hall. .",is taking place in,is taking place,taking place in,in the other words
+chunk_099,TOEIC_schedule_info,You ( ? ) the Reception Hall in order to participate in the factory tour. .,need to be at,need for be at,need to be,to be at
+chunk_100,TOEIC_schedule_info,You need to be at the Reception Hall ( ? ) the factory tour. .,in order to participate in,on order to participate in,at order to participate in,in order for participate in
+chunk_101,GENERAL_linkers,You need to be at the Reception Hall ( ? ) participate in the factory tour. .,in order to,on order to,at order to,in order for
+chunk_102,GENERAL_verb_patterns,You ( ? ) be at the Reception Hall in order to participate in the factory tour. .,need to,need for,in the other words,on the result
+chunk_103,TOEIC_schedule_info,Mile Walzer ( ? ) the area. .,will show you around,will show you,show you around,in the other words
+chunk_104,TOEIC_schedule_info,We have two instructors who ( ? ) the seminar: Jade Smith and Stepfan Brown. .,will be leading,will be,be leading,in the other words
+chunk_105,TOEIC_schedule_info,The speech workshop ( ? ) Meg Phillips. .,will be run by,will be run with,will be run,be run by
+chunk_106,TOEIC_schedule_info,"Michael Dorson, who owns an Italian restaurant chain, ( ? ). .",will give a talk,will give a,give a talk,in the other words
+chunk_107,TOEIC_repair_prediction,"Unfortunately, ( ? ) the seminar has been canceled. .",it looks like,it looks,looks like,in the other words
+chunk_108,TOEIC_schedule_info,"( ? ), James Franklin will deliver the speech. .",According to the agenda,According for the agenda,According with,According for
+chunk_109,GENERAL_linkers,"( ? ) the agenda, James Franklin will deliver the speech. .",According to,According for,According with,in the other words
+chunk_110,TOEIC_repair_prediction,( ? ) the first seminar is Developing Creative Thinking Skills.,It looks like,It looks,looks like,in the other words
+chunk_111,TOEIC_picture,"( ? ) also two seminars in November, on November fifth and twelfth. .",There are,There is,There be,in the other words
+chunk_112,TOEIC_schedule_info,"( ? ), we are going to offer two seminars in November too. .",According to the schedule,According for the schedule,According with,According for
+chunk_113,GENERAL_linkers,"( ? ) the schedule, we are going to offer two seminars in November too. .",According to,According for,According with,in the other words
+chunk_114,TOEIC_schedule_info,"The training ( ? ) 9 o'clock, and it will be held in Room 222 in the Technology Training Center. .",starts at,in the other words,on the result,for these reason
+chunk_115,TOEIC_schedule_info,"The training starts at 9 o'clock, and it ( ? ) Room 222 in the Technology Training Center. .",will be held in,will be held,be held in,in the other words
+chunk_116,TOEIC_schedule_info,"( ? ), let's see - OK.",Just a minute,Just a,a minute,in the other words
+chunk_117,TOEIC_schedule_info,"Just a minute, ( ? ) - OK.",let's see,in the other words,on the result,for these reason
+chunk_118,TOEIC_picture,"( ? ) no proglem with encouraging students to learn how to play a musical instrument, but I disagree that the schools should require students to play one.",There is,There are,There be,in the other words
+chunk_119,TOEIC_opinion,"There is no proglem with encouraging students to learn how to play a musical instrument, but ( ? ) the schools should require students to play one.",I disagree that,I disagree,disagree that,in the other words
+chunk_120,TOEIC_opinion,"( ? ), playing music is not a basic skill.",First of all,First for all,First all,At first of all
+chunk_121,TOEIC_opinion,"If a student cannot play an instrument, it is ( ? ) going to have a negative impact on that person 's ability to be successful in life.",not necessarily,in the other words,on the result,for these reason
+chunk_122,GENERAL_linkers,"( ? ), as a school subject, I believe music shouldn't be treated like the basic areas of reading, writing, math and science.",Therefore,in the other words,on the result,for these reason
+chunk_123,GENERAL_verb_patterns,"If students are ( ? ) choose to play a musical instrument, they will feel more interested in the subject and they will even be more likely to succeed at playing .",allowed to,allowed for,in the other words,on the result
+chunk_124,TOEIC_opinion,( ? ) the Internet is an effective educational tool for children. .,I agree with the idea that,I agree by the idea that,I agree with the idea,agree with the idea that
+chunk_125,TOEIC_opinion,( ? ) spend our money on vacations rather than saving it. .,I think we should,I think we,think we should,in the other words
+chunk_126,TOEIC_opinion,( ? ) we should abandon the lifetime employment system. .,It is my opinion that,It is my opinion,is my opinion that,in the other words
+chunk_127,TOEIC_opinion,"( ? ), discussing something until we are satisfied is the best way to handle our disagreement. .",In my view,on my view,at my view,In my
+chunk_128,GENERAL_linkers,"In my view, discussing something until we are satisfied is ( ? ) handle our disagreement. .",the best way to,the best way for,the best way,best way to
+chunk_129,GENERAL_verb_patterns,I say this because we ( ? ) prepare for the unexpected. .,need to,need for,in the other words,on the result
+chunk_130,GENERAL_verb_patterns,"First, the lifetime employment system ( ? ) hinder a company's growth. .",tends to,tends for,in the other words,on the result
+chunk_131,TOEIC_opinion,( ? ) it is definitely a waste of time to spend hours commuting. .,To begin with,for begin with,To begin by,To begin
+chunk_132,TOEIC_opinion,"( ? ), even if a conclusion is not what we expected, we tend to be satisfied after discussing something thoroughly. .",In addition,on addition,at addition,in the other words
+chunk_133,GENERAL_linkers,"In addition, ( ? ) a conclusion is not what we expected, we tend to be satisfied after discussing something thoroughly. .",even if,in the other words,on the result,for these reason
+chunk_134,GENERAL_verb_patterns,"In addition, even if a conclusion is not what we expected, we ( ? ) be satisfied after discussing something thoroughly. .",tend to,tend for,in the other words,on the result
+chunk_135,TOEIC_opinion,"( ? ), many kinds of services or functions have become available recently to protect children from harm when they use the Internet. .",For example,to example,For examples,For instance of
+chunk_136,TOEIC_personal_response,What I mean is that we can work more creatively or productively if we use the time that we would ( ? ) spend commuting every day. .,otherwise,in the other words,on the result,for these reason
+chunk_137,TOEIC_opinion,( ? ) we can work more creatively or productively if we use the time that we would otherwise spend commuting every day. .,What I mean is that,What I mean is,I mean is that,in the other words
+chunk_138,GENERAL_linkers,"( ? ), if you can't take days off and do something that refreshes your mind, you'll be exhausted from working and saving every day. .",However,in the other words,on the result,for these reason
+chunk_139,TOEIC_opinion,"( ? ), there was conflict and they were trying their best to comply with the client's requests, while others were giving more consideration to the tight budget. .",In my case,on my case,at my case,In my
+chunk_140,GENERAL_linkers,"In my case, there was conflict and they were trying their best to comply with the client's requests, ( ? ) others were giving more consideration to the tight budget. .",while,in the other words,on the result,for these reason
+chunk_141,TOEIC_opinion,( ? ) spending money on vacations will enrich our lives. .,So I think,So I,I think,in the other words
+chunk_142,TOEIC_opinion,( ? ) I believe the Internet is a good educational tool for children. .,This is why,This is,is why,in the other words
+chunk_143,TOEIC_opinion,"( ? ), I try to discuss something thoroughly when I disagree with someone. .",For these reasons,to these reasons,For these,these reasons
+chunk_144,GENERAL_verb_patterns,"For these reasons, I ( ? ) discuss something thoroughly when I disagree with someone. .",try to,try for,in the other words,on the result
+chunk_145,GENERAL_linkers,"( ? ), I agree with the statement that students should be required to learn to play a musical instrument. .",For several reasons,to several reasons,For several,several reasons
+chunk_146,GENERAL_linkers,"( ? ), it's also important to introduce students to cultural subjects such as music and arts. .",However,in the other words,on the result,for these reason
+chunk_147,TOEIC_opinion,"( ? ), the experience of playing an instrument will make students' connection to music more personal and encourage them to continue exploring music outside of school. .",Furthermore,in the other words,on the result,for these reason
+chunk_148,TOEIC_opinion,"( ? ), I believe an instrument is important because it teaches children and a body of art and culture, as well as showing practice and hard work, are necessary. .",To be more specific,for be more specific,To be more,be more specific
+chunk_149,TOEIC_opinion,"( ? ), I think schools should require students to learn how to play a musical instrument. .",For these reasons,to these reasons,For these,these reasons
+chunk_150,TOEIC_opinion,( ? ) students should be required to perform some physical exercise during the day.,I believe that,I believe,believe that,in the other words
+chunk_151,TOEIC_picture,( ? ) some great benefits for everyone involved when students have a break to refresh themselves.,There are,There is,There be,in the other words
+chunk_152,GENERAL_linkers,I think ( ? ) learn about photography is by talking to a knowledgeable friend.,the best way to,the best way for,the best way,best way to
+chunk_153,TOEIC_opinion,"( ? ), a knowledgeable friend will have lots of tips and will also be willing to spend much more time helping you get started.",On the other hand,in the other hand,at the other hand,On another hand
+chunk_154,TOEIC_opinion,"On the other hand, a knowledgeable friend will have lots of tips and will also ( ? ) spend much more time helping you get started.",be willing to,be willing for,be willing,willing to
+chunk_155,GENERAL_linkers,"You can ask as many questions as you want, whatever you want, by contacting your friend ( ? ) you normally communicate.",however,in the other words,on the result,for these reason
+chunk_156,TOEIC_opinion,"( ? ), your friend will probably enjoy talking about something she is good at, so you will both gain something from the experience.",What's more,in the other words,on the result,for these reason
+chunk_157,TOEIC_picture_action,People ( ? ) because they need to check in for their flights. 3.,are waiting in line,are waiting in,waiting in line,in the other words
+chunk_158,GENERAL_verb_patterns,People are waiting in line because they ( ? ) check in for their flights. 3.,need to,need for,in the other words,on the result
+chunk_159,GENERAL_linkers,Passengers are waiting at the airport counter ( ? ) system errors. 5.,because of,because for,in the other words,on the result
+chunk_160,GENERAL_verb_patterns,A woman is waiting at the airport counter because she ( ? ) check her luggage. 6.,wants to,wants for,in the other words,on the result
+chunk_161,GENERAL_linkers,"Because some flights were rescheduled, people were waiting for a ( ? ) at the airport. 1.",while,in the other words,on the result,for these reason
+chunk_162,TOEIC_picture,( ? ) water around the boat. 3.,There is,There are,There be,in the other words
+chunk_163,GENERAL_verb_patterns,"After he read all the menu options, the man ( ? ) order the chef's special dish. 5.",decided to,decided for,in the other words,on the result
+chunk_164,TOEIC_picture,( ? ) multiple lamps on each table in the library. 7.,There are,There is,There be,in the other words
+chunk_165,TOEIC_picture_action,Adults and children ( ? ) together in a public square. 8.,are sitting,in the other words,on the result,for these reason
+chunk_166,TOEIC_picture_action,"While several people are going in one direction, a businessman ( ? ) the opposite way with a newspaper in his hand. 10.",is walking,in the other words,on the result,for these reason
+chunk_167,GENERAL_linkers,"( ? ) several people are going in one direction, a businessman is walking the opposite way with a newspaper in his hand. 10.",While,in the other words,on the result,for these reason
+chunk_168,TOEIC_email,"Steinhart, ( ? ) your catering needs.",Thank you for contacting us regarding,Thank you to contacting us regarding,Thank you for contacting us,you for contacting us regarding
+chunk_169,TOEIC_email,( ? ) provide our services for your upcoming luncheon.,We would be happy to,We would be happy for,We would be happy,would be happy to
+chunk_170,TOEIC_email,"The main course ( ? ) sandwiches or hot foods, and we have a full selection of beverages and delicious desserts to complete the meal of your choice.",can consist of either,can consist for either,can consist of,consist of either
+chunk_171,TOEIC_email,"The main course can consist of either sandwiches or hot foods, and we have ( ? ) beverages and delicious desserts to complete the meal of your choice.",a full selection of,a full selection for,a full selection,full selection of
+chunk_172,TOEIC_email,"( ? ) if you prefer sandwiches or hot foods, I can send you the appropriate seasonal menu.",Once you let me know,Once you let me,you let me know,in the other words
+chunk_173,TOEIC_email,"Also, if any of your guests have allergies or dietary restrictions, ( ? ) highlight appropriate menu items for you.",I can be sure to,I can be sure for,I can be sure,can be sure to
+chunk_174,TOEIC_opinion,"( ? ) to food, we also can supply the serving staff for your event and decorations for tables and the rest of the room.",In addition,on addition,at addition,in the other words
+chunk_175,TOEIC_email,"( ? ) food, we also can supply the serving staff for your event and decorations for tables and the rest of the room.",In addition to,on addition to,at addition to,In addition for
+chunk_176,TOEIC_email,( ? ) serving you and your guests with all your business catering needs.,We look forward to,We look forward for,We look forward,look forward to
+chunk_177,TOEIC_email,"Yoshida, ( ? ): Dear Sir or Madam: Thank you very much for your e-mail welcoming me to Dale City.",To Whom It May Concern,for Whom It May Concern,To Whom It May,Whom It May Concern
+chunk_178,TOEIC_email,"Yoshida, To Whom It May Concern: ( ? ): Thank you very much for your e-mail welcoming me to Dale City.",Dear Sir or Madam,Dear Sir or,Sir or Madam,in the other words
+chunk_179,TOEIC_email,"Yoshida, To Whom It May Concern: Dear Sir or Madam: ( ? ) your e-mail welcoming me to Dale City.",Thank you very much for,Thank you very much to,Thank you very much,you very much for
+chunk_180,TOEIC_email,( ? ).,I appreciate your e-mail,I appreciate your,appreciate your e-mail,in the other words
+chunk_181,TOEIC_email,( ? ) changes in the meeting schedule.,This is to inform you of,This is to inform you for,This is for inform you of,This is to inform you
+chunk_182,TOEIC_email,"( ? ), could you extend the deadline?",Regarding the project proposal,Regarding the project,the project proposal,in the other words
+chunk_183,TOEIC_email,"Regarding the project proposal, ( ? ) the deadline?",could you extend,could you,you extend,in the other words
+chunk_184,TOEIC_email,( ? ) postpone the delivery date?,Would it be possible for you to,Would it be possible for you for,Would it be possible to you to,Would it be possible for you
+chunk_185,TOEIC_email,( ? ) send me a brochure.,I would appreciate it if you could,I would appreciate it if you,would appreciate it if you could,in the other words
+chunk_186,TOEIC_email,( ? ) having an interview with me?,Would you consider,Would you,you consider,in the other words
+chunk_187,TOEIC_email,( ? ) write a reference for me.,I would like you to,I would like you for,I would like you,would like you to
+chunk_188,TOEIC_email,( ? ) the library is located?,Can you tell me where,Can you tell me,you tell me where,in the other words
+chunk_189,TOEIC_email,( ? ) writing to me.,Thank you again for,Thank you again to,Thank you again,you again for
+chunk_190,TOEIC_email,( ? ) information from you.,I look forward to receiving,I look forward for receiving,I look forward to,look forward to receiving
+chunk_191,TOEIC_email,"( ? ), Best regards, .",Many thanks in advance,Many thanks in,thanks in advance,in the other words
+chunk_192,TOEIC_email,"Many thanks in advance, ( ? ), .",Best regards,in the other words,on the result,for these reason
+chunk_193,TOEIC_email,We will create a custom course ( ? ). .,according to your budget,according for your budget,According with,According for
+chunk_194,GENERAL_linkers,We will create a custom course ( ? ) your budget. .,according to,according for,According with,According for
+chunk_195,TOEIC_email,( ? ) the menu.,Prices vary depending on,Prices vary depending,vary depending on,in the other words
+chunk_196,TOEIC_email,( ? ) our website. .,"For details, please refer to","to details, please refer to","For details, please refer for","For details, please refer"
+chunk_197,TOEIC_email,Cancellations must be made 5 days ( ? ) the event. .,in advance of,on advance of,at advance of,in advance for
+chunk_198,TOEIC_email,"( ? ), please call us.",If you have any special requests,If you have any special,you have any special requests,in the other words
+chunk_199,TOEIC_opinion,"( ? ), I called the front desk the first might of my stay and asked for a wake-up call at 5:30 A.M.",To begin with,for begin with,To begin by,To begin
+chunk_200,GENERAL_linkers,"( ? ), that call never came, and I was late to my very first conference session.",However,in the other words,on the result,for these reason
+chunk_201,GENERAL_verb_patterns,"Then, after a long day, I ( ? ) have dinner delivered to my room from the hotel restaurant.",decided to,decided for,in the other words,on the result
+chunk_202,TOEIC_email,( ? ) provide additional training to your service staff.,I suggest that you,I suggest that,suggest that you,in the other words
+chunk_203,TOEIC_email,I suggest that you ( ? ) your service staff.,provide additional training to,provide additional training for,provide additional training,additional training to
+chunk_204,TOEIC_email,They need to know how to properly communicate with other members of the hotel staff to ( ? ) requests like wake-up calls and food orders do not fall through the cracks.,make sure that,make sure,sure that,in the other words
+chunk_205,TOEIC_email,They need to know how to properly communicate with other members of the hotel staff to make sure that requests like wake-up calls and food orders do not ( ? ).,fall through the cracks,fall through the,through the cracks,in the other words
+chunk_206,GENERAL_verb_patterns,They ( ? ) know how to properly communicate with other members of the hotel staff to make sure that requests like wake-up calls and food orders do not fall through the cracks.,need to,need for,in the other words,on the result
+chunk_207,TOEIC_email,( ? ) you've continued to experience these problems without getting help.,I'm really sorry to hear,I'm really sorry for hear,I'm really sorry to,really sorry to hear
+chunk_208,GENERAL_verb_patterns,I'm really sorry to hear you've ( ? ) experience these problems without getting help.,continued to,continued for,in the other words,on the result
+chunk_209,TOEIC_email,"( ? ), I need some additional information from you.",Before I call,Before I,I call,in the other words
+chunk_210,TOEIC_email,( ? ) the troubleshooting steps you've taken to remedy the problem on your own?,"What, if any, are","What, if any","if any, are",in the other words
+chunk_211,TOEIC_email,"Resne, ( ? ) the repairs to the parking area.",Thank you for letting us know about,Thank you to letting us know about,Thank you for letting us know,you for letting us know about
+chunk_212,TOEIC_email,"Since the repairs are starting soon, please answer the following questions ( ? ): How long do you anticipate it will take to complete?",as soon as possible,as soon as,soon as possible,in the other words
+chunk_213,TOEIC_email,"Since the repairs are starting soon, please answer the following questions as soon as possible: ( ? ) it will take to complete?",How long do you anticipate,How long do you,long do you anticipate,in the other words
+chunk_214,GENERAL_linkers,"Since the repairs are starting soon, please answer the following questions ( ? ) possible: How long do you anticipate it will take to complete?",as soon as,as soon,soon as,in the other words
+chunk_215,TOEIC_email,( ? ) the permit that is required for parking in the garage on Main Street?,Do we need to pay for,Do we need for pay for,Do we need to pay to,Do we need to pay
+chunk_216,GENERAL_verb_patterns,Do we ( ? ) pay for the permit that is required for parking in the garage on Main Street?,need to,need for,in the other words,on the result
+chunk_217,TOEIC_email,( ? ) a special time for residents to acquire the necessary permit.,Please consider arranging,Please consider,consider arranging,in the other words
+chunk_218,TOEIC_email,"Chen, ( ? ) making the move to the new San Francisco office.",Congratulations on,in the other words,on the result,for these reason
+chunk_219,TOEIC_email,"( ? ) the company does help its employees when they more to a new area of the courtly. first, the company has a connection with a real estate agent in San Francisco who can help you locate a new place to live.",You are correct that,You are correct,are correct that,in the other words
+chunk_220,TOEIC_opinion,"( ? ), the company will pay for the cost of a moving truck to ship your belonging to the new location.",In addition,on addition,at addition,in the other words
+chunk_221,GENERAL_linkers,"In addition, the company will pay for ( ? ) a moving truck to ship your belonging to the new location.",the cost of,the cost for,the cost,cost of
+chunk_222,TOEIC_email,( ? ) fill out a reimbursement request form and include the receipt.,You will need to,You will need for,You will need,will need to
+chunk_223,GENERAL_verb_patterns,You will ( ? ) fill out a reimbursement request form and include the receipt.,need to,need for,in the other words,on the result
+chunk_224,TOEIC_email,"( ? ), and I hope the move goes smoothly.",Best wishes to you,Best wishes for you,Best wishes to,wishes to you
+chunk_225,TOEIC_email,"Best wishes to you, and I hope the move ( ? ).",goes smoothly,in the other words,on the result,for these reason
+chunk_226,TOEIC_opinion,( ? ) dress neatly at the workplace.,I think we should,I think we,think we should,in the other words
+chunk_227,TOEIC_business,I think we should ( ? ).,dress neatly at the workplace,dress neatly at the,neatly at the workplace,in the other words
+chunk_228,TOEIC_picture,( ? ) two reasons why I think so. .,There are,There is,There be,in the other words
+chunk_229,TOEIC_opinion,( ? ) I think so. .,There are two reasons why,There is,There be,There are two reasons
+chunk_230,TOEIC_business,"Some may think newspaper advertisements are the best for ( ? ), but I think job search websites are the best. .",finding a job,finding a,a job,in the other words
+chunk_231,TOEIC_business,My opinion is that it's generally a ( ? ) uniforms in the office. .,good idea to introduce,good idea for introduce,good idea to,idea to introduce
+chunk_232,TOEIC_business,"First, you would have many more choices at those websites ( ? ). .",compared to other places,compared for other places,compared to other,to other places
+chunk_233,TOEIC_business,"Second, it would be easy to find a job that ( ? ). .",satisfies your requirements,satisfies your,your requirements,in the other words
+chunk_234,TOEIC_opinion,"( ? ) to the large amount of information websites have to offer, a variety of other services that they provide also assist job seekers in finding work. .",In addition,on addition,at addition,in the other words
+chunk_235,TOEIC_email,"( ? ) the large amount of information websites have to offer, a variety of other services that they provide also assist job seekers in finding work. .",In addition to,on addition to,at addition to,In addition for
+chunk_236,TOEIC_business,"In addition to the large amount of information websites have to offer, ( ? ) that they provide also assist job seekers in finding work. .",a variety of other services,a variety for other services,a variety of other,variety of other services
+chunk_237,TOEIC_business,"In addition to the large amount of information websites have to offer, a variety of other services that they provide also ( ? ). .",assist job seekers in finding work,assist job seekers in finding,job seekers in finding work,in the other words
+chunk_238,GENERAL_linkers,"In addition to the large amount of information websites have to offer, ( ? ) other services that they provide also assist job seekers in finding work. .",a variety of,a variety for,a variety,variety of
+chunk_239,TOEIC_business,( ? ) the benefits for the employer. .,Let me first discuss,Let me first,me first discuss,in the other words
+chunk_240,TOEIC_business,( ? ) another advantage for the employer. .,I would like to point out,I would like for point out,I would like to point,would like to point out
+chunk_241,TOEIC_opinion,"( ? ), causal outfits are often considered inappropriate for business situations. .",Furthermore,in the other words,on the result,for these reason
+chunk_242,TOEIC_business,"Furthermore, causal outfits ( ? ) for business situations. .",are often considered inappropriate,are often considered,often considered inappropriate,in the other words
+chunk_243,TOEIC_opinion,"( ? ), we need to invest part of our income in business attire. .",In short,on short,at short,in the other words
+chunk_244,TOEIC_business,"In short, we need to ( ? ) business attire. .",invest part of our income in,invest part for our income in,invest part of our income,part of our income in
+chunk_245,GENERAL_verb_patterns,"In short, we ( ? ) invest part of our income in business attire. .",need to,need for,in the other words,on the result
+chunk_246,TOEIC_opinion,"( ? ), getting some exercise may be a good way to relieve stress. .",For instance,to instance,in the other words,on the result
+chunk_247,TOEIC_business,"For instance, getting some exercise may be a good way to ( ? ). .",relieve stress,in the other words,on the result,for these reason
+chunk_248,TOEIC_opinion,( ? ) a company cuts employee bonuses. .,Let's say,in the other words,on the result,for these reason
+chunk_249,TOEIC_business,"If incomes decrease, ( ? ) as well. .",employee motivation might decrease,employee motivation might,motivation might decrease,in the other words
+chunk_250,GENERAL_linkers,"( ? ), banner ads are one of the best methods to advertise products. .",Therefore,in the other words,on the result,for these reason
+chunk_251,TOEIC_business,"These opinions, however, ( ? ). .",overlook one important market factor,overlook one important market,one important market factor,in the other words
+chunk_252,GENERAL_linkers,"These opinions, ( ? ), overlook one important market factor. .",however,in the other words,on the result,for these reason
+chunk_253,TOEIC_personal_response,"Wearing uniforms saves employees time and energy that they would ( ? ) spend on choosing work outfits; on the other hand, it constrains their ability to express themselves fully in the workplace. .",otherwise,in the other words,on the result,for these reason
+chunk_254,TOEIC_opinion,"Wearing uniforms saves employees time and energy that they would otherwise spend on choosing work outfits; ( ? ), it constrains their ability to express themselves fully in the workplace. .",on the other hand,in the other hand,at the other hand,On another hand
+chunk_255,GENERAL_linkers,"( ? ) some workplaces offer onsite childcare for working parents, it is not a commonly provided benefit. .",Although,in the other words,on the result,for these reason
+chunk_256,TOEIC_opinion,"( ? ), I am against the idea that we should wear suits in the workplace. .",In conclusion,on conclusion,at conclusion,On conclusion
+chunk_257,TOEIC_opinion,"( ? ), although both eating out and cooking at home have good points, I think eating out is better for me. .",In conclusion,on conclusion,at conclusion,On conclusion
+chunk_258,GENERAL_linkers,"In conclusion, ( ? ) both eating out and cooking at home have good points, I think eating out is better for me. .",although,in the other words,on the result,for these reason
+chunk_259,TOEIC_opinion,"( ? ), I believe personal recommendations are the most effective way to find a job. .",In summary,on summary,at summary,in the other words
+chunk_260,TOEIC_business,( ? ) working with colleagues.,I prefer working alone rather than,I prefer working alone rather,prefer working alone rather than,in the other words
+chunk_261,TOEIC_picture,( ? ) two reasons for my preference for this working style: the efficiency and the rewarding experiences. .,There are,There is,There be,in the other words
+chunk_262,TOEIC_opinion,( ? ) my preference for this working style: the efficiency and the rewarding experiences. .,There are two reasons for,There are two reasons to,There is,There be
+chunk_263,TOEIC_business,"( ? ), working alone can save extra time and labor which have to be spent if you work with your colleagues. .",For one thing,to one thing,For one,one thing
+chunk_264,TOEIC_business,"For one thing, working alone can ( ? ) which have to be spent if you work with your colleagues. .",save extra time and labor,save extra time and,extra time and labor,in the other words
+chunk_265,TOEIC_opinion,"( ? ), it takes a lot of time and effort to call for meetings or to coordinate division of labor among them members. .",For instance,to instance,in the other words,on the result
+chunk_266,TOEIC_business,"For instance, it ( ? ) call for meetings or to coordinate division of labor among them members. .",takes a lot of time and effort to,takes a lot for time and effort to,takes a lot of time and effort for,takes a lot of time and effort
+chunk_267,TOEIC_business,"For instance, it takes a lot of time and effort to call for meetings or to ( ? ) among them members. .",coordinate division of labor,coordinate division for labor,coordinate division of,division of labor
+chunk_268,GENERAL_linkers,"For instance, it takes ( ? ) time and effort to call for meetings or to coordinate division of labor among them members. .",a lot of,a lot for,a lot,lot of
+chunk_269,TOEIC_opinion,"( ? ), working on your own is more efficient than working with colleagues. .",In short,on short,at short,in the other words
+chunk_270,TOEIC_business,Another thing is that working alone will ( ? ) and provide you with a sense of accomplishment which will lead to growth as a businessperson. .,foster responsibility,in the other words,on the result,for these reason
+chunk_271,TOEIC_business,Another thing is that working alone will foster responsibility and provide you with ( ? ) which will lead to growth as a businessperson. .,a sense of accomplishment,a sense for accomplishment,a sense of,sense of accomplishment
+chunk_272,TOEIC_business,Another thing is that working alone will foster responsibility and provide you with a sense of accomplishment which will ( ? ) a businessperson. .,lead to growth as,lead for growth as,lead to growth,to growth as
+chunk_273,GENERAL_linkers,Another thing is that working alone will foster responsibility and provide you with ( ? ) accomplishment which will lead to growth as a businessperson. .,a sense of,a sense for,a sense,sense of
+chunk_274,GENERAL_verb_patterns,Another thing is that working alone will foster responsibility and provide you with a sense of accomplishment which will ( ? ) growth as a businessperson. .,lead to,lead for,in the other words,on the result
+chunk_275,TOEIC_opinion,"( ? ) if you work with coworkers, they'll give your ideas and advice.",It's true that,It's true,true that,in the other words
+chunk_276,TOEIC_picture,"However, ever if you're faced with problems, ( ? ) other ways to solve them, such as discussing them with your client or asking a consultant for advice. .",there are,There is,There be,in the other words
+chunk_277,TOEIC_business,"However, ever if you're faced with problems, there are ( ? ) them, such as discussing them with your client or asking a consultant for advice. .",other ways to solve,other ways for solve,other ways to,ways to solve
+chunk_278,GENERAL_linkers,"( ? ), ever if you're faced with problems, there are other ways to solve them, such as discussing them with your client or asking a consultant for advice. .",However,in the other words,on the result,for these reason
+chunk_279,TOEIC_opinion,"( ? ), I would prefer working alone to working with coworkers in order to maximize work efficiency and to continue growing as a businessperson. .",To sum up,for sum up,To summary,For sum up
+chunk_280,GENERAL_linkers,"To sum up, I would prefer working alone to working with coworkers ( ? ) maximize work efficiency and to continue growing as a businessperson. .",in order to,on order to,at order to,in order for
+chunk_281,TOEIC_business,"( ? ), I have worked on many projects, both alone and together with colleagues.",In my professional life,on my professional life,at my professional life,In my professional
+chunk_282,TOEIC_business,"I have found that it is sometimes possible to complete tasks more quickly ( ? ) than when collaborating with others, because I do not need to explain my plans or negotiate decisions with others.",on my own,in my own,at my own,on my
+chunk_283,TOEIC_business,"I have found that it is sometimes possible to complete tasks more quickly on my own than when ( ? ), because I do not need to explain my plans or negotiate decisions with others.",collaborating with others,collaborating by others,collaborating with,with others
+chunk_284,GENERAL_verb_patterns,"I have found that it is sometimes possible to complete tasks more quickly on my own than when collaborating with others, because I do not ( ? ) explain my plans or negotiate decisions with others.",need to,need for,in the other words,on the result
+chunk_285,TOEIC_business,"However, the small advantage is ( ? ) the many benefits of working with a helpful group of coworkers.",greatly outweighed by,greatly outweighed with,greatly outweighed,outweighed by
+chunk_286,GENERAL_linkers,"( ? ), the small advantage is greatly outweighed by the many benefits of working with a helpful group of coworkers.",However,in the other words,on the result,for these reason
+chunk_287,TOEIC_opinion,"( ? ), I would always prefer to work in a team than to work alone. .",If I had a choice,If I had a,I had a choice,in the other words
+chunk_288,TOEIC_business,"At work, you may frequently ( ? ) a high-stress environment, but a supportive network of coworkers can help to ease your tension.",find yourself in,find yourself,yourself in,in the other words
+chunk_289,TOEIC_business,"At work, you may frequently find yourself in a ( ? ), but a supportive network of coworkers can help to ease your tension.",high-stress environment,in the other words,on the result,for these reason
+chunk_290,TOEIC_business,"At work, you may frequently find yourself in a high-stress environment, but a ( ? ) can help to ease your tension.",supportive network of coworkers,supportive network for coworkers,supportive network of,network of coworkers
+chunk_291,TOEIC_business,"At work, you may frequently find yourself in a high-stress environment, but a supportive network of coworkers can help to ( ? ).",ease your tension,ease your,your tension,in the other words
+chunk_292,GENERAL_verb_patterns,"At work, you may frequently find yourself in a high-stress environment, but a supportive network of coworkers can ( ? ) ease your tension.",help to,help for,in the other words,on the result
+chunk_293,TOEIC_picture,It can be hard for people to alleviate their stress when they are working in solitude and ( ? ) nobody to talk to.,there is,There are,There be,in the other words
+chunk_294,TOEIC_business,It can be hard for people to alleviate their stress when they are ( ? ) and there is nobody to talk to.,working in solitude,working in,in solitude,in the other words
+chunk_295,TOEIC_business,"However, when you have collages with whom you've been working closely, it is easy to ( ? ) them and try to find solutions together.",share your worries with,share your worries by,share your worries,your worries with
+chunk_296,TOEIC_business,"However, when you have collages with whom you've been working closely, it is easy to share your worries with them and try to ( ? ).",find solutions together,find solutions,solutions together,in the other words
+chunk_297,GENERAL_linkers,"( ? ), when you have collages with whom you've been working closely, it is easy to share your worries with them and try to find solutions together.",However,in the other words,on the result,for these reason
+chunk_298,GENERAL_verb_patterns,"However, when you have collages with whom you've been working closely, it is easy to share your worries with them and ( ? ) find solutions together.",try to,try for,in the other words,on the result
+chunk_299,GENERAL_linkers,"( ? ) you cannot solve all of your problems immediately, the simple act of talking about your troubles with people you trust will definitely help to minimize your stress.",Even if,in the other words,on the result,for these reason
+chunk_300,GENERAL_verb_patterns,"Even if you cannot solve all of your problems immediately, the simple act of talking about your troubles with people you trust will definitely ( ? ) minimize your stress.",help to,help for,in the other words,on the result
+chunk_301,TOEIC_business,"Having a network of teammates even helps to prevent you from being ( ? ) in the first place, because your coworkers will have an eye on you and will take care of you. .",stressed out,in the other words,on the result,for these reason
+chunk_302,TOEIC_business,"Having a network of teammates even helps to prevent you from being stressed out ( ? ), because your coworkers will have an eye on you and will take care of you. .",in the first place,on the first place,at the first place,in the first
+chunk_303,GENERAL_verb_patterns,"Having a network of teammates even ( ? ) prevent you from being stressed out in the first place, because your coworkers will have an eye on you and will take care of you. .",helps to,helps for,in the other words,on the result
+chunk_304,TOEIC_opinion,"( ? ) to supporting, you emotionally, teammates can help you find your way when you are lost in a project, and they can provide helpful guidance that raises the overall quality of the work being completed.",In addition,on addition,at addition,in the other words
+chunk_305,TOEIC_email,"( ? ) supporting, you emotionally, teammates can help you find your way when you are lost in a project, and they can provide helpful guidance that raises the overall quality of the work being completed.",In addition to,on addition to,at addition to,In addition for
+chunk_306,TOEIC_business,"In addition to supporting, you emotionally, teammates can help you ( ? ) when you are lost in a project, and they can provide helpful guidance that raises the overall quality of the work being completed.",find your way,find your,your way,in the other words
+chunk_307,TOEIC_business,"In addition to supporting, you emotionally, teammates can help you find your way when you are lost in a project, and they can provide helpful guidance that ( ? ) the work being completed.",raises the overall quality of,raises the overall quality for,raises the overall quality,the overall quality of
+chunk_308,TOEIC_business,"The saying ""( ? )"" certainly holds true here.",two heads are better than one,two heads are better than,heads are better than one,in the other words
+chunk_309,TOEIC_business,"People are far more likely to succeed when they can ( ? ) help understand and respond to confusing challenges; in fact, sometimes the most innovative and effective solutions are the result of collaboration.",rely on their team to,rely on their team for,rely on their team,on their team to
+chunk_310,TOEIC_business,"People are far more likely to succeed when they can rely on their team to help understand and respond to confusing challenges; in fact, sometimes the most innovative and effective solutions are ( ? ).",the result of collaboration,the result for collaboration,the result of,result of collaboration
+chunk_311,GENERAL_linkers,"People are far more likely to succeed when they can rely on their team to help understand and respond to confusing challenges; ( ? ), sometimes the most innovative and effective solutions are the result of collaboration.",in fact,on fact,at fact,in the other words
+chunk_312,TOEIC_business,"Even for those with ( ? ), it is always nerve-racking to make important decisions or to hand in a report to the senior management.",extensive work experience,extensive work,work experience,in the other words
+chunk_313,TOEIC_business,"Even for those with extensive work experience, it is always nerve-racking to make important decisions or to ( ? ) the senior management.",hand in a report to,hand in a report for,hand in a report,in a report to
+chunk_314,TOEIC_picture,"Even if you carefully check every detail and review every step on your own, ( ? ) a chance you might miss something.",there is,There are,There be,in the other words
+chunk_315,TOEIC_business,"Even if you carefully check every detail and review every step on your own, there is a chance you might ( ? ).",miss something,in the other words,on the result,for these reason
+chunk_316,GENERAL_linkers,"( ? ) you carefully check every detail and review every step on your own, there is a chance you might miss something.",Even if,in the other words,on the result,for these reason
+chunk_317,TOEIC_business,Knowing that you have your teammates' support also has the benefit of ( ? ) when you need them. .,giving you courage and confidence,giving you courage and,you courage and confidence,in the other words
+chunk_318,TOEIC_opinion,"( ? ), I greatly prefer having a team of coworkers to work with over working alone.",To reiterate my earlier statement,for reiterate my earlier statement,To reiterate my earlier,reiterate my earlier statement
+chunk_319,TOEIC_business,"The trust that I have in my colleagues, who will always be there for me at work to help me handle my stress, to guide me when I'm puzzled, and to review and confirm my work, is ( ? ) a few extra hours of team meetings.",well worth the cost of,well worth the cost for,well worth the cost,worth the cost of
+chunk_320,GENERAL_linkers,"The trust that I have in my colleagues, who will always be there for me at work to help me handle my stress, to guide me when I'm puzzled, and to review and confirm my work, is well worth ( ? ) a few extra hours of team meetings.",the cost of,the cost for,the cost,cost of
+chunk_321,TOEIC_opinion,"( ? ) stated above, I would never want to work alone. .",Given all of the advantages,Given all for the advantages,Given all of the,all of the advantages
+chunk_322,GENERAL_verb_patterns,"Given all of the advantages stated above, I would never ( ? ) work alone. .",want to,want for,in the other words,on the result
+chunk_323,TOEIC_picture,Yet teaching is not necessarily easy; ( ? ) many important characteristics teachers must possess in order to be successful in their work. .,there are,There is,There be,in the other words
+chunk_324,TOEIC_opinion,Yet teaching is ( ? ) easy; there are many important characteristics teachers must possess in order to be successful in their work. .,not necessarily,in the other words,on the result,for these reason
+chunk_325,TOEIC_learning_work,Yet teaching is not necessarily easy; there are many important characteristics teachers ( ? ) be successful in their work. .,must possess in order to,must possess in order for,must possess in order,possess in order to
+chunk_326,GENERAL_linkers,Yet teaching is not necessarily easy; there are many important characteristics teachers must possess ( ? ) be successful in their work. .,in order to,on order to,at order to,in order for
+chunk_327,TOEIC_learning_work,"First, teachers must be highly knowledgeable about their ( ? ), and just as importantly, they must be interested and motivated to keep their subject matter knowledge current.",subject matter,in the other words,on the result,for these reason
+chunk_328,TOEIC_learning_work,"First, teachers must be highly knowledgeable about their subject matter, and just as importantly, they must be interested and motivated to ( ? ).",keep their subject matter knowledge current,keep their subject matter knowledge,their subject matter knowledge current,in the other words
+chunk_329,TOEIC_opinion,"( ? ), a biology teacher should know not only the curriculum designed for his or her students, but also the most interesting current topics in biology research and how those topics might connect to the student curriculum.",For example,to example,For examples,For instance of
+chunk_330,TOEIC_learning_work,"For example, a biology teacher should know not only the curriculum designed for his or her students, but also the most interesting current topics in biology research and how those topics might ( ? ) the student curriculum.",connect to,connect for,in the other words,on the result
+chunk_331,TOEIC_learning_work,Their best students will then be well prepared to ( ? ) further studies in biology.,go on to,go on for,go on,on to
+chunk_332,TOEIC_learning_work,"Second, teachers should have the ability to ( ? ).",remain calm in stressful situations,remain calm in stressful,calm in stressful situations,in the other words
+chunk_333,GENERAL_linkers,"Second, teachers should have ( ? ) remain calm in stressful situations.",the ability to,the ability for,the ability,ability to
+chunk_334,TOEIC_opinion,"( ? ), at the end of the school year, students are usually nervous about their marks and teachers typically have piles of tests or final papers waiting on their backs to be carefully graded.",For example,to example,For examples,For instance of
+chunk_335,GENERAL_linkers,"For example, ( ? ) the school year, students are usually nervous about their marks and teachers typically have piles of tests or final papers waiting on their backs to be carefully graded.",at the end of,in the end of,on the end of,at the end for
+chunk_336,TOEIC_learning_work,"In such situations, it is crucial that the teacher remain calm, assign each paper a fair grade, and help students ( ? ). .",get through this stressful time,get through this stressful,through this stressful time,in the other words
+chunk_337,TOEIC_learning_work,"Schools assign teachers ( ? ) administrative paperwork to do, so it is helpful to be a tidy person, as it will make the paperwork more bearable and less likely to consume a lot of planning lessons.",an immense amount of,an immense amount for,an immense amount,immense amount of
+chunk_338,GENERAL_linkers,"Schools assign teachers an immense amount of administrative paperwork to do, so it is helpful to be a tidy person, as it will make the paperwork more bearable and less likely to consume ( ? ) planning lessons.",a lot of,a lot for,a lot,lot of
+chunk_339,TOEIC_learning_work,"Lessons that are well organized are ( ? ), so students can learn the material as quickly as possible. .",easy to follow,easy for follow,easy to,to follow
+chunk_340,TOEIC_learning_work,An important decision when ( ? ) an organization is whether to hire people who have recently graduated from school or people who have prior experience.,bringing new people into,bringing new people in,bringing new people,new people into
+chunk_341,TOEIC_learning_work,An important decision when bringing new people into an organization is whether to hire people who have recently graduated from school or people who have ( ? ).,prior experience,in the other words,on the result,for these reason
+chunk_342,TOEIC_picture,"Schools equip students with a wide array of skills that prepare them to enter professions at an introductory level, and ( ? ) no doubt that these programs are valuable.",there is,There are,There be,in the other words
+chunk_343,TOEIC_learning_work,"Schools ( ? ) a wide array of skills that prepare them to enter professions at an introductory level, and there is no doubt that these programs are valuable.",equip students with,equip students by,equip students,students with
+chunk_344,TOEIC_learning_work,"Schools equip students with ( ? ) that prepare them to enter professions at an introductory level, and there is no doubt that these programs are valuable.",a wide array of skills,a wide array for skills,a wide array of,wide array of skills
+chunk_345,TOEIC_learning_work,"Schools equip students with a wide array of skills that prepare them to enter professions at an introductory level, and ( ? ) these programs are valuable.",there is no doubt that,There are,There be,there is no doubt
+chunk_346,GENERAL_linkers,"Schools equip students with ( ? ) skills that prepare them to enter professions at an introductory level, and there is no doubt that these programs are valuable.",a wide array of,a wide array for,a wide array,wide array of
+chunk_347,GENERAL_linkers,"( ? ), employees in the latter category bring with them supplicated skills, specialized knowledge, informed perspectives that allow them to begin working at an advanced level from the start.",However,in the other words,on the result,for these reason
+chunk_348,TOEIC_learning_work,( ? ) I agree with the statement that it is better for a company to hire a job applicant who already has work experience than to hire an applicant who recently graduated from school .,That is why,That is,is why,in the other words
+chunk_349,TOEIC_learning_work,Skills are effectively ( ? ) and constructive feedback.,developed through repeated practice,developed through repeated,through repeated practice,in the other words
+chunk_350,TOEIC_learning_work,Skills are effectively developed through repeated practice and ( ? ).,constructive feedback,in the other words,on the result,for these reason
+chunk_351,TOEIC_learning_work,"While recent graduates may have practiced their skills in school, professionals have had much more practice (and experience integrating feedback) and ( ? ) a higher level.",tend to perform at,tend for perform at,tend to perform,to perform at
+chunk_352,GENERAL_linkers,"( ? ) recent graduates may have practiced their skills in school, professionals have had much more practice (and experience integrating feedback) and tend to perform at a higher level.",While,in the other words,on the result,for these reason
+chunk_353,GENERAL_verb_patterns,"While recent graduates may have practiced their skills in school, professionals have had much more practice (and experience integrating feedback) and ( ? ) perform at a higher level.",tend to,tend for,in the other words,on the result
+chunk_354,TOEIC_learning_work,Companies who hire employees with experience can ( ? ) the training periods that they would need to provide to recent graduates.,shorten or even eliminate,shorten or even,or even eliminate,in the other words
+chunk_355,GENERAL_verb_patterns,Companies who hire employees with experience can shorten or even eliminate the training periods that they would ( ? ) provide to recent graduates.,need to,need for,in the other words,on the result
+chunk_356,TOEIC_opinion,"( ? ), a computer programmer who has just graduated from school may need to work on basic coding for elementary types of programs while learning the nuances of his or her new profession.",For example,to example,For examples,For instance of
+chunk_357,GENERAL_linkers,"For example, a computer programmer who has just graduated from school may need to work on basic coding for elementary types of programs ( ? ) learning the nuances of his or her new profession.",while,in the other words,on the result,for these reason
+chunk_358,GENERAL_verb_patterns,"For example, a computer programmer who has just graduated from school may ( ? ) work on basic coding for elementary types of programs while learning the nuances of his or her new profession.",need to,need for,in the other words,on the result
+chunk_359,TOEIC_picture,"( ? ) an old saying that experience is the best teacher, and this statement has much truth to it.",There is,There are,There be,in the other words
+chunk_360,TOEIC_learning_work,"( ? ) experience is the best teacher, and this statement has much truth to it.",There is an old saying that,There are,There be,There is an old saying
+chunk_361,TOEIC_learning_work,"There is an old saying that experience is the best teacher, and this statement ( ? ).",has much truth to it,has much truth for it,has much truth to,much truth to it
+chunk_362,TOEIC_learning_work,Collogues and trade schools cannot possibly ( ? ) every potential problem or situation; the curriculum probably focuses on the most common scenarios.,prepare students for,prepare students to,prepare students,students for
+chunk_363,TOEIC_opinion,"( ? ), the computer programmer fresh out of school may have lots of experience troubleshooting the most common computer problems.",For example,to example,For examples,For instance of
+chunk_364,TOEIC_learning_work,"For example, the computer programmer ( ? ) may have lots of experience troubleshooting the most common computer problems.",fresh out of school,fresh out for school,fresh out of,out of school
+chunk_365,TOEIC_learning_work,But the programmer who has years of experience will have amassed ( ? ) specialized knowledge about potential bugs.,a considerable amount of,a considerable amount for,a considerable amount,considerable amount of
+chunk_366,TOEIC_learning_work,"Finally, the perspective that comes from working in one field ( ? ) also gives an advantage to candidates with experience.",over a period of time,over a period for time,over a period of,a period of time
+chunk_367,TOEIC_learning_work,"( ? ), the computer programmer with years of experience is positioned to recognize industry trends and adjust accordingly over time.",To use the same example again,for use the same example again,To use the same example,use the same example again
+chunk_368,GENERAL_linkers,"To use the same example again, the computer programmer with years of experience is positioned to recognize industry trends and adjust accordingly ( ? ).",over time,in the other words,on the result,for these reason
+chunk_369,TOEIC_opinion,"That person will have useful knowledge and insight about, ( ? ), applications that failed before going to market or failed to make any profits in the company in the past; thus, the experienced employee can help company avoid making similar mistakes in the future. .",for example,to example,For examples,For instance of
+chunk_370,TOEIC_learning_work,"That person will have useful knowledge and insight about, for example, applications that failed before ( ? ) or failed to make any profits in the company in the past; thus, the experienced employee can help company avoid making similar mistakes in the future. .",going to market,going for market,going to,to market
+chunk_371,GENERAL_linkers,"That person will have useful knowledge and insight about, for example, applications that failed before going to market or failed to make any profits in the company ( ? ); thus, the experienced employee can help company avoid making similar mistakes in the future. .",in the past,on the past,at the past,in the
+chunk_372,GENERAL_linkers,"That person will have useful knowledge and insight about, for example, applications that failed before going to market or failed to make any profits in the company in the past; thus, the experienced employee can help company avoid making similar mistakes ( ? ). .",in the future,on the future,at the future,in the
+chunk_373,TOEIC_learning_work,Hiring the right people is one of the most important factors ( ? ) an organization's success.,contributing to,contributing for,in the other words,on the result
+chunk_374,GENERAL_linkers,Hiring the right people is ( ? ) important factors contributing to an organization's success.,one of the most,one for the most,one of the,of the most
+chunk_375,TOEIC_learning_work,"Hiring people immediately after their graduation, though it may save a bit of money in salary in the short-time, will actually cost a company more because it requires ( ? ).",a lengthy period of training,a lengthy period for training,a lengthy period of,lengthy period of training
+chunk_376,GENERAL_linkers,"( ? ), new hires who have experience can begin knowledge, and informed perspectives from their first days on the job.",However,in the other words,on the result,for these reason
+chunk_377,IELTS_academic_frame,How the Polynesian islands were colonised ( ? ) dogged anthropologists throughout the twentieth century.,is a question that,is a question,a question that,in the other words
+chunk_378,IELTS_academic_frame,How the Polynesian islands were colonised is a question that dogged anthropologists ( ? ).,throughout the twentieth century,throughout the twentieth,the twentieth century,in the other words
+chunk_379,IELTS_academic_frame,Is it possible that ancient seafarers travelled from South America and discovered these islands ( ? ) the primitive tools they had on hand?,using only,in the other words,on the result,for these reason
+chunk_380,IELTS_academic_frame,Is it possible that ancient seafarers travelled from South America and discovered these islands using only the primitive tools they had ( ? )?,on hand,in hand,at hand,in the other words
+chunk_381,IELTS_academic_frame,This issue ( ? ) by the Norwegian explorer and writer Thor Heyerdahl.,was laid to rest,was laid for rest,was laid to,laid to rest
+chunk_382,IELTS_academic_frame,He led an expedition from Peru to Polynesia using a raft ( ? ) balsa wood and other materials that were available to the Inca people.,constructed from,constructed of,in the other words,on the result
+chunk_383,IELTS_academic_frame,He led an expedition from Peru to Polynesia using a raft constructed from balsa wood and other materials that were ( ? ) the Inca people.,available to,available for,in the other words,on the result
+chunk_384,GENERAL_linkers,They showed that it was an easy and safe journey ( ? ) the favourable trade winds.,because of,because for,in the other words,on the result
+chunk_385,IELTS_academic_frame,"( ? ) the large number of fish that gathered around the raft, it was possible to eat on the journey, and the fish provided a source of hydration.",Thanks to,Thanks for,thanks for,because to
+chunk_386,IELTS_academic_frame,"Thanks to the large number of fish that gathered around the raft, it was possible to eat on the journey, and the fish ( ? ) hydration.",provided a source of,provided a source for,provided a source,a source of
+chunk_387,IELTS_academic_frame,They were able to ( ? ) by following the stars just like the early explorers.,find their bearings,find their,their bearings,in the other words
+chunk_388,IELTS_academic_frame,Other scientists have ( ? ) and were successful as well.,followed in Heyerdahl's footsteps,followed in Heyerdahl's,in Heyerdahl's footsteps,in the other words
+chunk_389,IELTS_academic_frame,Plastic ( ? ) the most useful invention in the world today.,is arguably,in the other words,on the result,for these reason
+chunk_390,IELTS_academic_frame,"Plastic is so malleable that it ( ? ) any shape and used for a variety of products, from the coating of our undersea internet cables to make them waterproof, to making baby bottles shatterproof.",can be formed into,can be formed in,can be formed,be formed into
+chunk_391,IELTS_academic_frame,"Plastic is so malleable that it can be formed into any shape and ( ? ) products, from the coating of our undersea internet cables to make them waterproof, to making baby bottles shatterproof.",used for a variety of,used for a variety for,used to a variety of,used for a variety
+chunk_392,GENERAL_linkers,"Plastic is so malleable that it can be formed into any shape and used for ( ? ) products, from the coating of our undersea internet cables to make them waterproof, to making baby bottles shatterproof.",a variety of,a variety for,a variety,variety of
+chunk_393,IELTS_academic_frame,Where did the idea of using this amazing invention ( ? )?,spring from,spring of,in the other words,on the result
+chunk_394,GENERAL_linkers,Where did ( ? ) using this amazing invention spring from?,the idea of,the idea for,the idea,idea of
+chunk_395,IELTS_academic_frame,Mankind has been using simple plastics ( ? ) most people think.,for longer than,to longer than,for longer,longer than
+chunk_396,IELTS_academic_frame,Their earliest origins ( ? ) 1500 BCE when the Aztecs played a religious game with natural rubber balls.,can be traced to,can be traced for,can be traced,be traced to
+chunk_397,IELTS_academic_frame,"( ? ) plastics came in 1862 when the British inventor Alexander Parkes came up with 'Parkesine', which could be easily moulded into household products, such as buttons and combs.",The turning point for,The turning point to,The turning point,turning point for
+chunk_398,IELTS_academic_frame,"The turning point for plastics came in 1862 when the British inventor Alexander Parkes ( ? ) 'Parkesine', which could be easily moulded into household products, such as buttons and combs.",came up with,came up by,came up,up with
+chunk_399,IELTS_academic_frame,"Unfortunately, he was a terrible businessman, and he quickly ( ? ).",went bankrupt,in the other words,on the result,for these reason
+chunk_400,IELTS_academic_frame,"However, ( ? ) the plastic age truly began in 1907 with the creation of 'Bakelite', the world's first synthetic plastic.",the birth of,the birth for,the birth,birth of
+chunk_401,GENERAL_linkers,"( ? ), the birth of the plastic age truly began in 1907 with the creation of 'Bakelite', the world's first synthetic plastic.",However,in the other words,on the result,for these reason
+chunk_402,IELTS_academic_frame,"Unfortunately, plastic's environmental impact has become a growing concern, and ( ? ), the first biodegradable plastic bottle was recently launched by a popular soda company.",in response,on response,at response,in the other words
+chunk_403,IELTS_evidence_history,"However, considering ( ? ) passengers, there was a severe lack of lifeboats.",the number of,the number for,the number,number of
+chunk_404,IELTS_evidence_history,"However, considering the number of passengers, there was ( ? ) lifeboats.",a severe lack of,a severe lack for,a severe lack,severe lack of
+chunk_405,GENERAL_linkers,"( ? ), considering the number of passengers, there was a severe lack of lifeboats.",However,in the other words,on the result,for these reason
+chunk_406,IELTS_evidence_history,"Although ( ? ) exactly what happened, we know that the captain ignored the iceberg warnings while attempting to keep to a tight timetable.",accounts vary as to,accounts vary as for,accounts vary as,vary as to
+chunk_407,IELTS_evidence_history,"Although accounts vary as to exactly what happened, we know that the captain ignored the iceberg warnings ( ? ) keep to a tight timetable.",while attempting to,while attempting for,while attempting,attempting to
+chunk_408,IELTS_evidence_history,"Although accounts vary as to exactly what happened, we know that the captain ignored the iceberg warnings while attempting to ( ? ).",keep to a tight timetable,keep for a tight timetable,keep to a tight,to a tight timetable
+chunk_409,GENERAL_linkers,"( ? ) accounts vary as to exactly what happened, we know that the captain ignored the iceberg warnings while attempting to keep to a tight timetable.",Although,in the other words,on the result,for these reason
+chunk_410,GENERAL_linkers,"Although accounts vary as to exactly what happened, we know that the captain ignored the iceberg warnings ( ? ) attempting to keep to a tight timetable.",while,in the other words,on the result,for these reason
+chunk_411,IELTS_evidence_history,"On the 14th, the ship hit a large iceberg and sank, ( ? ) the loss of 1,500 lives.",resulting in,in the other words,on the result,for these reason
+chunk_412,IELTS_evidence_history,"( ? ), there were many reasons why so many people died.",In hindsight,on hindsight,at hindsight,in the other words
+chunk_413,IELTS_evidence_history,"Before being found, many people had serious doubts that the Titanic would be found, and ( ? ) locate it had proven unsuccessful.",previous attempts to,previous attempts for,previous attempts,attempts to
+chunk_414,IELTS_evidence_history,"Before being found, many people had serious doubts that the Titanic would be found, and previous attempts to locate it had ( ? ).",proven unsuccessful,in the other words,on the result,for these reason
+chunk_415,IELTS_evidence_history,"However, in 1985, an expedition by a French-American team discovered the ship's remains, ( ? ) following the debris scattered along the seabed.",finding the site by,finding the site with,finding the site,the site by
+chunk_416,GENERAL_linkers,"( ? ), in 1985, an expedition by a French-American team discovered the ship's remains, finding the site by following the debris scattered along the seabed.",However,in the other words,on the result,for these reason
+chunk_417,IELTS_evidence_history,"( ? ), treasure hunters, in partnership with filmmakers, have found a treasure trove of historical items.",Since its discovery,Since its,its discovery,in the other words
+chunk_418,IELTS_evidence_history,"Since its discovery, treasure hunters, ( ? ) filmmakers, have found a treasure trove of historical items.",in partnership with,on partnership with,at partnership with,in partnership by
+chunk_419,IELTS_problem_solution,"Idaho has always been ( ? ) beavers, large rodents that inhabit the rivers of North America.",overpopulated with,overpopulated by,in the other words,on the result
+chunk_420,IELTS_problem_solution,But this nuisance became even more serious as the construction of homes ( ? ) the species' natural habitat.,encroached on,in the other words,on the result,for these reason
+chunk_421,IELTS_problem_solution,"The beaver's instinct is to build dams in rivers, which ( ? ).",alter the landscape,alter the,the landscape,in the other words
+chunk_422,GENERAL_linkers,"( ? ), these dams can also damage people's domiciles and property.",However,in the other words,on the result,for these reason
+chunk_423,GENERAL_verb_patterns,"In 1948, game wardens ( ? ) relocate some of the beavers into Chamberlain Basin.",decided to,decided for,in the other words,on the result
+chunk_424,IELTS_problem_solution,"It also ( ? ) use horses to transport the beavers, as the different animals grew agitated when they were close to each other.",proved impossible to,proved impossible for,proved impossible,impossible to
+chunk_425,IELTS_problem_solution,"It also proved impossible to use horses to transport the beavers, as the different animals ( ? ) when they were close to each other.",grew agitated,in the other words,on the result,for these reason
+chunk_426,IELTS_problem_solution,"However, the wardens ( ? ).",found a unique solution,found a unique,a unique solution,in the other words
+chunk_427,GENERAL_linkers,"( ? ), the wardens found a unique solution.",However,in the other words,on the result,for these reason
+chunk_428,IELTS_problem_solution,"( ? ), it was ready for a field test.",After a few trial runs,After a few trial,a few trial runs,in the other words
+chunk_429,IELTS_problem_solution,"The first beaver, a male named Geronimo, successfully landed and ( ? ) the brush.",made a beeline for,made a beeline to,made a beeline,a beeline for
+chunk_430,IELTS_explanation_reasoning,"While ( ? ) why we love moving to a beat, one theory is that we enjoy the coordination of music and movement.",there is some uncertainty as to,there is some uncertainty as for,There are,There be
+chunk_431,IELTS_explanation_reasoning,"While there is some uncertainty as to why we love moving to a beat, ( ? ) we enjoy the coordination of music and movement.",one theory is that,one theory is,theory is that,in the other words
+chunk_432,GENERAL_linkers,"( ? ) there is some uncertainty as to why we love moving to a beat, one theory is that we enjoy the coordination of music and movement.",While,in the other words,on the result,for these reason
+chunk_433,IELTS_explanation_reasoning,( ? ) quite straightforward.,One piece of the puzzle is,One piece for the puzzle is,One piece of the puzzle,piece of the puzzle is
+chunk_434,IELTS_explanation_reasoning,"A chemical substance called dopamine is then generated, which ( ? ) pleasure.",makes us feel,makes us,us feel,in the other words
+chunk_435,IELTS_explanation_reasoning,( ? ) we enjoy predicting another person's actions and repeating the pattern.,There is mounting evidence that,There are,There be,There is mounting evidence
+chunk_436,GENERAL_verb_patterns,"For example, when we see a professional athlete ( ? ) do something complicated, there is a surge of dopamine as we become anxious about the result, and feel intenseexcitement if it is successful.",try to,try for,in the other words,on the result
+chunk_437,IELTS_explanation_reasoning,( ? ) dancing with a partner and being surprised by a spectaculardance move.,The same concept applies to,The same concept applies for,The same concept applies,same concept applies to
+chunk_438,IELTS_explanation_reasoning,"Therefore, ( ? ) both of these elements, it is clear why we love to step onto the dance floor.",when we combine,when we,we combine,in the other words
+chunk_439,IELTS_explanation_reasoning,"Therefore, when we combine both of these elements, ( ? ) we love to step onto the dance floor.",it is clear why,it is clear,is clear why,in the other words
+chunk_440,GENERAL_linkers,"( ? ), when we combine both of these elements, it is clear why we love to step onto the dance floor.",Therefore,in the other words,on the result,for these reason
+chunk_441,GENERAL_linkers,"( ? ), scientists at Rutgers University have been using AI artificial intelligence, to produce artwork and music from scratch.",However,in the other words,on the result,for these reason
+chunk_442,IELTS_explanation_reasoning,"( ? ), the notionthat art could be made by computers was met with scepticism, but the computer-generated paintings were credible enough to fool almost everyone.",At first,in first,on first,in the other words
+chunk_443,IELTS_explanation_reasoning,"At first, the notionthat art could be made by computers was ( ? ), but the computer-generated paintings were credible enough to fool almost everyone.",met with scepticism,met by scepticism,met with,with scepticism
+chunk_444,IELTS_explanation_reasoning,"At first, the notionthat art could be made by computers was met with scepticism, but the computer-generated paintings were ( ? ) fool almost everyone.",credible enough to,credible enough for,credible enough,enough to
+chunk_445,IELTS_explanation_reasoning,Seventy-five percent of lay peoplebelieved that a real artist had painted them ( ? ) a computer.,rather than,in the other words,on the result,for these reason
+chunk_446,IELTS_explanation_reasoning,This development ( ? ).,poses two problems,poses two,two problems,in the other words
+chunk_447,IELTS_explanation_reasoning,"The reason for the price disparity is scarcity; ( ? ), there is only one original.",in other words,on other words,at other words,in other
+chunk_448,GENERAL_linkers,"( ? ) the price disparity is scarcity; in other words, there is only one original.",The reason for,The reason to,The reason,reason for
+chunk_449,IELTS_explanation_reasoning,"Secondly, will artists be ( ? ) because of these programmes?",made redundant,in the other words,on the result,for these reason
+chunk_450,GENERAL_linkers,"Secondly, will artists be made redundant ( ? ) these programmes?",because of,because for,in the other words,on the result
+chunk_451,IELTS_explanation_reasoning,"However, even this area of expertise may be ( ? ).",in danger,on danger,at danger,in the other words
+chunk_452,GENERAL_linkers,"( ? ), even this area of expertise may be in danger.",However,in the other words,on the result,for these reason
+chunk_453,IELTS_explanation_reasoning,"( ? ), we don't believe in 'spoon feeding' or coddling our pupils, and we try to foster children's self-reliance.",First of all,First for all,First all,At first of all
+chunk_454,GENERAL_verb_patterns,"First of all, we don't believe in 'spoon feeding' or coddling our pupils, and we ( ? ) foster children's self-reliance.",try to,try for,in the other words,on the result
+chunk_455,IELTS_explanation_reasoning,"They begin to rely on themselves or lean on peers, ( ? ) on immediate family.",rather than,in the other words,on the result,for these reason
+chunk_456,GENERAL_verb_patterns,"They ( ? ) rely on themselves or lean on peers, rather than on immediate family.",begin to,begin for,in the other words,on the result
+chunk_457,IELTS_explanation_reasoning,"( ? ), they begin to make a close-knit group of friends.",As a result,As result,As a reason,As a
+chunk_458,GENERAL_verb_patterns,"As a result, they ( ? ) make a close-knit group of friends.",begin to,begin for,in the other words,on the result
+chunk_459,IELTS_explanation_reasoning,This easily ( ? ) being away from their families.,compensates for,compensates to,in the other words,on the result
+chunk_460,IELTS_explanation_reasoning,We also encourage students to develop their own know-how ( ? ).,through trial and error,through trial and,trial and error,in the other words
+chunk_461,GENERAL_linkers,"( ? ) it may be difficult to predict every result, it always spurs inventiveness in the children.",Although,in the other words,on the result,for these reason
+chunk_462,GENERAL_linkers,"The waiting list for our school numbers in the hundreds, so please send in your application ( ? ) possible.",as soon as,as soon,soon as,in the other words
+chunk_463,IELTS_explanation_reasoning,"( ? ), we provide grants for families from socially disadvantaged circumstances.",On a final note,in a final note,at a final note,On a final
+chunk_464,IELTS_problem_solution,"However, ( ? ).",there are some stumbling blocks,There is,There be,there are some stumbling
+chunk_465,GENERAL_linkers,"( ? ), there are some stumbling blocks.",However,in the other words,on the result,for these reason
+chunk_466,IELTS_problem_solution,"( ? ), the project needs to cut expenditure to make it cheaper.",First and foremost,First and,and foremost,in the other words
+chunk_467,IELTS_problem_solution,"First and foremost, the project needs to ( ? ) to make it cheaper.",cut expenditure,in the other words,on the result,for these reason
+chunk_468,GENERAL_verb_patterns,"First and foremost, the project ( ? ) cut expenditure to make it cheaper.",needs to,needs for,in the other words,on the result
+chunk_469,IELTS_problem_solution,People may ( ? ) better rail travel but the price is too exorbitant for most people to manage.,have an appetite for,have an appetite to,have an appetite,an appetite for
+chunk_470,GENERAL_linkers,"( ? ), that may not be the whole story.",However,in the other words,on the result,for these reason
+chunk_471,IELTS_problem_solution,( ? ) the law set down across California that ensures the general public is not placed in harm's way.,The real problem is,The real problem,real problem is,in the other words
+chunk_472,IELTS_problem_solution,The real problem is the law set down across California that ensures the general public is not ( ? ).,placed in harm's way,placed in harm's,in harm's way,in the other words
+chunk_473,IELTS_problem_solution,"However, ( ? ) this super-train cannot decelerate quickly enough if there is a problem.",at the moment,in the moment,on the moment,at the
+chunk_474,GENERAL_linkers,"( ? ), at the moment this super-train cannot decelerate quickly enough if there is a problem.",However,in the other words,on the result,for these reason
+chunk_475,IELTS_problem_solution,"( ? ), you will have to wait to take a spin in the train of the future.",Until then,in the other words,on the result,for these reason
+chunk_476,IELTS_problem_solution,"Until then, you will have to wait to ( ? ) in the train of the future.",take a spin,take a,a spin,in the other words
+chunk_477,IELTS_work_motivation,"She came from an esteemed family and, with the approval of her father, decided to become a doctor, which challenged convention ( ? ).",at the time,in the time,on the time,at the
+chunk_478,GENERAL_verb_patterns,"She came from an esteemed family and, with the approval of her father, ( ? ) become a doctor, which challenged convention at the time.",decided to,decided for,in the other words,on the result
+chunk_479,GENERAL_linkers,"( ? ), she perseveredand graduated with high grades due to her prodigious memory and tenacity.",However,in the other words,on the result,for these reason
+chunk_480,IELTS_academic_frame,"While undertaking work with poor children in Florence, she ( ? ) the theory that all children have an innatedesire to learn.",came up with,came up by,came up,up with
+chunk_481,GENERAL_linkers,"( ? ) undertaking work with poor children in Florence, she came up with the theory that all children have an innatedesire to learn.",While,in the other words,on the result,for these reason
+chunk_482,GENERAL_verb_patterns,This was a radical change as it was commonly thought that children ( ? ) be forced to learn.,needed to,needed for,in the other words,on the result
+chunk_483,GENERAL_linkers,"( ? ), as she was a strong champion of self-determination, freedom, and peace, she ran afoul of Mussolini's fascists during World War II.",However,in the other words,on the result,for these reason
+chunk_484,IELTS_explanation_reasoning,"While lying may strike some people as very troubling, it is actually ( ? ) a human's sophisticated brain.",an indication of,an indication for,an indication,indication of
+chunk_485,GENERAL_linkers,"( ? ) lying may strike some people as very troubling, it is actually an indication of a human's sophisticated brain.",While,in the other words,on the result,for these reason
+chunk_486,GENERAL_verb_patterns,Being deceitful goes back a long time and humans probably ( ? ) lie shortly after developing linguistic ability.,began to,began for,in the other words,on the result
+chunk_487,IELTS_explanation_reasoning,"( ? ), the skill of manipulating people without physical force would be an evolutionary advantage and skilled liars passed this trait on to their children.",If you think about it,If you think about,you think about it,in the other words
+chunk_488,IELTS_explanation_reasoning,"If you think about it, the skill of manipulating people without physical force would be an ( ? ) and skilled liars passed this trait on to their children.",evolutionary advantage,in the other words,on the result,for these reason
+chunk_489,IELTS_explanation_reasoning,We are untruthful ( ? ).,for a variety of reasons,to a variety of reasons,for a variety for reasons,for a variety of
+chunk_490,GENERAL_linkers,We are untruthful for ( ? ) reasons.,a variety of,a variety for,a variety,variety of
+chunk_491,GENERAL_verb_patterns,Sometimes we are ( ? ) inflate our image to improve our standing in a group.,trying to,trying for,in the other words,on the result
+chunk_492,IELTS_explanation_reasoning,"( ? ), we want to appease someone or not hurt their feelings by telling 'white lies,' relieving tension in social situations.",At other times,in other times,on other times,At other
+chunk_493,IELTS_explanation_reasoning,"At other times, we want to appease someone or ( ? ) by telling 'white lies,' relieving tension in social situations.",not hurt their feelings,not hurt their,hurt their feelings,in the other words
+chunk_494,GENERAL_verb_patterns,"At other times, we ( ? ) appease someone or not hurt their feelings by telling 'white lies,' relieving tension in social situations.",want to,want for,in the other words,on the result
+chunk_495,IELTS_explanation_reasoning,Being dishonest is actually a ( ? ) a child's growth.,milestone in,in the other words,on the result,for these reason
+chunk_496,IELTS_explanation_reasoning,"At the University of Toronto, scientists ( ? ) how children lie.",delved into,delved in,in the other words,on the result
+chunk_497,GENERAL_linkers,"( ? ), by 8 years old, they could masktheir deceit with other lies.",However,in the other words,on the result,for these reason
+chunk_498,IELTS_explanation_reasoning,"This sudden leap from being poor liars to polished ones is a ( ? ) a child's cognition is working well, and he or she is on track to maturity.",sign that,in the other words,on the result,for these reason
+chunk_499,IELTS_explanation_reasoning,"This sudden leap from being poor liars to polished ones is a sign that a child's cognition is working well, and he or she is ( ? ) maturity.",on track to,in track to,at track to,on track for
+chunk_500,IELTS_problem_solution,"One of our closest cousins, the mountain gorilla, is ( ? ) becoming extinct.",in serious peril of,on serious peril of,at serious peril of,in serious peril for
