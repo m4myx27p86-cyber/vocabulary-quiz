@@ -1,5 +1,9 @@
 const PASSWORD = "testing";
 
+// Google Apps Script の WebアプリURLを入れてください。
+// まだ使わない場合は空欄のままで大丈夫です。
+const GAS_WEB_APP_URL = "";
+
 const SENTENCE_FILES = [
   "data/sentence_order/sentence_order_1_100.csv",
   "data/sentence_order/sentence_order_101_200.csv"
@@ -11,6 +15,12 @@ let reviewMode = false;
 let allVocabQuestions = [];
 let allSentenceQuestions = [];
 let allSpeakingReviewQuestions = [];
+let allMonitorQuestions = [];
+
+let allClassicalWordQuestions = [];
+let allClassicalGrammarQuestions = [];
+let allClassicalKnowledgeQuestions = [];
+
 let questions = [];
 
 let currentIndex = 0;
@@ -23,42 +33,50 @@ let startTime = null;
 
 let toeicCalendar = [];
 
-async function loadCalendarData() {
-  const response = await fetch("data/calendar/toeic_calendar.json");
-
-  if (!response.ok) {
-    alert("カレンダーデータを読み込めませんでした。");
-    return;
-  }
-
-  toeicCalendar = await response.json();
-}
+/* =========================
+   イベント登録
+========================= */
 
 safeAddEvent("loginButton", "click", checkPassword);
 safeAddEvent("showPassword", "change", togglePassword);
+
 safeAddEvent("vocabTestButton", "click", () => openSettings("vocab"));
 safeAddEvent("sentenceTestButton", "click", () => openSettings("sentence"));
-safeAddEvent("calendarButton", "click", openCalendar);
 safeAddEvent("speakingReviewButton", "click", () => openSettings("speakingReview"));
+safeAddEvent("monitorPracticeButton", "click", () => openSettings("monitor"));
+
+safeAddEvent("classicalWordsButton", "click", () => openSettings("classicalWords"));
+safeAddEvent("classicalGrammarButton", "click", () => openSettings("classicalGrammar"));
+safeAddEvent("classicalKnowledgeButton", "click", () => openSettings("classicalKnowledge"));
+
+safeAddEvent("calendarButton", "click", openCalendar);
 safeAddEvent("calendarBackButton", "click", () => showOnly("menuScreen"));
 safeAddEvent("resetCalendarButton", "click", resetCalendarChecks);
+
 safeAddEvent("startButton", "click", startNormalQuiz);
 safeAddEvent("reviewButton", "click", startReviewQuiz);
 safeAddEvent("clearStoredMistakesButton", "click", clearStoredMistakes);
 safeAddEvent("backToMenuButton", "click", () => showOnly("menuScreen"));
+
 safeAddEvent("checkButton", "click", checkAnswer);
 safeAddEvent("nextButton", "click", nextQuestion);
 safeAddEvent("quitButton", "click", quitQuiz);
+
 safeAddEvent("restartButton", "click", () => {
   resetQuizState();
   showOnly("menuScreen");
 });
+
 safeAddEvent("studentIdInput", "input", updateMistakeCountInSettings);
 
 function safeAddEvent(id, event, handler) {
   const element = document.getElementById(id);
   if (element) element.addEventListener(event, handler);
 }
+
+/* =========================
+   ログイン
+========================= */
 
 function checkPassword() {
   const input = document.getElementById("passwordInput").value;
@@ -75,19 +93,17 @@ function togglePassword() {
   field.type = this.checked ? "text" : "password";
 }
 
+/* =========================
+   設定画面
+========================= */
+
 async function openSettings(type) {
   testType = type;
   reviewMode = false;
 
   showOnly("settingScreen");
 
-  document.getElementById("settingTitle").textContent =
-    type === "vocab"
-      ? "Stock 3000 単語テスト"
-      : type === "sentence"
-        ? "語順並べ替えテスト"
-        : "TOEIC Speaking 復習";
-
+  document.getElementById("settingTitle").textContent = getSettingTitle(type);
   document.getElementById("vocabReviewArea").classList.toggle("hidden", type !== "vocab");
 
   if (type === "vocab") {
@@ -102,12 +118,51 @@ async function openSettings(type) {
   }
 
   if (type === "speakingReview") {
-    if (allSpeakingReviewQuestions.length === 0) {
-      await loadSpeakingReviewQuestions();
-    }
+    if (allSpeakingReviewQuestions.length === 0) await loadSpeakingReviewQuestions();
     setupSectionSelect(allSpeakingReviewQuestions);
   }
+
+  if (type === "monitor") {
+    if (allMonitorQuestions.length === 0) await loadMonitorQuestions();
+    setupSectionSelect(allMonitorQuestions);
+  }
+
+  if (type === "classicalWords") {
+    if (allClassicalWordQuestions.length === 0) {
+      allClassicalWordQuestions = await loadGenericChoiceQuestions("data/classics/classical_words.csv");
+    }
+    setupSectionSelect(allClassicalWordQuestions);
+  }
+
+  if (type === "classicalGrammar") {
+    if (allClassicalGrammarQuestions.length === 0) {
+      allClassicalGrammarQuestions = await loadGenericChoiceQuestions("data/classics/classical_grammar.csv");
+    }
+    setupSectionSelect(allClassicalGrammarQuestions);
+  }
+
+  if (type === "classicalKnowledge") {
+    if (allClassicalKnowledgeQuestions.length === 0) {
+      allClassicalKnowledgeQuestions = await loadGenericChoiceQuestions("data/classics/classical_knowledge.csv");
+    }
+    setupSectionSelect(allClassicalKnowledgeQuestions);
+  }
 }
+
+function getSettingTitle(type) {
+  if (type === "vocab") return "Stock 3000 単語テスト";
+  if (type === "sentence") return "語順並べ替えテスト";
+  if (type === "speakingReview") return "TOEIC Speaking 復習";
+  if (type === "monitor") return "TOEIC S&W モニター練習";
+  if (type === "classicalWords") return "古典単語";
+  if (type === "classicalGrammar") return "古典文法";
+  if (type === "classicalKnowledge") return "古文常識";
+  return "";
+}
+
+/* =========================
+   CSV読み込み
+========================= */
 
 async function loadVocabQuestions() {
   const response = await fetch("data/vocab/stock_3000_master.csv");
@@ -122,6 +177,7 @@ async function loadVocabQuestions() {
     word: row[2],
     correctAnswer: row[3],
     choices: [row[3], row[4], row[5], row[6]].filter(Boolean),
+    explanation: row[8] || "",
     points: Number(row[7]) || 1
   })).filter(q => q.id && q.section && q.word && q.correctAnswer);
 }
@@ -139,7 +195,6 @@ async function loadSentenceQuestions() {
 
     const text = await response.text();
     const rows = parseCSV(text);
-
     rows.shift();
 
     const loadedQuestions = rows.map(row => ({
@@ -164,7 +219,6 @@ async function loadSpeakingReviewQuestions() {
 
   const text = await response.text();
   const rows = parseCSV(text);
-
   rows.shift();
 
   allSpeakingReviewQuestions = rows.map(row => ({
@@ -173,7 +227,54 @@ async function loadSpeakingReviewQuestions() {
     word: row[2],
     correctAnswer: row[3],
     choices: [row[3], row[4], row[5], row[6]].filter(Boolean),
+    explanation: row[8] || "",
     points: 1
+  })).filter(q => q.id && q.section && q.word && q.correctAnswer);
+}
+
+async function loadMonitorQuestions() {
+  const response = await fetch("data/monitor/monitor_questions.csv");
+
+  if (!response.ok) {
+    alert("TOEIC S&W モニター練習問題を読み込めませんでした。");
+    return;
+  }
+
+  const text = await response.text();
+  const rows = parseCSV(text);
+  rows.shift();
+
+  allMonitorQuestions = rows.map(row => ({
+    id: row[0],
+    section: row[1],
+    word: row[2],
+    correctAnswer: row[3],
+    choices: [row[3], row[4], row[5], row[6]].filter(Boolean),
+    explanation: row[8] || "",
+    points: 1
+  })).filter(q => q.id && q.section && q.word && q.correctAnswer);
+}
+
+async function loadGenericChoiceQuestions(filePath) {
+  const response = await fetch(filePath);
+
+  if (!response.ok) {
+    alert(`${filePath} を読み込めませんでした。`);
+    return [];
+  }
+
+  const text = await response.text();
+  const rows = parseCSV(text);
+  rows.shift();
+
+  return rows.map(row => ({
+    id: row[0],
+    section: row[1],
+    word: row[2],
+    correctAnswer: row[3],
+    choices: [row[3], row[4], row[5], row[6]].filter(Boolean),
+    explanation: row[8] || "",
+    points: Number(row[7]) || 1
   })).filter(q => q.id && q.section && q.word && q.correctAnswer);
 }
 
@@ -182,21 +283,29 @@ function setupSectionSelect(sourceQuestions) {
 
   const sections = [...new Set(sourceQuestions.map(q => q.section))]
     .filter(Boolean)
-    .sort((a, b) => Number(a) - Number(b));
+    .sort((a, b) => {
+      const numA = Number(a);
+      const numB = Number(b);
+      if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+      return String(a).localeCompare(String(b), "ja");
+    });
 
   select.innerHTML = `<option value="all">すべてのセクション</option>`;
 
   sections.forEach(section => {
     const option = document.createElement("option");
     option.value = section;
-    option.textContent = `Section ${section}`;
+    option.textContent = isNaN(Number(section)) ? section : `Section ${section}`;
     select.appendChild(option);
   });
 }
 
+/* =========================
+   テスト開始
+========================= */
+
 async function startNormalQuiz() {
   studentId = document.getElementById("studentIdInput").value.trim() || "未入力";
-
   reviewMode = false;
 
   if (testType === "vocab") {
@@ -205,10 +314,18 @@ async function startNormalQuiz() {
     prepareQuiz(allSentenceQuestions);
   } else if (testType === "speakingReview") {
     prepareQuiz(allSpeakingReviewQuestions);
+  } else if (testType === "monitor") {
+    prepareQuiz(allMonitorQuestions);
+  } else if (testType === "classicalWords") {
+    prepareQuiz(allClassicalWordQuestions);
+  } else if (testType === "classicalGrammar") {
+    prepareQuiz(allClassicalGrammarQuestions);
+  } else if (testType === "classicalKnowledge") {
+    prepareQuiz(allClassicalKnowledgeQuestions);
   }
 
   if (questions.length === 0) {
-    alert("問題がありません。");
+    alert("問題がありません。CSVファイルの場所や内容を確認してください。");
     return;
   }
 
@@ -216,12 +333,7 @@ async function startNormalQuiz() {
 }
 
 function startReviewQuiz() {
-  studentId = document.getElementById("studentIdInput").value.trim();
-
-  if (!studentId) {
-    alert("回答者番号を入力してください。");
-    return;
-  }
+  studentId = document.getElementById("studentIdInput").value.trim() || "未入力";
 
   if (testType !== "vocab") {
     alert("復習機能は単語テスト用です。");
@@ -271,6 +383,10 @@ function startQuizCommon() {
   showQuestion();
 }
 
+/* =========================
+   問題表示
+========================= */
+
 function showQuestion() {
   selectedChoice = "";
 
@@ -282,22 +398,29 @@ function showQuestion() {
   document.getElementById("nextButton").classList.add("hidden");
   document.getElementById("checkButton").disabled = false;
 
-  if (testType === "vocab" || testType === "speakingReview") {
-    showVocabQuestion();
+  if (isChoiceTest()) {
+    showChoiceQuestion();
   } else if (testType === "sentence") {
     showSentenceQuestion();
   }
 }
 
-function showVocabQuestion() {
+function isChoiceTest() {
+  return [
+    "vocab",
+    "speakingReview",
+    "monitor",
+    "classicalWords",
+    "classicalGrammar",
+    "classicalKnowledge"
+  ].includes(testType);
+}
+
+function showChoiceQuestion() {
   const q = questions[currentIndex];
 
   document.getElementById("testTitle").textContent =
-    testType === "speakingReview"
-      ? "TOEIC Speaking 復習"
-      : reviewMode
-        ? "Stock 3000 間違い復習"
-        : "Stock 3000 単語テスト";
+    reviewMode ? "Stock 3000 間違い復習" : getTestName();
 
   const choices = shuffle(q.choices);
   const area = document.getElementById("questionArea");
@@ -306,12 +429,24 @@ function showVocabQuestion() {
   const wordDiv = document.createElement("div");
   wordDiv.className = "words";
 
-  if (testType === "speakingReview") {
+  if (testType === "monitor") {
     wordDiv.innerHTML =
-      `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>より自然な表現は？<br>"${escapeHtml(q.word)}"`;
+      `No.${escapeHtml(q.id)} | ${escapeHtml(q.section)}<br>
+      <span class="monitor-label">最も自然で正確な表現を選んでください。</span><br>
+      "${escapeHtml(q.word)}"`;
+  } else if (testType === "speakingReview") {
+    wordDiv.innerHTML =
+      `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>
+      より自然な表現は？<br>
+      "${escapeHtml(q.word)}"`;
+  } else if (testType.startsWith("classical")) {
+    wordDiv.innerHTML =
+      `No.${escapeHtml(q.id)} | ${escapeHtml(q.section)}<br>
+      ${escapeHtml(q.word)}`;
   } else {
     wordDiv.innerHTML =
-      `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>"${escapeHtml(q.word)}" の意味は？`;
+      `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>
+      "${escapeHtml(q.word)}" の意味は？`;
   }
 
   area.appendChild(wordDiv);
@@ -351,16 +486,22 @@ function showSentenceQuestion() {
   document.getElementById("answerInput").addEventListener("input", updateUsedWords);
 }
 
+/* =========================
+   語順ヒント
+========================= */
+
 function createInitialHint(sentence) {
   return String(sentence)
     .trim()
     .split(/\s+/)
     .map(word => {
-      const firstLetter = word.replace(/^[“"']+/, "").charAt(0);
+      const cleanWord = word.replace(/[.,!?;:]/g, "");
+      const firstLetter = cleanWord.replace(/^[“"']+/, "").charAt(0);
+      const remainingSpaces = "_".repeat(Math.max(cleanWord.length - 1, 1));
       const punctuation = word.match(/[.,!?;:]$/);
-      return punctuation ? `${firstLetter} ${punctuation[0]}` : firstLetter;
+      return punctuation ? `${firstLetter}${remainingSpaces}${punctuation[0]}` : `${firstLetter}${remainingSpaces}`;
     })
-    .join(" ");
+    .join("   ");
 }
 
 function updateUsedWords() {
@@ -380,15 +521,19 @@ function updateUsedWords() {
   });
 }
 
+/* =========================
+   解答判定
+========================= */
+
 function checkAnswer() {
-  if (testType === "vocab" || testType === "speakingReview") {
-    checkVocabAnswer();
+  if (isChoiceTest()) {
+    checkChoiceAnswer();
   } else if (testType === "sentence") {
     checkSentenceAnswer();
   }
 }
 
-function checkVocabAnswer() {
+function checkChoiceAnswer() {
   const q = questions[currentIndex];
 
   if (!selectedChoice) {
@@ -409,6 +554,7 @@ function checkVocabAnswer() {
     question: q.word,
     userAnswer: selectedChoice,
     correctAnswer: q.correctAnswer,
+    explanation: q.explanation || "",
     isCorrect,
     points: q.points
   });
@@ -425,6 +571,7 @@ function checkSentenceAnswer() {
     question: q.words.join(" / "),
     userAnswer,
     correctAnswer: q.answer,
+    explanation: "",
     isCorrect,
     points: 1
   });
@@ -442,6 +589,11 @@ function processAnswer(data) {
     mistakes.push(data);
   }
 
+  if (data.explanation) {
+    document.getElementById("feedback").innerHTML +=
+      `<br><span class="explanation">解説：${escapeHtml(data.explanation)}</span>`;
+  }
+
   answersLog.push({
     studentId,
     testType: getTestName(),
@@ -452,6 +604,7 @@ function processAnswer(data) {
     userAnswer: data.userAnswer,
     correctAnswer: data.correctAnswer,
     correct: data.isCorrect,
+    explanation: data.explanation || "",
     answeredAt: new Date().toLocaleString("ja-JP")
   });
 
@@ -471,12 +624,15 @@ function nextQuestion() {
 
 function quitQuiz() {
   if (confirm("途中で終了して、教材選択画面に戻りますか？")) {
-    resetQuizState();
-    showOnly("menuScreen");
+    showResult(true);
   }
 }
 
-function showResult(isQuit) {
+/* =========================
+   結果表示・送信
+========================= */
+
+async function showResult(isQuit) {
   const endTime = new Date();
   const answeredCount = answersLog.length;
   const totalSeconds = Math.floor((endTime - startTime) / 1000);
@@ -498,18 +654,11 @@ function showResult(isQuit) {
 
   showMistakes();
 
-  console.log({
-    studentId,
-    testType: getTestName(),
-    mode: reviewMode ? "復習" : "通常",
-    status: isQuit ? "途中終了" : "完了",
-    score,
+  await sendResultsToSpreadsheet({
+    isQuit,
+    endTime,
     answeredCount,
-    totalQuestions: questions.length,
-    startTime: startTime.toLocaleString("ja-JP"),
-    endTime: endTime.toLocaleString("ja-JP"),
-    mistakes,
-    answers: answersLog
+    totalSeconds
   });
 }
 
@@ -528,12 +677,56 @@ function showMistakes() {
         <div class="mistake-item">
           <strong>問題：</strong>${escapeHtml(m.question)}<br>
           <strong>あなたの答え：</strong>${escapeHtml(m.userAnswer)}<br>
-          <strong>正解：</strong>${escapeHtml(m.correctAnswer)}
+          <strong>正解：</strong>${escapeHtml(m.correctAnswer)}<br>
+          ${m.explanation ? `<strong>解説：</strong>${escapeHtml(m.explanation)}` : ""}
         </div>
       `).join("")}
     </div>
   `;
 }
+
+async function sendResultsToSpreadsheet(resultInfo) {
+  const statusDisplay = document.getElementById("sendStatusDisplay");
+
+  if (!GAS_WEB_APP_URL) {
+    statusDisplay.textContent = "スプレッドシート送信：未設定";
+    return;
+  }
+
+  const payload = {
+    studentId,
+    testType: getTestName(),
+    mode: reviewMode ? "復習" : "通常",
+    status: resultInfo.isQuit ? "途中終了" : "完了",
+    score,
+    totalQuestions: questions.length,
+    answeredCount: resultInfo.answeredCount,
+    totalSeconds: resultInfo.totalSeconds,
+    startTime: startTime.toLocaleString("ja-JP"),
+    endTime: resultInfo.endTime.toLocaleString("ja-JP"),
+    answers: answersLog
+  };
+
+  try {
+    await fetch(GAS_WEB_APP_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    statusDisplay.textContent = "スプレッドシート送信：完了";
+  } catch (error) {
+    console.error("スプレッドシート送信エラー:", error);
+    statusDisplay.textContent = "スプレッドシート送信：失敗";
+  }
+}
+
+/* =========================
+   間違い復習
+========================= */
 
 function saveWrongWord(id) {
   const key = getWrongKey();
@@ -562,12 +755,12 @@ function getWrongIds() {
 }
 
 function getWrongKey() {
-  const id = studentId || document.getElementById("studentIdInput").value.trim() || "default";
+  const id = studentId || document.getElementById("studentIdInput").value.trim() || "未入力";
   return `wrongWords_${id}`;
 }
 
 function clearStoredMistakes() {
-  studentId = document.getElementById("studentIdInput").value.trim() || "default";
+  studentId = document.getElementById("studentIdInput").value.trim() || "未入力";
 
   if (!confirm("この回答者番号の間違い履歴を削除しますか？")) return;
 
@@ -583,13 +776,90 @@ function updateMistakeCountInSettings() {
   const id = document.getElementById("studentIdInput").value.trim();
 
   if (!id) {
-    countText.textContent = "回答者番号を入力すると、その番号の間違い履歴を確認できます。";
+    studentId = "未入力";
+    countText.textContent = "回答者番号が未入力の場合は「未入力」として保存されます。";
     return;
   }
 
   studentId = id;
   countText.textContent = `保存された間違い：${getWrongIds().length}問`;
 }
+
+/* =========================
+   カレンダー
+========================= */
+
+async function loadCalendarData() {
+  const response = await fetch("data/calendar/toeic_calendar.json");
+
+  if (!response.ok) {
+    alert("カレンダーデータを読み込めませんでした。");
+    return;
+  }
+
+  toeicCalendar = await response.json();
+}
+
+async function openCalendar() {
+  if (toeicCalendar.length === 0) {
+    await loadCalendarData();
+  }
+
+  showOnly("calendarScreen");
+  renderCalendar();
+}
+
+function renderCalendar() {
+  const area = document.getElementById("calendarArea");
+  area.innerHTML = "";
+
+  toeicCalendar.forEach((day, dayIndex) => {
+    const card = document.createElement("div");
+    card.className = "calendar-card";
+
+    const taskHtml = day.tasks.map((task, taskIndex) => {
+      const key = `toeicCalendar_${dayIndex}_${taskIndex}`;
+      const checked = localStorage.getItem(key) === "true" ? "checked" : "";
+
+      return `
+        <label class="calendar-task">
+          <input type="checkbox" data-key="${key}" ${checked}>
+          ${escapeHtml(task)}
+        </label>
+      `;
+    }).join("");
+
+    card.innerHTML = `
+      <h3>${escapeHtml(day.date)}</h3>
+      ${taskHtml}
+      <p class="calendar-comment">${escapeHtml(day.comment)}</p>
+    `;
+
+    area.appendChild(card);
+  });
+
+  document.querySelectorAll("#calendarArea input[type='checkbox']").forEach(box => {
+    box.addEventListener("change", function () {
+      localStorage.setItem(this.dataset.key, this.checked);
+    });
+  });
+}
+
+function resetCalendarChecks() {
+  if (!confirm("カレンダーのチェックをすべてリセットしますか？")) return;
+
+  Object.keys(localStorage).forEach(key => {
+    if (key.startsWith("toeicCalendar_")) {
+      localStorage.removeItem(key);
+    }
+  });
+
+  renderCalendar();
+}
+
+/* =========================
+   共通関数
+========================= */
 
 function resetQuizState() {
   currentIndex = 0;
@@ -615,6 +885,10 @@ function getTestName() {
   if (testType === "vocab") return "Stock 3000 単語テスト";
   if (testType === "sentence") return "語順並べ替えテスト";
   if (testType === "speakingReview") return "TOEIC Speaking 復習";
+  if (testType === "monitor") return "TOEIC S&W モニター練習";
+  if (testType === "classicalWords") return "古典単語";
+  if (testType === "classicalGrammar") return "古典文法";
+  if (testType === "classicalKnowledge") return "古文常識";
   return "";
 }
 
@@ -705,61 +979,4 @@ function parseCSV(text) {
   }
 
   return rows;
-}
-
-async function openCalendar() {
-  if (toeicCalendar.length === 0) {
-    await loadCalendarData();
-  }
-
-  showOnly("calendarScreen");
-  renderCalendar();
-}
-
-function renderCalendar() {
-  const area = document.getElementById("calendarArea");
-  area.innerHTML = "";
-
-  toeicCalendar.forEach((day, dayIndex) => {
-    const card = document.createElement("div");
-    card.className = "calendar-card";
-
-    const taskHtml = day.tasks.map((task, taskIndex) => {
-      const key = `toeicCalendar_${dayIndex}_${taskIndex}`;
-      const checked = localStorage.getItem(key) === "true" ? "checked" : "";
-
-      return `
-        <label class="calendar-task">
-          <input type="checkbox" data-key="${key}" ${checked}>
-          ${escapeHtml(task)}
-        </label>
-      `;
-    }).join("");
-
-    card.innerHTML = `
-      <h3>${escapeHtml(day.date)}</h3>
-      ${taskHtml}
-      <p class="calendar-comment">${escapeHtml(day.comment)}</p>
-    `;
-
-    area.appendChild(card);
-  });
-
-  document.querySelectorAll("#calendarArea input[type='checkbox']").forEach(box => {
-    box.addEventListener("change", function () {
-      localStorage.setItem(this.dataset.key, this.checked);
-    });
-  });
-}
-
-function resetCalendarChecks() {
-  if (!confirm("カレンダーのチェックをすべてリセットしますか？")) return;
-
-  Object.keys(localStorage).forEach(key => {
-    if (key.startsWith("toeicCalendar_")) {
-      localStorage.removeItem(key);
-    }
-  });
-
-  renderCalendar();
 }
