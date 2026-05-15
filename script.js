@@ -7,7 +7,7 @@
 ========================================================= */
 
 const ADMIN_PASSWORD = "9999";
-const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwveigQioYeLAlJnZwY2fFsnhC22l9ErD1MZQjmk9iXmMhJ8CCXVvPqYIyDI2_DDql9/exec"; // Google Apps Script の WebアプリURLを入れるとスプレッドシート送信が有効になります。
+const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxr678i7FucanH3Asa7wYRlNCBcRJ1LaeeEIlUndem1eOfy_zh5jlplv3plW95gKpNI/exec"; // Google Apps Script の WebアプリURLを入れるとスプレッドシート送信が有効になります。
 
 const STORAGE_KEYS = {
   sessionStudent: "learningTool_sessionStudent",
