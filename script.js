@@ -49,7 +49,10 @@ safeAddEvent("backToMenuButton", "click", () => showOnly("menuScreen"));
 safeAddEvent("checkButton", "click", checkAnswer);
 safeAddEvent("nextButton", "click", nextQuestion);
 safeAddEvent("quitButton", "click", quitQuiz);
-safeAddEvent("restartButton", "click", () => location.reload());
+safeAddEvent("restartButton", "click", () => {
+  resetQuizState();
+  showOnly("menuScreen");
+});
 safeAddEvent("studentIdInput", "input", updateMistakeCountInSettings);
 
 function safeAddEvent(id, event, handler) {
