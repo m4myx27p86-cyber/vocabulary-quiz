@@ -192,12 +192,7 @@ function setupSectionSelect(sourceQuestions) {
 }
 
 async function startNormalQuiz() {
-  studentId = document.getElementById("studentIdInput").value.trim();
-
-  if (!studentId) {
-    alert("回答者番号を入力してください。");
-    return;
-  }
+  studentId = document.getElementById("studentIdInput").value.trim() || "未入力";
 
   reviewMode = false;
 
