@@ -104,7 +104,6 @@ let toeicCalendar = [];
 ========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("todayPasswordHint").textContent = getTodayPassword();
 
   safeAddEvent("loginButton", "click", checkDatePassword);
   safeAddEvent("passwordInput", "keydown", event => { if (event.key === "Enter") checkDatePassword(); });
