@@ -244,3 +244,16 @@ button:disabled {
   color: #3730a3;
   font-weight: bold;
 }
+
+.explanation {
+  display: inline-block;
+  margin-top: 8px;
+  color: #374151;
+  font-weight: normal;
+}
+
+.monitor-label {
+  font-size: 18px;
+  color: #374151;
+  font-weight: normal;
+}
