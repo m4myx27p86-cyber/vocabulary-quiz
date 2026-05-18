@@ -315,20 +315,28 @@ async function ensureQuestionsLoaded(type) {
 
 function setupSectionSelect(sourceQuestions) {
   const select = document.getElementById("sectionSelect");
+
   const sections = [...new Set(sourceQuestions.map(q => q.section))]
     .filter(Boolean)
-    .sort((a, b) => {
-      const numA = Number(a);
-      const numB = Number(b);
-      if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
-      return String(a).localeCompare(String(b), "ja");
-    });
+    .sort((a, b) =>
+      String(a).localeCompare(String(b), "ja", { numeric: true })
+    );
 
   select.innerHTML = `<option value="all">すべてのセクション</option>`;
+
   sections.forEach(section => {
     const option = document.createElement("option");
     option.value = section;
-    option.textContent = isNaN(Number(section)) ? section : `Section ${section}`;
+
+    // speakingReviewだけSection表記を消す
+    if (testType === "speakingReview") {
+      option.textContent = section;
+    } else {
+      option.textContent = isNaN(Number(section))
+        ? section
+        : `Section ${section}`;
+    }
+
     select.appendChild(option);
   });
 }
