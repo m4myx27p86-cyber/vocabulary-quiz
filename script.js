@@ -546,9 +546,12 @@ function showChoiceQuestion() {
 
   if (testType === "monitor") {
     wordDiv.innerHTML = `No.${escapeHtml(q.id)} | ${escapeHtml(q.section)}<br><span class="monitor-label">最も自然で正確な表現を選んでください。</span><br>"${escapeHtml(q.word)}"`;
-  } else if (testType === "speakingReview") {
-    wordDiv.innerHTML = `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>より自然な表現は？<br>"${escapeHtml(q.word)}"`;
-  } else if (testType.startsWith("classical")) {
+ } else if (testType === "speakingReview") {
+  wordDiv.innerHTML =
+    `No.${escapeHtml(q.id)} | ${escapeHtml(q.section)}
+    <br>より自然な表現は？
+    <br>"${escapeHtml(q.word)}"`;
+} else if (testType.startsWith("classical")) {
     wordDiv.innerHTML = `No.${escapeHtml(q.id)} | ${escapeHtml(q.section)}<br>${escapeHtml(q.word)}`;
   } else {
     wordDiv.innerHTML = `No.${escapeHtml(q.id)} | Section ${escapeHtml(q.section)}<br>"${escapeHtml(q.word)}" の意味は？`;
