@@ -1,0 +1,51 @@
+﻿id,section,question,correctAnswer,choice1,choice2,choice3
+1,Chapter3：UG・生得説,the innate system of abstract principles underlying all human languages,Universal Grammar,Positive Evidence,Bottleneck Hypothesis,Interface Hypothesis
+2,Chapter3：UG・生得説,features shared by all human languages,Principles,Parameters,Negative Evidence,Lexical Categories
+3,Chapter3：UG・生得説,settings that explain variation across languages such as OV and VO,Parameters,Principles,Positive Evidence,Functional Categories
+4,Chapter3：UG・生得説,the internal system of language knowledge in an individual learner,I-language,E-language,Negative Evidence,Accessibility Hierarchy
+5,Chapter3：UG・生得説,learners know more about grammar than the input alone can explain,Poverty of the Stimulus,Bottleneck Hypothesis,Feature Reassembly Hypothesis,Discourse Hypothesis
+6,Chapter3：UG・証拠,grammatical input that learners hear or read,Positive Evidence,Negative Evidence,Parameter,Representational Deficit
+7,Chapter3：UG・証拠,information that tells learners their utterance is incorrect,Negative Evidence,Positive Evidence,Principle,Full Access
+8,Chapter3：UG・証拠,"negative evidence is rare, so input alone cannot explain grammar acquisition",Poverty of the Stimulus,Prosodic Transfer Hypothesis,Accessibility Hierarchy,Form-to-Function Approach
+9,Chapter3：UG Access,L1 and adult L2 acquisition are fundamentally different,Fundamental Difference Hypothesis,Full Access Hypothesis,Bottleneck Hypothesis,Interface Hypothesis
+10,Chapter3：UG Access,adult L2 learners do not have direct access to UG,Fundamental Difference Hypothesis,Full Access Hypothesis,Feature Reassembly Hypothesis,Positive Evidence
+11,Chapter3：UG Access,adult L2 learners can still use UG when acquiring an L2,Full Access Hypothesis,No Access Hypothesis,Negative Evidence,Prosodic Transfer Hypothesis
+12,Chapter3：UG Access,L2 learners may access UG only through their L1 grammar,Partial Access through L1,Full Access,No Access,Poverty of the Stimulus
+13,Chapter3：UG Access,UG is not available at all after the L1 is learned,No Access Hypothesis,Full Access Hypothesis,Principles and Parameters,Feature Reassembly
+14,Chapter3：Minimalist Program,the elemental units that make up lexical items,Features,Parameters,Positive Evidence,Accessibility Hierarchy
+15,Chapter3：Minimalist Program,word classes such as nouns verbs and adjectives,Lexical Categories,Functional Categories,Uninterpretable Features,Negative Evidence
+16,Chapter3：Minimalist Program,grammatical elements such as tense agreement and aspect,Functional Categories,Lexical Categories,Positive Evidence,Typological Universals
+17,Chapter3：Features,features absent from the L1 are difficult to acquire in the L2,Representational Deficit Hypothesis,Missing Surface Inflection Hypothesis,Interface Hypothesis,Positive Evidence
+18,Chapter3：Features,Japanese does not have articles so a learner says I bought book,Representational Deficit Hypothesis,Bottleneck Hypothesis,Accessibility Hierarchy,Full Access Hypothesis
+19,Chapter3：Features,uninterpretable grammatical features cannot be acquired easily,Interpretability Hypothesis,Poverty of the Stimulus,Prosodic Transfer Hypothesis,Function-to-Form Approach
+20,Chapter3：Features,third person singular -s is difficult because it carries little semantic meaning,Interpretability Hypothesis,Positive Evidence,Principles,Discourse Hypothesis
+21,Chapter3：Morphology,learners know the grammar but fail to produce correct morphology,Missing Surface Inflection Hypothesis,Representational Deficit Hypothesis,No Access Hypothesis,Accessibility Hierarchy
+22,Chapter3：Morphology,a learner understands the rule but says She walk to school,Missing Surface Inflection Hypothesis,Representational Deficit Hypothesis,Interface Hypothesis,Negative Evidence
+23,Chapter3：Morphology,errors occur because learners hands are full during speaking or writing,Missing Surface Inflection Hypothesis,Feature Reassembly Hypothesis,Full Access Hypothesis,Positive Evidence
+24,Chapter3：Morphology,L1 phonological representations interfere with L2 morphology,Prosodic Transfer Hypothesis,Bottleneck Hypothesis,Poverty of the Stimulus,Lexical Categories
+25,Chapter3：Morphology,walked may be hard to pronounce because final consonant clusters are difficult,Prosodic Transfer Hypothesis,Interface Hypothesis,Representational Deficit Hypothesis,Principles
+26,Chapter3：Features,learners must reorganize L1 features into new L2 feature combinations,Feature Reassembly Hypothesis,Missing Surface Inflection Hypothesis,Poverty of the Stimulus,No Access Hypothesis
+27,Chapter3：Features,L1 feature systems must be reconfigured onto L2 lexical items,Feature Reassembly Hypothesis,Interpretability Hypothesis,Positive Evidence,Accessibility Hierarchy
+28,Chapter3：Morphology,inflectional morphemes are the major difficulty in SLA,Bottleneck Hypothesis,Interface Hypothesis,Fundamental Difference Hypothesis,Negative Evidence
+29,Chapter3：Morphology,learners can acquire syntax and semantics but struggle with plural -s,Bottleneck Hypothesis,Accessibility Hierarchy,Feature Reassembly Hypothesis,Positive Evidence
+30,Chapter3：Morphology,Two cat is an example of difficulty with inflectional morphology,Bottleneck Hypothesis,Interface Hypothesis,Full Access Hypothesis,Principles
+31,Chapter3：Interface,structures involving syntax and pragmatics discourse or semantics are difficult,Interface Hypothesis,Bottleneck Hypothesis,Prosodic Transfer Hypothesis,Positive Evidence
+32,Chapter3：Interface,Could you open the window is grammatically a question but functions as a request,Interface Hypothesis,Representational Deficit Hypothesis,Bottleneck Hypothesis,Parameter
+33,Chapter3：Interface,the difficulty comes from the connection between syntax and another cognitive domain,Interface Hypothesis,Missing Surface Inflection Hypothesis,Poverty of the Stimulus,Lexical Categories
+34,Chapter3：重要比較,knowledge itself is absent because the L1 lacks the feature,Representational Deficit Hypothesis,Missing Surface Inflection Hypothesis,Bottleneck Hypothesis,Interface Hypothesis
+35,Chapter3：重要比較,knowledge exists but production fails under processing pressure,Missing Surface Inflection Hypothesis,Representational Deficit Hypothesis,Feature Reassembly Hypothesis,No Access Hypothesis
+36,Chapter3：重要比較,the main difficulty is morphology rather than syntax or semantics,Bottleneck Hypothesis,Interface Hypothesis,Poverty of the Stimulus,Parameters
+37,Chapter3：重要比較,the main difficulty is syntax plus pragmatics or discourse,Interface Hypothesis,Bottleneck Hypothesis,Prosodic Transfer Hypothesis,Positive Evidence
+38,Chapter3：Typological Universals,patterns that describe what types of languages are possible,Typological Universals,Negative Evidence,Missing Surface Inflection,Functional Categories
+39,Chapter3：Typological Universals,Japanese is OV and English is VO,Word Order Parameter,Positive Evidence,Interpretability Hypothesis,Interface Hypothesis
+40,Chapter3：Typological Universals,a hierarchy predicting relative clause difficulty,Accessibility Hierarchy,Bottleneck Hypothesis,Feature Reassembly Hypothesis,No Access Hypothesis
+41,Chapter3：Accessibility Hierarchy,Subject relative clauses are easier than Object of Comparison relative clauses,Accessibility Hierarchy,Poverty of the Stimulus,Prosodic Transfer Hypothesis,Functional Categories
+42,Chapter3：Accessibility Hierarchy,SU is easier and OComp is hardest,Accessibility Hierarchy,Interface Hypothesis,Bottleneck Hypothesis,Positive Evidence
+43,Chapter3：Accessibility Hierarchy,the boy who called me is easier than the boy who John is taller than,Accessibility Hierarchy,Feature Reassembly Hypothesis,No Access Hypothesis,Negative Evidence
+44,Chapter3：Typological Universals,if a lower item exists then higher items in the hierarchy should also exist,Accessibility Hierarchy,Missing Surface Inflection,Prosodic Transfer Hypothesis,Lexical Categories
+45,Chapter3：まとめ,a single piece of evidence can be analyzed in multiple ways,Multiple Interpretations of Evidence,Positive Evidence,Lexical Categories,No Access Hypothesis
+46,Chapter3：まとめ,we cannot simply say features are accessible or inaccessible for all learners,Feature Accessibility Debate,Positive Evidence,Word Order Parameter,Lexical Categories
+47,Chapter3：まとめ,every learner has a different language background,Individual Differences in SLA,Universal Grammar,Positive Evidence,Functional Categories
+48,Chapter3：まとめ,the theory asks whether UG remains operative in L2 acquisition,Access to UG Question,Bottleneck Hypothesis,Prosodic Transfer Hypothesis,Positive Evidence
+49,Chapter3：まとめ,the contrast between universal properties and language-specific variation,Principles and Parameters Theory,Interface Hypothesis,Missing Surface Inflection Hypothesis,Negative Evidence
+50,Chapter3：まとめ,the debate moves from UG access to whether L2 features can be acquired,Feature Accessibility Debate,Positive Evidence,Lexical Categories,Word Order Table
