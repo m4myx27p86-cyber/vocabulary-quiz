@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>学習ツール</title>
+  <link rel="stylesheet" href="style.css?v=english-theory-20260520" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Practice Dashboard</p>
+        <h1>学習ツール</h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="loginScreen">
+        <h2>ログイン</h2>
+        <input type="text" id="passwordInput" class="secure-code" placeholder="パスワード" inputmode="numeric" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" />
+        <label class="password-toggle">
+          <input type="checkbox" id="showPassword" />
+          パスワードを表示
+        </label>
+        <button id="loginButton">ログイン</button>
+        <p id="loginMessage" class="error"></p>
+      </section>
+
+      <section id="registerScreen" class="hidden">
+        <h2>個別パスワード登録</h2>
+        <p class="muted">初回のみ、学習で使う4桁の個別パスワードを設定してください。</p>
+        <input type="text" id="registerNameInput" placeholder="名前・クラス番号など（任意）" autocomplete="off" autocapitalize="off" spellcheck="false" />
+        <input type="text" id="registerPasswordInput" class="secure-code" placeholder="新しい個別パスワード" inputmode="numeric" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" />
+        <input type="text" id="registerPasswordConfirm" class="secure-code" placeholder="確認用パスワード" inputmode="numeric" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" />
+        <label class="password-toggle">
+          <input type="checkbox" id="showRegisterPassword" />
+          パスワードを表示
+        </label>
+        <button id="registerButton">登録して始める</button>
+        <button id="registerBackButton" class="secondary-button">戻る</button>
+        <p id="registerMessage" class="error"></p>
+      </section>
+
+      <section id="studentScreen" class="hidden">
+        <h2>学習者ログイン</h2>
+        <p class="muted">登録済みの4桁の個別パスワードを入力してください。</p>
+        <input type="text" id="studentLoginInput" class="secure-code" placeholder="個別パスワード" inputmode="numeric" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" />
+        <label class="password-toggle">
+          <input type="checkbox" id="showStudentPassword" />
+          パスワードを表示
+        </label>
+        <button id="studentLoginButton">次へ</button>
+        <button id="studentBackButton" class="secondary-button">戻る</button>
+        <p id="studentLoginMessage" class="error"></p>
+      </section>
+
+      <section id="menuScreen" class="hidden">
+        <div class="screen-head">
+          <div>
+            <h2>教材を選択してください</h2>
+            <p id="studentStatus" class="muted"></p>
+          </div>
+          <button id="logoutButton" class="secondary-button small-button">ログアウト</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><span>連続学習</span><strong id="streakDisplay">0日</strong></div>
+          <div class="stat-card"><span>今日の解答数</span><strong id="todayCountDisplay">0問</strong></div>
+          <div class="stat-card"><span>今日の正答率</span><strong id="todayAccuracyDisplay">-</strong></div>
+        </div>
+
+        <div class="material-grid">
+          <button class="material-card" data-material="vocab"><span>英語</span><strong>Stock 3000 単語テスト</strong><small>単語の意味を確認</small></button>
+          <button class="material-card" data-material="sokudokuVocab"><span>英語</span><strong>速読英単語</strong><small>単語ページの語彙を練習</small></button>
+          <button class="material-card" data-material="sentence"><span>英語</span><strong>語順並べ替えテスト</strong><small>英文を組み立てる</small></button>
+          <button class="material-card" data-material="monitor"><span>TOEIC</span><strong>TOEIC S&W モニター練習</strong><small>自然な表現を練習</small></button>
+          <button class="material-card" data-material="speakingReview"><span>TOEIC</span><strong>TOEIC Speaking 復習</strong><small>自然な表現を練習</small></button>
+          <button class="material-card" data-material="englishTheory"><span>英語教育</span><strong>英語教育理論</strong><small>SLA Chapter 3 の概念を確認</small></button>
+          <button class="material-card" data-material="classicalWords"><span>古典</span><strong>古典単語</strong><small>古典単語を確認</small></button>
+          <button class="material-card" data-material="classicalGrammar"><span>古典</span><strong>古典文法</strong><small>助動詞・敬語など</small></button>
+          <button class="material-card" data-material="classicalKnowledge"><span>古典</span><strong>古文常識</strong><small>古文常識を確認</small></button>
+          <button class="material-card accent-card" id="calendarButton"><span>計画</span><strong>TOEIC S&W 学習カレンダー</strong><small>毎日のチェック</small></button>
+          <button class="material-card admin-card" id="historyButton"><span>管理者</span><strong>解答履歴</strong><small>閲覧権限が必要</small></button>
+        </div>
+      </section>
+
+      <section id="materialPasswordScreen" class="hidden">
+        <h2 id="materialPasswordTitle">教材パスワード</h2>
+        <p class="muted">この教材の4桁パスワードを入力してください。</p>
+        <input type="text" id="materialPasswordInput" class="secure-code" placeholder="教材パスワード" inputmode="numeric" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false" data-lpignore="true" />
+        <label class="password-toggle">
+          <input type="checkbox" id="showMaterialPassword" />
+          パスワードを表示
+        </label>
+        <button id="materialPasswordButton">教材を開く</button>
+        <button id="materialPasswordBackButton" class="secondary-button">教材選択へ戻る</button>
+        <p id="materialPasswordMessage" class="error"></p>
+      </section>
+
+      <section id="calendarScreen" class="hidden">
+        <h2>TOEIC S&W 学習カレンダー</h2>
+        <p class="muted">6月21日のTOEIC S&Wに向けて、毎日の学習をチェックしましょう。</p>
+        <div id="calendarArea"></div>
+        <button id="resetCalendarButton" class="secondary-button">チェックをリセット</button>
+        <button id="calendarBackButton" class="secondary-button">戻る</button>
+      </section>
+
+      <section id="settingScreen" class="hidden">
+        <h2 id="settingTitle"></h2>
+        <p id="settingDescription" class="muted"></p>
+
+        <div id="commonSettings" class="settings-grid">
+          <label>
+            セクション
+            <select id="sectionSelect"></select>
+          </label>
+          <label>
+            問題数
+            <select id="questionCountSelect">
+              <option value="10">10問</option>
+              <option value="20" selected>20問</option>
+              <option value="30">30問</option>
+              <option value="50">50問</option>
+              <option value="100">100問</option>
+              <option value="all">すべて</option>
+            </select>
+          </label>
+          <label>
+            1問ごとの制限時間
+            <select id="timeLimitSelect">
+              <option value="0">制限なし</option>
+              <option value="15">15秒</option>
+              <option value="30">30秒</option>
+              <option value="45">45秒</option>
+              <option value="60">60秒</option>
+              <option value="90">90秒</option>
+              <option value="120">120秒</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="vocabReviewArea" class="hidden panel">
+          <p id="settingMistakeCount"></p>
+          <button id="reviewButton" class="secondary-button">間違えた問題を復習</button>
+          <button id="clearStoredMistakesButton" class="secondary-button">間違い履歴を削除</button>
+        </div>
+
+        <button id="startButton">テスト開始</button>
+        <button id="backToMenuButton" class="secondary-button">教材選択へ戻る</button>
+      </section>
+
+      <section id="quizScreen" class="hidden">
+        <div class="quiz-top">
+          <div>
+            <h2 id="testTitle"></h2>
+            <h3 id="questionNumber"></h3>
+          </div>
+          <div id="timerDisplay" class="timer">--</div>
+        </div>
+        <div class="progress-wrap"><div id="progressBar" class="progress-bar"></div></div>
+        <div id="questionArea"></div>
+        <p id="feedback"></p>
+        <button id="checkButton">回答する</button>
+        <button id="nextButton" class="hidden">次の問題へ</button>
+        <button id="quitButton" class="quit-button">途中で終了する</button>
+      </section>
+
+      <section id="resultScreen" class="hidden">
+        <h2>結果</h2>
+        <div id="motivationMessage" class="motivation-box"></div>
+        <p id="scoreDisplay"></p>
+        <p id="dateDisplay"></p>
+        <p id="timeDisplay"></p>
+        <p id="sendStatusDisplay"></p>
+        <div id="mistakeArea"></div>
+        <button id="restartButton">同じ教材の問題選択へ戻る</button>
+        <button id="resultMenuButton" class="secondary-button">教材選択へ戻る</button>
+      </section>
+
+      <section id="historyScreen" class="hidden">
+        <div class="screen-head">
+          <div>
+            <h2>解答履歴</h2>
+            <p class="muted">この端末に保存された履歴です。学習者IDごとに確認できます。Google Apps Scriptを設定すると、スプレッドシートにも送信できます。</p>
+          </div>
+          <button id="historyBackButton" class="secondary-button small-button">戻る</button>
+        </div>
+        <div class="history-controls">
+          <input type="text" id="historySearchInput" placeholder="学習者番号・教材名・問題文で検索" />
+          <button id="exportHistoryButton" class="secondary-button">CSVダウンロード</button>
+          <button id="clearHistoryButton" class="quit-button">端末内履歴を削除</button>
+        </div>
+        <div id="historySummary" class="stats-grid"></div>
+        <div id="historyTableArea" class="history-table-wrap"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js?v=loginfix-20260515"></script>
+</body>
+</html>
