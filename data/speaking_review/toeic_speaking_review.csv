@@ -99,3 +99,34 @@
 98,5/20 Opinion：タブレット学習,decrease the risk of forgetting to bring our textbooks,reduce the risk of forgetting their textbooks,decrease forgetting textbooks,reduce forgetting textbook risk
 99,5/20 Opinion：食品ロス,reduce the food proportion,reduce food portions,reduce food proportionally,reduce food size
 100,5/20 Opinion：食品ロス,reduce the reducing cost of their operation,reduce operating costs,reduce operation costing,reduce cost of operating
+id,section,question,correctAnswer,choice1,choice2,choice3
+101,5/21 Solution：会議遅刻対応,employees arrived later than expected,employees arrived late,employees arrived lately,employees arrived later
+102,5/21 Solution：紙削減,the need to print out is decreasing,the need to print documents will decrease,the need of print out decreases,printing out is decreasing
+103,5/21 Solution：労働時間改善,employees' opinion,employees' opinions,employee opinions,employees opinion
+104,5/21 Solution：労働時間改善,improvements are conducted,companies make improvements,improvements conduct,companies conduct improvements
+105,5/21 Solution：電話対応改善,typical programs,common problems,typical problems,common programs
+106,5/21 Solution：電話対応改善,customers can solve their programs,customers can solve their problems,customers solve programs,customers can solve them programs
+107,5/21 Solution：部署間交流,prepare our social network service,create an internal social network service,prepare internal SNS,create our SNS service
+108,5/21 Solution：部署間交流,make employees communicate among different departments,help employees from different departments communicate,make employees communication departments,employees communicate among departments
+109,5/21 Solution：締切管理,prepare a calendar,create a shared calendar,prepare shared deadline,make calendar deadline
+110,5/21 Solution：締切管理,assure now your deadline is coming,remind employees of upcoming deadlines,assure deadline coming,remind deadline comes
+111,5/21 Solution：ウェブサイト改善,collect opinions from employees,collect opinions from customers,collect employees opinions,collect customers opinion
+112,5/21 Solution：ウェブサイト改善,revise the website structures,revise the website structure,revise website structures,revise structures website
+113,5/21 Solution：チームワーク改善,address other people's information,access other employees' information,address employees information,access other people information
+114,5/21 Solution：長い会議,take a rest for 15 minutes,take a 15-minute break,take 15 minutes rest,take 15-minute rest
+115,5/21 Solution：ソフトウェア研修,a leader who teach new software,a leader who teaches new software,a leader who teaching software,a leader teach software
+116,5/21 Solution：会議参加促進,discussion questions or preparing topics is better,preparing discussion questions in advance is effective,prepare questions is better,discussion questions are better to engage
+117,5/21 Solution：国際顧客対応,learning SLA theory is good for employees,providing communication training is useful for employees,learning theories are good employees,SLA theory make communication better
+118,5/21 Solution：意見共有,make a form atmosphere,create an open atmosphere,make formal atmosphere,create form atmosphere
+119,5/21 Solution：会議記録,help to remind the content,help employees review the meeting content,help remind content,help reviewing meeting content
+120,5/21 Solution：動機づけ,to make employees realize the value of engagement,help employees realize the value of their work,make employees realize engagement value,help employees realize work value
+121,5/21 Writing：日程変更,Thank you for your arrangement of a team meeting,Thank you for arranging the team meeting,Thank you for arrangement meeting,Thank you for arrange the meeting
+122,5/21 Writing：日程変更,Would you mind rescheduling our meeting for next Monday at 9 a.m.,Would it be possible to reschedule our meeting for next Monday at 9 a.m.?,Would you mind reschedule our meeting,Would it possible to reschedule meeting
+123,5/21 Writing：研修協力,contribution for tutorial session,organizing the customer service training session,contribution to tutorial session,organizing tutorial contribution
+124,5/21 Writing：研修協力,what employees motivation to work,how to respond to customer complaints,what employees motivate work,how customer complaints respond
+125,5/21 Writing：予約システム,the system make our work more efficiently,the system would help employees reserve meeting rooms more efficiently,the system makes our work efficiently,the system would make work more efficient
+126,5/21 Writing：予約システム,a introduction video clip,an introductory video,a introductory video,an introduction video
+127,5/21 Writing：歓迎イベント,One of the activities which I am interested in is a group recreation,I suggest having a group recreation activity,One activity I interested is recreation,I suggest to have group recreation
+128,5/21 Writing：会議室改善,I haven't realize the trouble of our meeting room,I have noticed some problems with our meeting rooms,I haven't realized meeting room trouble,I noticed troubles of meeting room
+129,5/21 Writing：会議室改善,we should fix air conditioner,we should fix the air conditioner,we should fix an air conditioner,we should repair air conditioner
+130,5/21 Writing：会議室改善,we cannot invite clients to the meeting room,it may be difficult to invite clients there,we cannot invite clients meeting room,it is difficult invite clients there
